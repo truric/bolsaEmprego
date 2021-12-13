@@ -21,14 +21,32 @@
             <%= link_to 'Ofertas', job_offers_path, class:"navbar-brand" %>
         </li>
         <li class="nav-item">
-        <%= link_to 'Notícias', news_index_path, class:"navbar-brand" %>
-    </li>
+          <%= link_to 'Notícias', news_index_path, class:"navbar-brand" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Registar-me', user_registry_new_path, class:"navbar-brand" %>
+        </li>
       </ul>
+
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:'nav-link' %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to 'Edit Profile', edit_user_registration_path, class:'nav-link' %>
+          </li>
+
+        <% else %>
+
         <li class="nav-item">
-          <a class="nav-link">Registar-me</a>
+          <%= link_to 'Sign In', new_user_session_path, class:'nav-link' %>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link">Login</a>
+            <%= link_to 'Sign Up', new_user_registration_path, class:'nav-link' %>
         </li>
+
+        <% end %>
     </div>
 </nav>

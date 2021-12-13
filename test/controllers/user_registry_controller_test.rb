@@ -1,0 +1,9 @@
+require 'test_helper'
+
+class UserRegistryControllerTest < ActionDispatch::IntegrationTest
+  test "should get new" do
+    get user_registry_new_url
+    assert_response :success
+  end
+
+end
