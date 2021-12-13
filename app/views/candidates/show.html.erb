@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h4><%= @candidate.name %></h4>
+
+<button type="button" class="btn btn-primary">Interessado/a</button>
+<button type="button" class="btn btn-success">Editar</button>
+</br>
+<%= link_to 'Curriculum Vitae', candidates_path %>
+
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..." class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <p class="card-text"><%= @candidate.description %></p>
+        <p class="card-text">Actividade Profissional</p>
+        <p class="card-text"><h4>Dados Proffisionais</h4></p>
+        <p class="card-text"><%= @candidate.industry %></p>
+        <p class="card-text">Situação Profissional</p>
+        <p class="card-text"><%= @candidate.employed %></p>
+        <p class="card-text">Habilitações Literárias</p>
+        <p class="card-text"><%= @candidate.grade %></p>
+        <p class="card-text">Experiência Profissional</p>
+        <p class="card-text"><%= @candidate.experience %></p>
+        <p class="card-text"><h4>Dados Pessoais</h4></p>
+        <p class="card-text">Morada</p>
+        <p class="card-text"><%= @candidate.address %></p>
+        <p class="card-text">Contactos</p>
+        <p class="card-text">Telefone: <%= @candidate.phone %></p>
+        <p class="card-text">Fax: <%= @candidate.fax %></p>
+        <p class="card-text"><%= @candidate.email %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Ver candidatos', candidates_path %>

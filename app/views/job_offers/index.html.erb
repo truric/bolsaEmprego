@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h4>Ofertas</h4>
+
 <div class="input-group">
   <div class="form-outline">
     <input type="search" id="form1" class="form-control" />
@@ -32,49 +34,47 @@
   </div>
 </div>
 
-<%= render 'components/entities_list' %>
+<%= render 'components/job_list' %>
 
-# <h1>Entities CRUD visible to user admin</h1>
+<h1>Job Offers visible to user admin</h1>
 
 <table>
-   <thead>
-     <tr>
-       <th>Name</th>
-       <th>Description</th>
-       <th>Industry</th>
-       <th>Address</th>
-       <th>County</th>
-       <th>Phone</th>
-       <th>Fax</th>
-       <th>Email</th>
-       <th>Website</th>
-       <th colspan="3"></th>
-     </tr>
-   </thead>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Company</th>
+      <th>County</th>
+      <th>Industry</th>
+      <th>Contract</th>
+      <th>Salary</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-   <tbody>
-     <% @entities.each do |entity| %>
-       <tr>
-         <td><%= entity.name %></td>
-         <td><%= entity.description %></td>
-         <td><%= entity.industry %></td>
-         <td><%= entity.address %></td>
-         <td><%= entity.county %></td>
-         <td><%= entity.phone %></td>
-         <td><%= entity.fax %></td>
-         <td><%= entity.email %></td>
-         <td><%= entity.website %></td>
-         <td><%= link_to 'Show', entity %></td>
-         <td><%= link_to 'Edit', edit_entity_path(entity) %></td>
-         <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-       </tr>
-     <% end %>
-   </tbody>
- </table>
+  <tbody>
+    <% @job_offers.each do |job_offer| %>
+      <tr>
+        <td><%= job_offer.name %></td>
+        <td><%= job_offer.description %></td>
+        <td><%= job_offer.date %></td>
+        <td><%= job_offer.company %></td>
+        <td><%= job_offer.county %></td>
+        <td><%= job_offer.industry %></td>
+        <td><%= job_offer.contract %></td>
+        <td><%= job_offer.salary %></td>
+        <td><%= link_to 'Show', job_offer %></td>
+        <td><%= link_to 'Edit', edit_job_offer_path(job_offer) %></td>
+        <td><%= link_to 'Destroy', job_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
- <br>
+<br>
 
- <%= link_to 'New Entity', new_entity_path %>
+<%= link_to 'New Job Offer', new_job_offer_path %>
 
 <nav aria-label="Page navigation example">
   <ul class="pagination">

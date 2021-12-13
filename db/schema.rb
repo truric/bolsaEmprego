@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_13_122355) do
+ActiveRecord::Schema.define(version: 2021_12_13_152629) do
+
+  create_table "candidates", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "industry"
+    t.boolean "employed"
+    t.string "grade"
+    t.string "qualification"
+    t.string "experience"
+    t.string "address"
+    t.string "county"
+    t.string "phone"
+    t.integer "fax"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "entities", force: :cascade do |t|
     t.string "name"
@@ -22,6 +39,27 @@ ActiveRecord::Schema.define(version: 2021_12_13_122355) do
     t.integer "fax"
     t.string "email"
     t.string "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "job_offers", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "date"
+    t.string "company"
+    t.string "county"
+    t.string "industry"
+    t.string "contract"
+    t.float "salary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "news", force: :cascade do |t|
+    t.string "title"
+    t.datetime "date"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

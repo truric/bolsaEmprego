@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h4><%= @job_offer.name %></h4>
+
+<button type="button" class="btn btn-primary">Candidatar-me/a</button>
+<button type="button" class="btn btn-success">Editar</button>
+</br>
+
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..." class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-text"><%= @job_offer.description %></h5>
+        </br>
+        <p class="card-text"><%= @job_offer.date %></p>
+        <p class="card-text"><h6>Empresa</h6></p>
+        <p class="card-text"><%= @job_offer.company %></p>
+        </br>
+        <p class="card-text">Actividade Profissional</p>
+        <p class="card-text"><%= @job_offer.industry %></p>
+        <p class="card-text">Tipo de Contrato</p>
+        <p class="card-text"><%= @job_offer.contract %></p>
+        </br>
+        <p class="card-text">Salário</p>
+        <p class="card-text">Telefone: <%= @job_offer.salary %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h4>Outras ofertas na mesma área</h4>
+
+<%= render 'components/job_list' %>

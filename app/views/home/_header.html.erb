@@ -9,20 +9,20 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-        <%= link_to 'Home', root_path, class:"navbar-brand" %>
+            <%= link_to 'Home', root_path, class:"navbar-brand" %>
         </li>
         <li class="nav-item">
-        <%= link_to 'Entidades', entities_path, class:"navbar-brand" %>
+            <%= link_to 'Entidades', entities_path, class:"navbar-brand" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Candidatos</a>
+            <%= link_to 'Candidatos', candidates_path, class:"navbar-brand" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link">Ofertas</a>
+            <%= link_to 'Ofertas', job_offers_path, class:"navbar-brand" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link">Notícias</a>
-        </li>
+        <%= link_to 'Notícias', news_index_path, class:"navbar-brand" %>
+    </li>
       </ul>
         <li class="nav-item">
           <a class="nav-link">Registar-me</a>
