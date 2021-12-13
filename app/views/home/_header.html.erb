@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Bolsa de Emprego</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+        <%= link_to 'Home', root_path, class:"navbar-brand" %>
+        </li>
+        <li class="nav-item">
+        <%= link_to 'Entidades', entities_path, class:"navbar-brand" %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Candidatos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Ofertas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Notícias</a>
+        </li>
+      </ul>
+        <li class="nav-item">
+          <a class="nav-link">Registar-me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Login</a>
+        </li>
+    </div>
+</nav>

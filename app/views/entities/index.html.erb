@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<%= render 'components/job_list' %>
+
+# CRUD will only be visible to a user admin
+# <h1>Entities</h1>
+
+# <table>
+#   <thead>
+#     <tr>
+#       <th>Name</th>
+#       <th>Description</th>
+#       <th>Industry</th>
+#       <th>Address</th>
+#       <th>County</th>
+#       <th>Phone</th>
+#       <th>Fax</th>
+#       <th>Email</th>
+#       <th>Website</th>
+#       <th colspan="3"></th>
+#     </tr>
+#   </thead>
+
+#   <tbody>
+#     <% @entities.each do |entity| %>
+#       <tr>
+#         <td><%= entity.name %></td>
+#         <td><%= entity.description %></td>
+#         <td><%= entity.industry %></td>
+#         <td><%= entity.address %></td>
+#         <td><%= entity.county %></td>
+#         <td><%= entity.phone %></td>
+#         <td><%= entity.fax %></td>
+#         <td><%= entity.email %></td>
+#         <td><%= entity.website %></td>
+#         <td><%= link_to 'Show', entity %></td>
+#         <td><%= link_to 'Edit', edit_entity_path(entity) %></td>
+#         <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+#       </tr>
+#     <% end %>
+#   </tbody>
+# </table>
+
+# <br>
+
+# <%= link_to 'New Entity', new_entity_path %>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li> |
+    <li class="page-item"><a class="page-link" href="#">2</a></li> |
+    <li class="page-item"><a class="page-link" href="#">3</a></li> |
+    <li class="page-item"><a class="page-link" href="#">4</a></li> |
+    <li class="page-item"><a class="page-link" href="#">5</a></li> |
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
