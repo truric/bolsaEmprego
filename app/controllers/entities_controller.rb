@@ -1,5 +1,7 @@
 class EntitiesController < ApplicationController
-  before_action :set_entity, only: %i[ show edit update destroy ]
+  before_action :set_entity, only: [:show, :edit, :update, :destroy ]
+  # before_action :authenticate_user!, except: [:new, :index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /entities or /entities.json
   def index
@@ -13,6 +15,8 @@ class EntitiesController < ApplicationController
   # GET /entities/new
   def new
     @entity = Entity.new
+    # @entity = current_user.entities.build
+    # @entity = Entity.new(entity_params.merge(user: current_user))
   end
 
   # GET /entities/1/edit
@@ -21,7 +25,8 @@ class EntitiesController < ApplicationController
 
   # POST /entities or /entities.json
   def create
-    @entity = Entity.new(entity_params)
+    @entity = current_user.entities.build(entity_params)
+    @entity.user = current_user
 
     respond_to do |format|
       if @entity.save
@@ -56,6 +61,11 @@ class EntitiesController < ApplicationController
     end
   end
 
+  def correct_user
+    @entity = current_user.entities.find_by(id: params[:id])
+    redirect_to entities_path, notice: "Not authorized to Edit this Entity" if @entity.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_entity
@@ -64,6 +74,7 @@ class EntitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entity_params
-      params.require(:entity).permit(:name, :description, :industry, :address, :county, :phone, :fax, :email, :website)
+      params.require(:entity).permit(:name, :description, :industry, :address, :county, :phone, :fax, :website)
+      # params.permit(:name, :description, :industry, :address, :county, :phone, :fax, :email, :password, :password_confirmation, :website)
     end
 end

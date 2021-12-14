@@ -1,5 +1,7 @@
 {
   "name": "bolsaEmprego",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@prettier/plugin-ruby": "^2.0.0"
+  }
 }
