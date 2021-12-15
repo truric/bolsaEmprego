@@ -14,8 +14,8 @@ class EntitiesController < ApplicationController
 
   # GET /entities/new
   def new
-    @entity = Entity.new
-    # @entity = current_user.entities.build
+    # @entity = Entity.new
+    @entity = current_user.entities.build
     # @entity = Entity.new(entity_params.merge(user: current_user))
   end
 
@@ -26,7 +26,7 @@ class EntitiesController < ApplicationController
   # POST /entities or /entities.json
   def create
     @entity = current_user.entities.build(entity_params)
-    @entity.user = current_user
+    # @entity.user = current_user
 
     respond_to do |format|
       if @entity.save
@@ -74,7 +74,8 @@ class EntitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entity_params
-      params.require(:entity).permit(:name, :description, :industry, :address, :county, :phone, :fax, :website)
-      # params.permit(:name, :description, :industry, :address, :county, :phone, :fax, :email, :password, :password_confirmation, :website)
+      # params.permit(:name, :description, :industry, :address, :county, :phone, :fax, :email, :website)
+      params.require(:entity).permit(:name, :description, :industry, :address, :county, :phone, :fax, :email, :website)
+      # params.require(:entity).permit(:name, :description, :industry, :address, :county, :phone, :fax, :website, user: [:user_id, :email, :password, :role])
     end
 end

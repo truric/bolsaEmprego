@@ -4,22 +4,22 @@
 
 <%= render 'form', entity: @entity %>
 
-<%= form_with model: @entity do |form| %>
-    <ul>
-        <%= form.fields_for :user do |user_form| %>
-        <li>
-            <%= user_form.label :email %>
-            <%= user_form.text_field :email %>
-            </br>
-            <%= user_form.label :password %>
-            <%= user_form.text_field :password %>
-        </li>
-        <% end %>
-    </ul>
-<% end %>
+<%# form_with model: @entity do |form| %>
+    <%#<ul> %>
+        <%#<%= form.fields_for :user do |user_form| %>
+        <%#<li> %>
+            <%#<%= user_form.label :email %>
+            <%#<%= user_form.text_field :email %>
+            <%#</br> %>
+            <%#<%= user_form.label :password %>
+            <%#<%= user_form.text_field :password %>
+        <%#</li> %>
+        <%#<% end %>
+    <%#</ul> %>
+<%#<% end %>
 
 <%= link_to 'Back', entities_path %>
 
 <p>
-    <%= current_user %>
+    <%= current_user.inspect %>
 </p>

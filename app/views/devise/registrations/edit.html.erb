@@ -34,12 +34,13 @@
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
-<% end %>
 
+<% end %>
 <%= current_user %>
 <%= @user.id %>
 <a>Role:</a>
-<%= @user.role %>
+<%= @user.role %></br>
+<%= "new_"+"#{@user.role}"+"_path" %>
 
 <h3>Cancel my account</h3>
 

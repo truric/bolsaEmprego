@@ -26,17 +26,64 @@
     <%= f.select(
       :role, 
       [
-        ['Candidato', 1],
-        ['Entidade', 2],
-        ['Admin', 3],
+        ['Candidato', "candidate"],
+        ['Entidade', "entity"],
       ],
-      { :multiple => false, :size => 3 })
+      { :multiple => false, :size => 1 })
     %>
   </div>
+
+  <%= f.fields_for :entity do |e| %>
+    <div class="field">
+    <%= e.label :name %>
+    <%= e.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= e.label :description %>
+    <%= e.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= e.label :industry %>
+    <%= e.text_field :industry %>
+  </div>
+
+  <div class="field">
+    <%= e.label :address %>
+    <%= e.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= e.label :county %>
+    <%= e.text_field :county %>
+  </div>
+
+  <div class="field">
+    <%= e.label :phone %>
+    <%= e.text_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= e.label :fax %>
+    <%= e.number_field :fax %>
+  </div>
+
+    <div class="field">
+    <%= e.label :website %>
+    <%= e.text_field :website %>
+  </div>
+
+  <% end %>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+
+  <%# if @user.save %>
+      <%# controller.redirect_to "new_"+"#{:user.role}"+"_path", notice: "Create your "+"#{:user.role}" + " profile" %>
+  <%# end %>
+
 <% end %>
 
 <%= render "devise/shared/links" %>

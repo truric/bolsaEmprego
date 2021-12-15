@@ -1,4 +1,4 @@
-<%= form_with(model: entity, local: true) do |form| %>
+<%= form_with(model: entity, local: true) do |e| %>
   <% if entity.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
@@ -12,47 +12,47 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= e.label :name %>
+    <%= e.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= e.label :description %>
+    <%= e.text_field :description %>
   </div>
 
   <div class="field">
-    <%= form.label :industry %>
-    <%= form.text_field :industry %>
+    <%= e.label :industry %>
+    <%= e.text_field :industry %>
   </div>
 
   <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= e.label :address %>
+    <%= e.text_field :address %>
   </div>
 
   <div class="field">
-    <%= form.label :county %>
-    <%= form.text_field :county %>
+    <%= e.label :county %>
+    <%= e.text_field :county %>
   </div>
 
   <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
+    <%= e.label :phone %>
+    <%= e.text_field :phone %>
   </div>
 
   <div class="field">
-    <%= form.label :fax %>
-    <%= form.number_field :fax %>
+    <%= e.label :fax %>
+    <%= e.number_field :fax %>
   </div>
 
-    <div class="field">
-    <%= form.label :website %>
-    <%= form.text_field :website %>
+  <div class="field">
+    <%= e.label :website %>
+    <%= e.text_field :website %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= e.submit %>
   </div>
   
 <% end %>

@@ -13,6 +13,7 @@ class CandidatesController < ApplicationController
   # GET /candidates/new
   def new
     @candidate = Candidate.new
+    @candidate = current_user.candidates.build
   end
 
   # GET /candidates/1/edit
@@ -21,7 +22,8 @@ class CandidatesController < ApplicationController
 
   # POST /candidates or /candidates.json
   def create
-    @candidate = Candidate.new(candidate_params)
+    @candidate = current_user.candidates.build(candidate_params)
+    @candidate.user = current_user
 
     respond_to do |format|
       if @candidate.save
