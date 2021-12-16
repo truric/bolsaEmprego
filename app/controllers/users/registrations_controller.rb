@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
   # GET /resource/sign_up
   def new
@@ -11,17 +12,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     if params[:role] == "entity"
       @user.role = "entity"
-      entity = @user.entities.build
     else
       @user.role = "candidate"
-      candidate = @user.candidates.build
     end
   end
 
   # POST /resource
   def create
     super
-    byebug
     if params[:role] == "entity"
       @user.role = "entity"
       @entity = Entity.new(params[:entity])
@@ -74,7 +72,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_params])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -93,7 +91,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, entities_attributes: [:id, :name, :description, :industry, :address, :county, :phone, :fax, :website, :user_id])
+    params.require(:user).permit(:email, :password, :role, entities_attributes: [:id, :name, :description, :industry, :address, :county, :phone, :fax, :website, :user_id])
   end
   
 end
