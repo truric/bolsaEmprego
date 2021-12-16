@@ -21,6 +21,9 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <%
+=begin
+%>
   <div class="field">
     <%= f.label :role %><br />
     <%= f.select(
@@ -32,6 +35,9 @@
       { :multiple => false, :size => 1 })
     %>
   </div>
+  <%
+=end
+%>
 
   <%= f.fields_for :entity do |e| %>
     <div class="field">
@@ -85,5 +91,7 @@
   <%# end %>
 
 <% end %>
-
+Role is:
+<%= params[:role] %>
+<br>
 <%= render "devise/shared/links" %>

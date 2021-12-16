@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :controllers
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
+
   get 'user_registry/new'
   resources :news
   resources :job_offers

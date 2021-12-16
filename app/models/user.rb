@@ -7,5 +7,6 @@ class User < ApplicationRecord
         has_many :entities
         has_many :candidates
 
-        accepts_nested_attributes_for :entities, :candidates
+        accepts_nested_attributes_for :entities
+        accepts_nested_attributes_for :candidates
 end
