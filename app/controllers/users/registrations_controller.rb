@@ -23,8 +23,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     byebug
     if params[:role] == "entity"
-      @user.build_entity(user_params)
-      @entity.save
+      @user.role = "entity"
+      @entity = Entity.new(params[:entity])
+      @entity.user_id = current_user.id
       # @user = entity.current_user.build(user_params)
       # @entity.user = current_user
       # @entity.save
