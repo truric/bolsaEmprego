@@ -14,8 +14,9 @@ class EntitiesController < ApplicationController
 
   # GET /entities/new
   def new
-    # @entity = Entity.new
-    @entity = current_user.entities.build
+    @entity = Entity.new
+    @entity.user.new
+    # @entity = current_user.entities.build
     # @entity = Entity.new(entity_params.merge(user: current_user))
   end
 
@@ -25,6 +26,7 @@ class EntitiesController < ApplicationController
 
   # POST /entities or /entities.json
   def create
+    debugger
     @entity = current_user.entities.build(entity_params)
     # @entity.user = current_user
 

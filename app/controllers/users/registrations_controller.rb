@@ -24,6 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.role = "entity"
       @entity = Entity.new(params[:entity])
       @entity.user_id = current_user.id
+      @entity.save
       # @user = entity.current_user.build(user_params)
       # @entity.user = current_user
       # @entity.save
@@ -72,7 +73,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_params])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
