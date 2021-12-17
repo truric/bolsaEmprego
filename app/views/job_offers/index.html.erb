@@ -1,38 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<h4>Ofertas</h4>
+<h6>Ofertas</h6>
 
-<div class="input-group">
-  <div class="form-outline">
-    <input type="search" id="form1" class="form-control" />
-    <label class="form-label" for="form1">Search</label>
-  </div>
-  <button type="button" class="btn btn-primary">
-    <i class="fas fa-search"></i>
-  </button>
+<nav class="navbar navbar-expand-lg navbar-light" style="margin-bottom: 25px">
 
-    <i class="fas fa-search"></i>
-    <div class="btn-group">
-    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Área de Actividade
-    </button>
-    <ul class="dropdown-menu">
-      ...
-    </ul>
-  </div>
+<svg style="position: absolute; padding-left:5px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="  search" aria-label="Search", style="font-size: small">
+  </form>
 
-  <div class="btn-group">
-    <button class="btn btn-secondary btn-sm" type="button">
+    <div class="dropdown" style="padding-left: 50px">
+
+      <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+        aria-haspopup="true" aria-expanded="false", style="font-size: small">
+        Área de Actividade
+      </button>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Área 1</a>
+        <a class="dropdown-item" href="#">Área 2</a>
+        <a class="dropdown-item" href="#">Área 3</a>
+      </div>
+
+    </div>
+
+    <div class="dropdown" style="padding-left: 50px">
+
+    <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+      aria-haspopup="true" aria-expanded="false", style="font-size: small">
       Concelho
     </button>
-    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-      <span class="visually-hidden">Toggle Dropdown</span>
-    </button>
-    <ul class="dropdown-menu">
-      ...
-    </ul>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#">Concelho 1</a>
+      <a class="dropdown-item" href="#">Concelho 2</a>
+      <a class="dropdown-item" href="#">Concelho 3</a>
+    </div>
+
   </div>
-</div>
+
+</nav>
 
 <%= render 'components/job_list' %>
 

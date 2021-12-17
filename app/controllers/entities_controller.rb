@@ -1,6 +1,6 @@
 class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy ]
-  # before_action :authenticate_user!, except: [:new, :index, :show]
+  # before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /entities or /entities.json
@@ -14,9 +14,9 @@ class EntitiesController < ApplicationController
 
   # GET /entities/new
   def new
-    @entity = Entity.new
-    @entity.user.new
-    # @entity = current_user.entities.build
+    # @entity = Entity.new
+    # @entity.user.new
+    @entity = current_user.entities.build
     # @entity = Entity.new(entity_params.merge(user: current_user))
   end
 
@@ -26,8 +26,15 @@ class EntitiesController < ApplicationController
 
   # POST /entities or /entities.json
   def create
-    debugger
+    # @entity = Entity.new(params[:entity])
+    # @entity.user_id = current_user.id if current_user
+
+    # @entity = Entity.new(entity_params)
+    
+    # @entity = Entity.new(entity_params)
+
     @entity = current_user.entities.build(entity_params)
+    
     # @entity.user = current_user
 
     respond_to do |format|
@@ -76,8 +83,9 @@ class EntitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entity_params
-      # params.permit(:name, :description, :industry, :address, :county, :phone, :fax, :email, :website)
-      params.require(:entity).permit(:name, :description, :industry, :address, :county, :phone, :fax, :email, :website)
+      params.permit(:name, :description, :industry, :address, :county, :phone, :fax, :email, :website)
+      # params.require(:entity).permit(:name, :description, :industry, :address, :county, :phone, :fax, :email, :website)
       # params.require(:entity).permit(:name, :description, :industry, :address, :county, :phone, :fax, :website, users_attributes: [:id, :email, :password, :role])
     end
+
 end
