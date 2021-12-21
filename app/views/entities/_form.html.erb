@@ -11,49 +11,84 @@
     </div>
   <% end %>
 
-  <%= e.simple_fields_for :user do |user_form| %>
+  <%= e.simple_fields_for :users do |user_form| %>
+
     <div class="field">
-      <%= user_form.input :email %>
+      <%= user_form.label :email %>
+      <%= user_form.email_field :email %>
     </div>
     <div class="field">
-      <%= user_form.input :password %>
+      <%= user_form.label :password %>
+      <%= user_form.password_field :password %>
+    </div>
+    <div class="field">
+      <%= user_form.label :role %>
+      <%= user_form.text_field :role, :value => "entity" %>
     </div>
   <% end %>
 
   <div class="field">
-    <%= e.input :name %>
+    <%= e.label :user_id %>
+    <%= e.number_field :user_id, :value => User.last.id+1 %>
   </div>
 
   <div class="field">
-    <%= e.input :description %>
+    <%= e.label :name %>
+    <%= e.text_field :name, :value => "entity name" %>
   </div>
 
   <div class="field">
-    <%= e.input :industry %>
+    <%= e.label :description %>
+    <%= e.text_field :description, :value => "entity description" %>
   </div>
 
   <div class="field">
-    <%= e.input :address %>
+    <%= e.label :industry %>
+    <%= e.text_field :industry, :value => "entity industry" %>
   </div>
 
   <div class="field">
-    <%= e.input :county %>
+    <%= e.label :address %>
+    <%= e.text_field :address, :value => "entity address" %>
   </div>
 
   <div class="field">
-    <%= e.input :phone %>
+    <%= e.label :postal_code %>
+    <%= e.number_field :postal_code, :value => 4455-784 %>
   </div>
 
   <div class="field">
-    <%= e.input :fax %>
+    <%= e.label :location %>
+    <%= e.text_field :location, :value => "entity location" %>
   </div>
 
   <div class="field">
-    <%= e.input :website %>
+    <%= e.label :tax_number %>
+    <%= e.number_field :tax_number, :value => 560554545 %>
+  </div>
+
+  <div class="field">
+    <%= e.label :county %>
+    <%= e.text_field :county, :value => "entity county" %>
+  </div>
+
+  <div class="field">
+    <%= e.label :phone %>
+    <%= e.number_field :phone, :value => 2232323232 %>
+  </div>
+
+  <div class="field">
+    <%= e.label :fax %>
+    <%= e.number_field :fax, :value => 226565656 %>
+  </div>
+
+  <div class="field">
+    <%= e.label :website %>
+    <%= e.text_field :website, :value => "www.site.com" %>
   </div>
 
   <div class="actions">
-    <%= e.button :submit %>
+    <%= e.submit "Sign up" %>
   </div>
   
 <% end %>

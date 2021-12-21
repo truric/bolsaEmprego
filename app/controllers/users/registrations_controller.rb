@@ -10,38 +10,42 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # super
     @user = User.new
 
-    if params[:role] == "entity"
-      @user.role = "entity"
-    else
-      @user.role = "candidate"
-    end
+    # if params[:role] == "entity"
+    #   @user.role = "entity"
+    # else
+    #   @user.role = "candidate"
+    # end
   end
 
   # POST /resource
   def create
     super
+    @user.role = params[:role]
     if params[:role] == "entity"
-      @user.role = "entity"
-      @entity = Entity.new(params[:entity])
-      @entity.user_id = current_user.id
+      @entity = Entity.new(entity_params)
+      @user.save
+      debugger
+      @entity.user_id = @user.id
       @entity.save
       # @user = entity.current_user.build(user_params)
       # @entity.user = current_user
       # @entity.save
-    # else
-    #   @user = candidate.current_user.build(user_params)
-    #   @candidate.user = current_user
-    #   @candidate.save
+    else
+      @candidate = Candidate.new(candidate_params)
+      @user.save
+      # debugger
+      @candidate.user_id = @user.id
+      @candidate.save
 
-      respond_to do |format|
-        if @user.save
-          format.html { redirect_to @user, notice: "User was successfully created." }
-          format.json { render :show, status: :created, location: @user }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
-      end
+      # respond_to do |format|
+      #   if @user.save
+      #     format.html { redirect_to new_user_session, notice: "User was successfully created." }
+      #     format.json { render :show, status: :created, location: @user }
+      #   else
+      #     format.html { render :new, status: :unprocessable_entity }
+      #     format.json { render json: @user.errors, status: :unprocessable_entity }
+      #   end
+      # end
     end
   end
 
@@ -83,7 +87,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    super(resource)
+    # super(resource)
+    new_user_session_path
   end
 
   # The path used after sign up for inactive accounts.
@@ -92,7 +97,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :role, entities_attributes: [:id, :name, :description, :industry, :address, :county, :phone, :fax, :website, :user_id])
+    params.require(:user).permit(:id, :email, :password, :role, entities_attributes: [:name, :description, :industry, :address, :county, :phone, :fax, :website])
+  end
+
+  def entity_params
+    params.require(:user).require(:entity).permit(:id, :name, :description, :industry, :address, :county, :phone, :fax, :website, :user_id)
+  end
+
+  def candidate_params
+    params.require(:user).require(:entity).permit(:id, :name, :description, :industry, :employed, :grade, :qualification, :experience, :address, :county, :phone, :fax, :user_id, :postal_code, :location, :id_card, :dob)
   end
   
 end

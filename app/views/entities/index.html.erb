@@ -45,7 +45,7 @@
 
 <%= render 'components/entities_list' %>
 
-# <h1>Entities CRUD visible to user admin</h1>
+<h1>Entities CRUD visible to user admin</h1>
 
 <table>
    <thead>
@@ -57,8 +57,8 @@
        <th>County</th>
        <th>Phone</th>
        <th>Fax</th>
-       <th>Email</th>
        <th>Website</th>
+       <th>Email</th>
        <th colspan="3"></th>
      </tr>
    </thead>
@@ -73,8 +73,9 @@
          <td><%= entity.county %></td>
          <td><%= entity.phone %></td>
          <td><%= entity.fax %></td>
-         <td><%= entity.email %></td>
          <td><%= entity.website %></td>
+         <td><%#= entity.user.email %></td>
+         <%= entity.inspect %>
          <td><%= link_to 'Show', entity %></td>
          <td><%= link_to 'Edit', edit_entity_path(entity) %></td>
          <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>

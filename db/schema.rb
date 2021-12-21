@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2021_12_16_095411) do
     t.string "county"
     t.string "phone"
     t.integer "fax"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -43,7 +42,6 @@ ActiveRecord::Schema.define(version: 2021_12_16_095411) do
     t.string "county"
     t.string "phone"
     t.integer "fax"
-    t.string "email"
     t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

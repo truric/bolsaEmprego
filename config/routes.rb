@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # devise_for :users, :path_prefix =>'auth', :controllers => {:registrations => "users/registrations"}
   devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   get 'user_registry/new'
