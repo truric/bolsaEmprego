@@ -39,8 +39,8 @@
             </div>
 
             <div class="col-3 " style="padding-left: 90px">
-                <label for="exampleFormControlFile1">Foto</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <%= c.label :image %>
+                <%= c.file_field :image %>
             </div>
         </div>
 
@@ -93,8 +93,8 @@
 
         <div class="form-group row" style="margin-top: 25px; margin-bottom: 25px">
             <div class="col-3">
-                <label for="exampleFormControlFile1">Curriculum Vitae</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <%= c.label :attachment %>
+                <%= c.file_field :attachment %>
             </div>
 
             <div class="col-3 dropdown" style="margin-left: -90px">
