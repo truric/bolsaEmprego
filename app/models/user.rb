@@ -6,5 +6,4 @@ class User < ApplicationRecord
          
   has_one :entity
   has_one :candidate
-
 end

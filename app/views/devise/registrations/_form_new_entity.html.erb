@@ -39,8 +39,8 @@
         </div>
 
         <div class="col-3 " style="padding-left: 90px">
-          <label for="exampleFormControlFile1">Foto</label>
-          <input type="file" class="form-control-file" id="exampleFormControlFile1">
+          <%= e.label :image %>
+          <%= e.file_field :image, class: "form-control" %>
         </div>
       </div>
 

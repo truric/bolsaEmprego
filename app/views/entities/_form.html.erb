@@ -28,8 +28,9 @@
   <% end %>
 
   <div class="field">
-    <%= e.label :user_id %>
-    <%= e.number_field :user_id, :value => User.last.id+1 %>
+    <%= e.label :image %>
+    <%= e.file_field :image %>
+    <%= image_tag(entity.image, style: "width: 100px; display: bloack") %>
   </div>
 
   <div class="field">
@@ -65,11 +66,6 @@
   <div class="field">
     <%= e.label :tax_number %>
     <%= e.number_field :tax_number, :value => 560554545 %>
-  </div>
-
-  <div class="field">
-    <%= e.label :county %>
-    <%= e.text_field :county, :value => "entity county" %>
   </div>
 
   <div class="field">
