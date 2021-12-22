@@ -2,17 +2,17 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
 
     completar create forms:
         create form Candidato:
-            ☐ params de ficheiros: Foto e CV
-            ☐ params de Datepicker: dob
-            ☐ dropdowns com simple forms: Área profissional, Nível de Habilitações, Situação Profissional
-            ☐ botão de submit, texto: "Registar" e design
-            ☐ search bar, canto superior esquerdo
+            ✔ params de ficheiros: Foto e CV @done (12/22/2021, 6:01:22 PM)
+            ✔ params de Datepicker: dob @done (12/22/2021, 6:20:12 PM)
+            ✔ dropdowns com simple forms: Área profissional, Nível de Habilitações, Situação Profissional @done (12/22/2021, 6:33:14 PM)
+            ✔ botão de submit, texto: "Registar" e design @done (12/22/2021, 6:33:17 PM)
+            ✔ search bar, canto superior esquerdo @done (12/22/2021, 6:52:51 PM)
         
         create form Entidade:
-            ☐ param de ficheiro: Foto
-            ☐ dropdowns com simple forms: Actividade profissional
-            ☐ botão de submit, texto: "Registar" e design
-            ☐ search bar, canto superior esquerdo
+            ✔ param de ficheiro: Foto @done (12/22/2021, 6:03:42 PM)
+            ✔ dropdowns com simple forms: Actividade profissional @done (12/22/2021, 6:54:48 PM)
+            ✔ botão de submit, texto: "Registar" e design @done (12/22/2021, 6:55:18 PM)
+            ✔ search bar, canto superior esquerdo @done (12/22/2021, 6:52:52 PM)
     
     alterar página edit:
         Candidato:
@@ -52,3 +52,18 @@ imagens:
         <%= e.file_field :image %>
         <%= image_tag(entity.image, style: "width: 100px; display: bloack") %>
     </div>
+
+    <% if entity.image.attached? %>
+      <%= image_tag(entity.image, style: "width: 200px") %>
+    <% end %>
+
+outros ficheiros:
+
+    <div class="col-3">
+        <%= c.label :attachment %>
+        <%= c.file_field :attachment %>
+    </div>
+
+    <% if @candidate.attachment.attached? %>
+        <%= link_to 'Curriculum Vitae', @candidate.attachment %>
+    <% end %>
