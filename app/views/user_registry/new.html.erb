@@ -4,16 +4,7 @@
 
 </br>
 
-<div class="card" style="width: 18rem;" href="#">
-  <div class="card-body">
-    <%= link_to 'Sou uma entidade', new_user_registration_path(role:"entity"), class:'nav-link' %>
-  </div>
-</div>
-
-</br>
-
-<div class="card" style="width: 18rem;" href="#">
-  <div class="card-body">
-    <%= link_to 'Sou um candidato', new_user_registration_path(role:"candidate"), class:'nav-link' %>
-  </div>
+<div class="d-grid gap-5 col-11 mx-auto">
+  <%= link_to 'Sou uma entidade', new_user_registration_path(role:"entity"), class:'nav-link btn btn-outline-secondary', type:"button", style:"padding: 60px; border: 3px solid black"%>
+  <%= link_to 'Sou um candidato', new_user_registration_path(role:"candidate"), class:'nav-link btn btn-outline-secondary', type:"button", style:"padding: 60px; border: 3px solid black"%>
 </div>

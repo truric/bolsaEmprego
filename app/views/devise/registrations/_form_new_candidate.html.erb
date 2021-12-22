@@ -1,0 +1,160 @@
+<h2>Novo Candidato</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <form class="row g-3">
+
+    <div class="col-12">
+      <div class="col-2">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :value => "asd@asd.com" %>
+        </div>
+    </div>
+
+    <div class="form-group row" style="margin-top: 15px">
+        <div class="col-2" >
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", :value => "password", style:"width: 107%" %>
+        </div>
+
+        <div class="col-3" style="padding-left: 90px">
+            <%= f.label :password_confirmation %>
+            <em>(repeat password)</em><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", :value => "password", style:"width: 100%" %>
+        </div>
+    </div>
+
+    <div class="field">
+        <%= hidden_field_tag :role, params[:role] %>
+    </div>
+
+    <%= f.simple_fields_for :candidate do |c| %>
+        
+        <div class="form-group row" style="margin-top: 15px">
+            <div class="col-2" >
+                <%= c.label :name %>
+                <%= c.text_field :name, style:"width: 107%" %>
+            </div>
+
+            <div class="col-3 " style="padding-left: 90px">
+                <label for="exampleFormControlFile1">Foto</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+        </div>
+
+        <div class="form-group col-5">
+            <label for="exampleFormControlTextarea1">Morada</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+        </div>
+
+        <div class="form-group row" style="margin-top: 15px">
+            <div class="col-1" >
+                <%= c.label :postal_code %>
+                <%= c.number_field :postal_code, style:"width: 107%" %>
+            </div>
+
+            <div class="col-3" style="padding-left: 240px">
+                <%= c.label :location %>
+                <%= c.text_field :location, style:"width: 100%" %>
+            </div>
+        </div>
+
+        <div class="form-group row" style="margin-top: 15px">
+            <div class="col-1" >
+                <%= c.label :phone %>
+                <%= c.text_field :phone, style:"width: 107%" %>
+            </div>
+
+            <div class="col-1" >
+                <%= c.label :fax %>
+                <%= c.number_field :fax, style:"width: 107%" %>
+            </div>
+
+            <div class="col-3" style="padding-left: 80px">
+                <%= c.label :website %>
+                <%= c.text_field :website, style:"width: 100%" %>
+            </div>
+        </div>
+
+        <div class="form-group row" style="margin-top: 15px">
+            <div class="col-1" >
+                <%= c.label :dob %>
+                <%= c.number_field :dob, style:"width: 107%" %>
+            </div>
+
+            <div class="col-3" style="padding-left: 240px">
+                <%= c.label :id_card %>
+                <%= c.number_field :id_card %>
+            </div>
+        </div>
+
+        <div class="form-group row" style="margin-top: 25px; margin-bottom: 25px">
+            <div class="col-3">
+                <label for="exampleFormControlFile1">Curriculum Vitae</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+
+            <div class="col-3 dropdown" style="margin-left: -90px">
+                <button class="btn btn btn-outline-dark btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Área Profissional
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button">Action</button>
+                    <button class="dropdown-item" type="button">Another action</button>
+                    <button class="dropdown-item" type="button">Something else here</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
+            <label for="exampleFormControlTextarea1">Apresentação</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+        </div>
+
+        <div class="dropdown" style="margin-top: 25px; margin-bottom: 25px">
+            <button class="btn btn btn-outline-dark btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Nível de Habilitações
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Action</button>
+                <button class="dropdown-item" type="button">Another action</button>
+                <button class="dropdown-item" type="button">Something else here</button>
+            </div>
+        </div>
+
+        <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
+            <label for="exampleFormControlTextarea1">Habilitações Literárias</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+        </div>
+
+        <div class="dropdown" style="margin-top: 25px; margin-bottom: 25px">
+            <button class="btn btn btn-outline-dark btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Situação Profissional
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Action</button>
+                <button class="dropdown-item" type="button">Another action</button>
+                <button class="dropdown-item" type="button">Something else here</button>
+            </div>
+        </div>
+
+        <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
+            <label for="exampleFormControlTextarea1">Experiência Profissional</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+        </div>
+
+        <div class="field">
+            <%= c.hidden_field :user_id, :value => User.last.id+1  %>
+        </div>
+
+    <% end %>
+
+    <div class="actions">
+        <%= f.submit "Sign up" %>
+    </div>
+
+<% end %>
