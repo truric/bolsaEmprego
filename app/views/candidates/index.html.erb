@@ -98,6 +98,7 @@
       <th>Phone</th>
       <th>Fax</th>
       <th>Email</th>
+      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -117,6 +118,7 @@
         <td><%= candidate.phone %></td>
         <td><%= candidate.fax %></td>
         <td><%= candidate.user.email %></td>
+        <td><%= candidate.user.id %></td>
         <td><%= link_to 'Show', candidate %></td>
         <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
         <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>

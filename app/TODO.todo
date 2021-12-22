@@ -1,4 +1,45 @@
-text: 
-    ☐ TPC: definir o que falta fazer ponto por ponto e prioridades
-    ☐ mailer smtp;
-    ☐ dropdown lists;
+TPC: definir o que falta fazer ponto por ponto e prioridades
+
+    completar create forms:
+        create form Candidato:
+            ☐ params de ficheiros: Foto e CV
+            ☐ params de Datepicker: dob
+            ☐ dropdowns com simple forms: Área profissional, Nível de Habilitações, Situação Profissional
+            ☐ botão de submit, texto: "Registar" e design
+            ☐ search bar, canto superior esquerdo
+        
+        create form Entidade:
+            ☐ param de ficheiro: Foto
+            ☐ dropdowns com simple forms: Actividade profissional
+            ☐ botão de submit, texto: "Registar" e design
+            ☐ search bar, canto superior esquerdo
+    
+    alterar página edit:
+        Candidato:
+            ☐ utilizar view edit do scaffold, utilizar mesmo form create = (sem password e confirmação password) + (dois botões: "Ok" e "Cancelar")
+
+        Entidade:
+            ☐ utilizar view edit do scaffold, utilizar mesmo form create = (sem password e confirmação password) + (dois botões: "Ok" e "Cancelar")
+
+    alterar página login:
+        ☐ utilizar view do devise: users/sign_in + alterar design
+
+    alterar página alteração password:
+        ☐ utilizar view do devise: users/edit + alterar design
+    
+    alterar página show depois de login:
+            Candidato:
+                ☐ lista de candidaturas, card: "imagem, título, data, entidade, descrição"
+                ☐ "Candidato" + botões: "Editar Dados" e "Alterar Password" com path e design
+                ☐ "Empresas interessadas em mim"
+            
+            Entidade:
+                ☐ lista de Ofertas, card: "imagem, título, data, entidade, descrição" + botões: "editar" e "cancelar"
+                ☐ "Entidade" + botões: "Editar Dados" e "Alterar Password" com path e design
+                ☐ botão "Inserir Oferta" + path
+                ☐ Histórico: lista de Ofertas active:false, mesmo card + botão para "Reativar" active:true
+                ☐ "Candidatos interessados"
+
+
+☐ PORTUGUES
+☐ mailer smtp;

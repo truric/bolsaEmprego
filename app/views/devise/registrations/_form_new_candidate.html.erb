@@ -149,10 +149,6 @@
             <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
         </div>
 
-        <div class="field">
-            <%= c.hidden_field :user_id, :value => User.last.id+1  %>
-        </div>
-
     <% end %>
 
     <div class="actions">
