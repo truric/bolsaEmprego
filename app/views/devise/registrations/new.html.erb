@@ -1,4 +1,4 @@
-<% if params[:role] == "entity" %>
+<% if params[:role] == "entity" || @user.role == "entity" %>
 
   <%= render 'form_new_entity', entity: @entity %>
     

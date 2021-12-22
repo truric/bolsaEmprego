@@ -16,7 +16,9 @@
         <p class="card-text">Contactos</p>
         <p class="card-text">Telefone: <%= @entity.phone %></p>
         <p class="card-text">Fax: <%= @entity.fax %></p>
-        # <p class="card-text"><%= @entity.user.email %></p>
+        <% if @entity.user.email %>
+          <p class="card-text"><%= @entity.user.email %></p>
+        <% end %>
         <p class="card-text"><%= @entity.website %></p>
       </div>
     </div>

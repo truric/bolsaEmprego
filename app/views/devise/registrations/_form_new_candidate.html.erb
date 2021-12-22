@@ -1,6 +1,8 @@
 <h2>Novo Candidato</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.hidden_field :role, :value => params[:role] %>
+
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <form class="row g-3">
@@ -28,10 +30,6 @@
         </div>
     </div>
 
-    <div class="field">
-        <%= hidden_field_tag :role, params[:role] %>
-    </div>
-
     <%= f.simple_fields_for :candidate do |c| %>
         
         <div class="form-group row" style="margin-top: 15px">
@@ -46,9 +44,10 @@
             </div>
         </div>
 
-        <div class="form-group col-5">
+        <div class="form-group col-5" style="margin-top: 15px">
             <label for="exampleFormControlTextarea1">Morada</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+            <%= tinymce %>
+            <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
         </div>
 
         <div class="form-group row" style="margin-top: 15px">
@@ -112,7 +111,8 @@
 
         <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
             <label for="exampleFormControlTextarea1">Apresentação</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+            <%= tinymce %>
+            <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
         </div>
 
         <div class="dropdown" style="margin-top: 25px; margin-bottom: 25px">
@@ -128,7 +128,8 @@
 
         <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
             <label for="exampleFormControlTextarea1">Habilitações Literárias</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+            <%= tinymce %>
+            <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
         </div>
 
         <div class="dropdown" style="margin-top: 25px; margin-bottom: 25px">
@@ -144,7 +145,8 @@
 
         <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
             <label for="exampleFormControlTextarea1">Experiência Profissional</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+            <%= tinymce %>
+            <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
         </div>
 
         <div class="field">

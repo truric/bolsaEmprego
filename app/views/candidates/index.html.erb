@@ -94,7 +94,7 @@
       <th>Qualification</th>
       <th>Experience</th>
       <th>Address</th>
-      <th>County</th>
+      <th>Location</th>
       <th>Phone</th>
       <th>Fax</th>
       <th>Email</th>
@@ -113,10 +113,10 @@
         <td><%= candidate.qualification %></td>
         <td><%= candidate.experience %></td>
         <td><%= candidate.address %></td>
-        <td><%= candidate.county %></td>
+        <td><%= candidate.location %></td>
         <td><%= candidate.phone %></td>
         <td><%= candidate.fax %></td>
-        # <td><%#= candidate.user.email %></td>
+        <td><%= candidate.user.email %></td>
         <td><%= link_to 'Show', candidate %></td>
         <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
         <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>

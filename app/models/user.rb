@@ -4,9 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  has_many :entities
-  has_many :candidates
+  has_one :entity
+  has_one :candidate
 
-  accepts_nested_attributes_for :entities
-  accepts_nested_attributes_for :candidates
 end

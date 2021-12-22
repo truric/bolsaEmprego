@@ -9,43 +9,39 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def new
     # super
     @user = User.new
-
-    # if params[:role] == "entity"
-    #   @user.role = "entity"
-    # else
-    #   @user.role = "candidate"
-    # end
   end
 
   # POST /resource
   def create
     super
-    @user.role = params[:role]
-    if params[:role] == "entity"
-      @entity = Entity.new(entity_params)
-      @user.save
-      debugger
-      @entity.user_id = @user.id
-      @entity.save
-      # @user = entity.current_user.build(user_params)
-      # @entity.user = current_user
-      # @entity.save
-    else
-      @candidate = Candidate.new(candidate_params)
-      @user.save
-      # debugger
-      @candidate.user_id = @user.id
-      @candidate.save
+    # debugger
+    if @user.valid?
+      if @user.role == "entity"
+        @entity = Entity.new(entity_params)
+        # debugger
+        @entity.user_id = @user.id
+        @entity.save
+        # @user = entity.current_user.build(user_params)
+        # @entity.user = current_user
+        # @entity.save
+      else
+        @candidate = Candidate.new(candidate_params)
+        # debugger
+        @candidate.user_id = @user.id
+        @candidate.save
 
-      # respond_to do |format|
-      #   if @user.save
-      #     format.html { redirect_to new_user_session, notice: "User was successfully created." }
-      #     format.json { render :show, status: :created, location: @user }
-      #   else
-      #     format.html { render :new, status: :unprocessable_entity }
-      #     format.json { render json: @user.errors, status: :unprocessable_entity }
-      #   end
-      # end
+        # respond_to do |format|
+        #   if @user.save
+        #     format.html { redirect_to new_user_session, notice: "User was successfully created." }
+        #     format.json { render :show, status: :created, location: @user }
+        #   else
+        #     format.html { render :new, status: :unprocessable_entity }
+        #     format.json { render json: @user.errors, status: :unprocessable_entity }
+        #   end
+        # end
+      end
+    else
+      flash[:error] = "Params error"
     end
   end
 
@@ -101,11 +97,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def entity_params
-    params.require(:user).require(:entity).permit(:id, :name, :description, :industry, :address, :county, :phone, :fax, :website, :user_id)
+    params.require(:user).require(:entity).permit(:id, :name, :description, :industry, :address, :county, :phone, :fax, :website, :user_id, :role)
   end
 
   def candidate_params
-    params.require(:user).require(:entity).permit(:id, :name, :description, :industry, :employed, :grade, :qualification, :experience, :address, :county, :phone, :fax, :user_id, :postal_code, :location, :id_card, :dob)
+    params.require(:user).require(:candidate).permit(:id, :name, :description, :industry, :employed, :grade, :qualification, :experience, :address, :county, :phone, :fax, :user_id, :postal_code, :location, :id_card, :dob)
   end
   
 end

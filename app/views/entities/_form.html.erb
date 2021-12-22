@@ -15,7 +15,7 @@
 
     <div class="field">
       <%= user_form.label :email %>
-      <%= user_form.email_field :email %>
+      <%= user_form.email_field :email, :value => @entity.user.email %>
     </div>
     <div class="field">
       <%= user_form.label :password %>
