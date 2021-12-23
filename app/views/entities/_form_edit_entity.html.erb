@@ -1,0 +1,103 @@
+<h2>Nova Entidade</h2>
+
+<%= simple_form_for :user do |f| %>
+    <%= f.hidden_field :role, :value => params[:role] %>
+
+
+    <div class="topnav" style="float: right; border-radius: 15px">
+      <svg style="position: absolute; padding-left:6px; padding-top:6px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg>
+      <input type="text" placeholder="     search">
+    </div> 
+
+    <form class="row g-3">
+
+    <div class="col-12">
+      <div class="col-2">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", :value => entity.user.email %>
+      </div>
+    </div>
+  
+    <%= f.simple_fields_for :entity do |e| %>
+
+      <div class="form-group row" style="margin-top: 15px">
+        <div class="col-2" >
+          <%= e.label "Nome" %>
+          <%= e.text_field :name, :value => "entity name", style:"width: 107%" %>
+        </div>
+
+        <div class="col-3" style="padding-left: 90px">
+          <%= e.label "Foto" %>
+          <%= e.file_field :image, class: "form-control" %>
+          <% if entity.image.attached? %>
+              <%= image_tag(entity.image, style: "width: 50px") %>
+          <% end %>
+        </div>
+      </div>
+
+
+      <div class="form-group col-5" style="margin-top: 15px">
+        <label for="exampleFormControlTextarea1">Morada</label>
+        <%= tinymce %>
+        <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
+      </div>
+
+      <div class="form-group row" style="margin-top: 15px">
+        <div class="col-1" >
+          <%= e.label "Código Postal" %>
+          <%= e.number_field :postal_code, :value => entity.postal_code, style:"width: 107%" %>
+        </div>
+
+        <div class="col-3" style="padding-left: 240px">
+          <%= e.label "Localidade" %>
+          <%= e.text_field :location, :value => entity.location, style:"width: 100%" %>
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin-top: 15px">
+        <div class="col-1" >
+          <%= e.label "Contactos" %>
+          <%= e.text_field :phone, :value => entity.phone, style:"width: 107%" %>
+        </div>
+
+        <div class="col-1" >
+          <%= e.label " " %>
+          <%= e.number_field :fax, :value => entity.fax, style:"width: 107%" %>
+        </div>
+
+        <div class="col-3" style="padding-left: 80px">
+          <%= e.label "Página" %>
+          <%= e.text_field :website, :value => entity.website, style:"width: 100%" %>
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin-top: 15px">
+        <div class="col-1" >
+          <%= e.label "NIF" %>
+          <%= e.text_field :tax_number, :value => entity.tax_number %>
+        </div>
+      </div>
+
+      <div class="col-3 dropdown" style="margin-top: 35px">
+        <%= e.label "Actividade Profissional" %>
+        <%= e.select :industry, [['Web Design','Web Design'],['Banking','Banking'],['Cyber Security','Cyber Security']] %>
+      </div>
+
+      <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
+        <label for="exampleFormControlTextarea1">Apresentação</label>
+        <%= tinymce %>
+        <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
+     </div>
+
+    <% end %>
+
+  <div class="actions">
+    <%= f.submit "Ok" %>
+    <%= f.button :button do %>
+      <%= link_to "Cancelar", :back, style:"text-decoration: none; border-radius: 25px; color: black; pointer-events: none" %>
+  <% end %>
+  </div>
+
+  <% end %>

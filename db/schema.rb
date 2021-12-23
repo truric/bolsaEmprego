@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_160933) do
     t.string "location"
     t.string "id_card"
     t.datetime "dob"
+    t.string "website"
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
