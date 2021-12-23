@@ -67,7 +67,7 @@ class EntitiesController < ApplicationController
   # PATCH/PUT /entities/1 or /entities/1.json
   def update
     respond_to do |format|
-      if @entity.update(entity_params)
+      if @entity.update(entity_params) && @entity.user.update(user_params)
         format.html { redirect_to entity_url(@entity), notice: "Entity was successfully updated." }
         format.json { render :show, status: :ok, location: @entity }
       else
@@ -97,10 +97,10 @@ class EntitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def entity_params
-      params.require(:entity).permit(:id, :name, :description, :industry, :address, :county, :phone, :fax, :website, :postal_code, :location, :tax_number, :user_id)
+      params.require(:user).require(:entity).permit(:id, :name, :description, :industry, :address, :county, :phone, :fax, :website, :postal_code, :location, :tax_number, :user_id)
     end
 
     def user_params
-      params.require(:entity).require(:user).permit(:id, :email, :password, :role)
+      params.require(:user).permit(:id, :email, :password, :role)
     end
 end

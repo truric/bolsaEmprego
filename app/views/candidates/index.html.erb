@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<% if user_signed_in? && current_user.role == "candidate" %>
+  <%#= render 'candidate_signed_in_page' %>
+  <%= render 'candidate_signed_in_page', :candidate => @candidate %>
+<% end %>
+
 <h6>Candidatos</h6>
 
 <nav class="navbar navbar-expand-lg navbar-light" style="margin-bottom: 25px">
@@ -20,8 +25,6 @@
 
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="#">Área 1</a>
-        <a class="dropdown-item" href="#">Área 2</a>
-        <a class="dropdown-item" href="#">Área 3</a>
       </div>
 
     </div>
@@ -35,7 +38,6 @@
 
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="#">Situação 1</a>
-        <a class="dropdown-item" href="#">Situação 2</a>
       </div>
 
     </div>
@@ -49,34 +51,10 @@
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <a class="dropdown-item" href="#">Concelho 1</a>
-      <a class="dropdown-item" href="#">Concelho 2</a>
-      <a class="dropdown-item" href="#">Concelho 3</a>
     </div>
 
   </div>
 
-</nav>
-
-<%= render 'components/candidates_list' %>
-
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li> |
-    <li class="page-item"><a class="page-link" href="#">2</a></li> |
-    <li class="page-item"><a class="page-link" href="#">3</a></li> |
-    <li class="page-item"><a class="page-link" href="#">4</a></li> |
-    <li class="page-item"><a class="page-link" href="#">5</a></li> |
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
 </nav>
 
 <%# divise helper if logged in and if admin = CRUD is visible %>

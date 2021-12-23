@@ -1,8 +1,6 @@
 <h2>Editar Entidade</h2>
 
-<%= simple_form_for :user do |f| %>
-    <%= f.hidden_field :role, :value => params[:role] %>
-
+<%= simple_form_for(entity.user, url: entity_path(entity)) do |f| %>
 
     <div class="topnav" style="float: right; border-radius: 15px">
       <svg style="position: absolute; padding-left:6px; padding-top:6px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -16,16 +14,16 @@
     <div class="col-12">
       <div class="col-2">
         <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", :value => entity.user.email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
     </div>
   
-    <%= f.simple_fields_for :entity do |e| %>
+    <%= f.simple_fields_for entity do |e| %>
 
       <div class="form-group row" style="margin-top: 15px">
         <div class="col-2" >
           <%= e.label "Nome" %>
-          <%= e.text_field :name, :value => "entity name", style:"width: 107%" %>
+          <%= e.text_field :name, style:"width: 107%" %>
         </div>
 
         <div class="col-3" style="padding-left: 90px">
@@ -40,14 +38,14 @@
 
       <div class="form-group col-5" style="margin-top: 15px">
         <label for="exampleFormControlTextarea1">Morada</label>
-        <%= tinymce %>
-        <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
+        <%= e.input :address, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
+
       </div>
 
       <div class="form-group row" style="margin-top: 15px">
         <div class="col-1" >
           <%= e.label "Código Postal" %>
-          <%= e.number_field :postal_code, :value => entity.postal_code, style:"width: 107%" %>
+          <%= e.text_field :postal_code, :value => entity.postal_code, style:"width: 107%" %>
         </div>
 
         <div class="col-3" style="padding-left: 240px">
@@ -87,7 +85,7 @@
 
       <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
         <label for="exampleFormControlTextarea1">Apresentação</label>
-        <%= tinymce %>
+        
         <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
      </div>
 
@@ -99,5 +97,7 @@
       <%= link_to "Cancelar", entities_path, style:"text-decoration: none; border-radius: 25px; color: black; pointer-events: none" %>
     <% end %>
   </div>
+
+  <%= tinymce %>
 
   <% end %>

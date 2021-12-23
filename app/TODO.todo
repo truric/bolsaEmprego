@@ -15,11 +15,11 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
             ✔ search bar, canto superior esquerdo @done (12/22/2021, 6:52:52 PM)
 
         create form Job_offer:
-            ☐ form create design
-            ☐ tinymce, image attachment
-            ☐ dropdowns: "Actividade Profissional "+ "Tipo de Contrato" + "Salário"
-            ☐ Active checkbox
-            ☐ botões "Ok" + "Cancelar" com path
+            ✔ form create design @done (12/23/2021, 11:39:00 AM)
+            ✔ tinymce, image attachment @done (12/23/2021, 11:39:02 AM)
+            ✔ dropdowns: "Actividade Profissional "+ "Tipo de Contrato" + "Salário" @done (12/23/2021, 11:39:03 AM)
+            ✔ Active checkbox @done (12/23/2021, 11:39:04 AM)
+            ✔ botões "Ok" + "Cancelar" com path @done (12/23/2021, 11:39:04 AM)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
     
     alterar página edit:
         Candidato:
@@ -27,6 +27,9 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
 
         Entidade:
             ✔ utilizar view edit do scaffold, utilizar mesmo form create = (sem password e confirmação password) + (dois botões: "Ok" e "Cancelar") @done (12/23/2021, 10:05:25 AM)
+
+        Job_offer:
+            ✔ utilizar view edit do scaffold @done (12/23/2021, 12:31:43 PM)
 
     alterar página login:
         ✔ utilizar view do devise: users/sign_in + alterar design @done (12/23/2021, 10:32:23 AM)
@@ -47,14 +50,20 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
                 ☐ Histórico: lista de Ofertas active:false, mesmo card + botão para "Reativar" active:true
                 ☐ "Candidatos interessados"
 
+            Job_offer:
+                ✔ card com image, botões e job params @done (12/23/2021, 12:32:53 PM)
+                ✔ "Outras ofertas na mesma área" @done (12/23/2021, 12:32:54 PM)
+
 
 ✔ PORTUGUES @done (12/23/2021, 9:57:55 AM)
-☐ mailer smtp;
 ✔ id card, postal code => string @done (12/23/2021, 9:57:57 AM)
+☐ ao dar submit no form edit: No route matches [POST] "/candidates/1/edit" (todos)
+☐ candidates index com candidate sign_in, "undefined method" para todos os params
 ☐ tinymce can't insert previous :value on edit form
 ☐ previous :value on dropdowns
-☐ ao dar submit no form edit: No route matches [POST] "/candidates/1/edit"
 ☐ new job_offer date range param
+☐ mailer smtp;
+
 
 
 imagens:   

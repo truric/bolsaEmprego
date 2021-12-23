@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h5>Candidaturas</h5>
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="card border-0">
+          <div class="card-body">
+            <div class="col-3" style="padding-left: 90px">
+                <% if candidate.image.attached? %>
+                    <%= image_tag(candidate.image, style: "width: 50px") %>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2" style="margin-left: -140px">
+        <div class="card border-0">
+          <div class="card-body">
+            <p class="card-text"><%= @candidate.name %></p>
+            <p class="card-text"><%= @candidate.dob %></p>
+            <p class="card-text">entity_id</p>
+            <p class="card-text"><%= @candidate.description %></p>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,36 +1,73 @@
 <p id="notice"><%= notice %></p>
 
-<h4><%= @job_offer.name %></h4>
-
-<button type="button" class="btn btn-primary">Candidatar-me/a</button>
-<button type="button" class="btn btn-success">Editar</button>
-</br>
-
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
+<%= simple_form_for :job_offer do |f| %>
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="card border-0">
+        <div class="card-body">
+          <h5 class="card-title"><h5 style="text-align: center"><%= @job_offer.name %></h5></h5>
+            <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px">
+              <% if @job_offer.image.attached? %>
+                  <%= image_tag(@job_offer.image, style: "width: 50px") %>
+              <% else %>
+                <img src="image" alt="sem imagem">
+              <% end %>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px">
+              <%= f.button :button do %>
+                <%= link_to 'Candidatar-me', candidates_path, style:"text-decoration: none; border-radius: 25px; color: black; pointer-events: none" %>
+              <% end %>
+            </div>
+              <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px">
+                <%= f.button :button do %>
+                  <%= link_to 'Editar', edit_job_offer_path, style:"text-decoration: none; border-radius: 25px; color: black; pointer-events: none" %>
+                <% end %>
+            </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-text"><%= @job_offer.description %></h5>
-        </br>
-        <p class="card-text"><%= @job_offer.date %></p>
-        <p class="card-text"><h6>Empresa</h6></p>
-        <p class="card-text"><%= @job_offer.company %></p>
-        </br>
-        <p class="card-text">Actividade Profissional</p>
-        <p class="card-text"><%= @job_offer.industry %></p>
-        <p class="card-text">Tipo de Contrato</p>
-        <p class="card-text"><%= @job_offer.contract %></p>
-        </br>
-        <p class="card-text">Salário</p>
-        <p class="card-text">Telefone: <%= @job_offer.salary %></p>
+    <div class="col-sm-9">
+      <div class="card border-0">
+        <div class="card-body">
+          <p class="card-text"><%= @job_offer.description %></p>
+          <p class="card-text"><%= @job_offer.date %></p>
+          <p class="card-text" style="font-weight: bold">Empresa</p>
+          <p class="card-text">entity_id com hyperlink</p>
+          <p class="card-text" style="font-weight: bold">Actividade Profissional</p>
+          <p class="card-text"><%= @job_offer.industry %></p>
+          <p class="card-text" style="font-weight: bold">Tipo de Contrato</p>
+          <p class="card-text"><%= @job_offer.contract %></p>
+          <p class="card-text" style="font-weight: bold">Salário</p>
+          <p class="card-text"><%= @job_offer.salary %></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<h4>Outras ofertas na mesma área</h4>
-
-<%= render 'components/job_list' %>
+  <h5 style="text-align: left; margin-top: 15px">Outras ofertas na mesma área</h5>
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="card border-0">
+        <div class="card-body">
+          <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
+            <% if @job_offer.image.attached? %>
+                <%= image_tag(@job_offer.image, style: "width: 50px") %>
+            <% else %>
+              <img src="image" alt="sem imagem">
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2" style="margin-left: -140px">
+      <div class="card border-0">
+        <div class="card-body">
+          <p class="card-text"><%= @job_offer.name %></p>
+          <p class="card-text"><%= @job_offer.date %></p>
+          <p class="card-text">entity_id</p>
+          <p class="card-text"><%= @job_offer.description %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
