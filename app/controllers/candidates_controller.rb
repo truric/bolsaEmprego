@@ -1,5 +1,5 @@
 class CandidatesController < ApplicationController
-  before_action :set_candidate, only: %i[ show edit update destroy ]
+  before_action :set_candidate, only: [:show, :edit, :update, :destroy]
 
   # GET /candidates or /candidates.json
   def index
@@ -12,8 +12,9 @@ class CandidatesController < ApplicationController
 
   # GET /candidates/new
   def new
+    @user = User.new
     @candidate = Candidate.new
-    @candidate = current_user.candidates.build
+    # @candidate = current_user.candidates.build
   end
 
   # GET /candidates/1/edit
@@ -22,12 +23,15 @@ class CandidatesController < ApplicationController
 
   # POST /candidates or /candidates.json
   def create
-    @candidate = current_user.candidates.build(candidate_params)
-    @candidate.user = current_user
-
+    @candidate = Candidate.new(candidate_params)
+    @candidate.save
+    # @candidate = current_user.candidates.build(candidate_params)
+    # @candidate.user = current_user
+    
     respond_to do |format|
       if @candidate.save
-        format.html { redirect_to @candidate, notice: "Candidate was successfully created." }
+        format.html { redirect_to candidate_url(@candidate), notice: "Candidate was successfully created." }
+        # format.html { redirect_to @candidate, notice: "Candidate was successfully created." }
         format.json { render :show, status: :created, location: @candidate }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -66,6 +70,10 @@ class CandidatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def candidate_params
-      params.require(:candidate).permit(:name, :description, :industry, :employed, :grade, :qualification, :experience, :address, :county, :phone, :fax, :email, :image, :attachment)
+      params.require(:user).require(:candidate).permit(:name, :description, :industry, :employed, :grade, :qualification, :experience, :address, :phone, :fax, :user_id, :postal_code, :location, :id_card, :dob, :website, :image, :attachment)
+    end
+
+    def user_params
+      params.require(:user).permit(:id, :email, :password, :role)
     end
 end

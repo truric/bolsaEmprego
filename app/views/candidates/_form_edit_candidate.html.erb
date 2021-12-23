@@ -1,7 +1,6 @@
 <h2>Editar Candidato</h2>
 
-<%= simple_form_for :user do |f| %>
-    <%= f.hidden_field :role, :value => params[:role] %>
+<%= simple_form_for(candidate.user, url: candidate_path(candidate)) do |f| %>
 
     <div class="topnav" style="float: right; border-radius: 15px">
         <svg style="position: absolute; padding-left:6px; padding-top:6px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -15,16 +14,16 @@
     <div class="col-12">
       <div class="col-2">
         <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", :value => "asd@asd.com" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
     </div>
 
-    <%= f.simple_fields_for :candidate do |c| %>
+    <%= f.simple_fields_for candidate do |c| %>
         
         <div class="form-group row" style="margin-top: 15px">
             <div class="col-2" >
                 <%= c.label "Nome" %>
-                <%= c.text_field :name, style:"width: 107%", :value => candidate.name %>
+                <%= c.text_field :name, style:"width: 107%" %>
             </div>
 
             <div class="col-3 " style="padding-left: 90px">
@@ -38,49 +37,47 @@
 
         <div class="form-group col-5" style="margin-top: 15px">
             <label for="exampleFormControlTextarea1">Morada</label>
-            <%= tinymce %>
-            <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
+            <%= c.input :address, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
         </div>
 
         <div class="form-group row" style="margin-top: 15px">
             <div class="col-1" >
                 <%= c.label "Código Postal" %>
-                <%= c.number_field :postal_code, style:"width: 107%", :value => candidate.postal_code %>
+                <%= c.number_field :postal_code, style:"width: 107%" %>
             </div>
 
             <div class="col-3" style="padding-left: 240px">
                 <%= c.label "Localidade" %>
-                <%= c.text_field :location, style:"width: 100%", :value => candidate.location %>
+                <%= c.text_field :location, style:"width: 100%" %>
             </div>
         </div>
 
         <div class="form-group row" style="margin-top: 15px">
             <div class="col-1" >
-                <%= c.label "Contactos" %>
-                <%= c.text_field :phone, style:"width: 107%", :value => candidate.phone %>
+                <%= c.label "Contacto" %>
+                <%= c.text_field :phone, style:"width: 107%" %>
             </div>
 
             <div class="col-1" >
-                <%= c.label " " %>
-                <%= c.number_field :fax, style:"width: 107%", :value => candidate.fax %>
+                <%= c.label "Fax" %>
+                <%= c.text_field :fax, style:"width: 107%" %>
             </div>
 
             <div class="col-3" style="padding-left: 80px">
                 <%= c.label "Página Pessoal" %>
-                <%= c.text_field :website, style:"width: 100%", :value => candidate.website %>
+                <%= c.text_field :website, style:"width: 100%" %>
             </div>
         </div>
 
         <div class="form-group row" style="margin-top: 15px">
             <div class="col-1" >
                 <%= c.label "Data de Nascimento" %>
-                <%= c.date_field :dob, style:"width: 107%", :value => candidate.dob %>
-
+                <%= c.date_field :dob, style:"width: 107%" %>
             </div>
 
             <div class="col-3" style="padding-left: 240px">
                 <%= c.label "Bilhete de Identidade" %>
-                <%= c.number_field :id_card, :value => candidate.id_card %>
+                <%= c.number_field :id_card %>
             </div>
         </div>
 
@@ -101,8 +98,7 @@
 
         <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
             <label for="exampleFormControlTextarea1">Apresentação</label>
-            <%= tinymce %>
-            <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
+            <%= c.input :description, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
         </div>
 
         <div class="dropdown" style="margin-top: 25px; margin-bottom: 25px">
@@ -112,8 +108,7 @@
 
         <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
             <label for="exampleFormControlTextarea1">Habilitações Literárias</label>
-            <%= tinymce %>
-            <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
+            <%= c.input :grade, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
         </div>
 
         <div class="dropdown" style="margin-top: 25px; margin-bottom: 25px">
@@ -123,8 +118,7 @@
 
         <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
             <label for="exampleFormControlTextarea1">Experiência Profissional</label>
-            <%= tinymce %>
-            <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
+            <%= c.input :experience, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
         </div>
 
     <% end %>

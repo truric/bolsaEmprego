@@ -68,7 +68,7 @@
          <td><%= entity.name %></td>
          <td><%= entity.description %></td>
          <td><%= entity.industry %></td>
-         <td><%= entity.address %></td>
+         <td><%= raw entity.address %></td>
          <td><%= entity.phone %></td>
          <td><%= entity.fax %></td>
          <td><%= entity.website %></td>
@@ -83,7 +83,7 @@
 
  <br>
 
- <%= link_to 'New Entity', new_entity_path %>
+ <%= link_to 'New Entity', new_user_registration_path(role:"entity") %>
 
 <nav aria-label="Page navigation example">
   <ul class="pagination">
