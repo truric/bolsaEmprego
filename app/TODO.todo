@@ -13,6 +13,13 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
             ✔ dropdowns com simple forms: Actividade profissional @done (12/22/2021, 6:54:48 PM)
             ✔ botão de submit, texto: "Registar" e design @done (12/22/2021, 6:55:18 PM)
             ✔ search bar, canto superior esquerdo @done (12/22/2021, 6:52:52 PM)
+
+        create form Job_offer:
+            ☐ form create design
+            ☐ tinymce, image attachment
+            ☐ dropdowns: "Actividade Profissional "+ "Tipo de Contrato" + "Salário"
+            ☐ Active checkbox
+            ☐ botões "Ok" + "Cancelar" com path
     
     alterar página edit:
         Candidato:
@@ -47,6 +54,7 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
 ☐ tinymce can't insert previous :value on edit form
 ☐ previous :value on dropdowns
 ☐ ao dar submit no form edit: No route matches [POST] "/candidates/1/edit"
+☐ new job_offer date range param
 
 
 imagens:   

@@ -1,4 +1,4 @@
-<%= form_with(model: job_offer, local: true) do |form| %>
+<%= simple_form_for :job_offer do |f| %>
   <% if job_offer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(job_offer.errors.count, "error") %> prohibited this job_offer from being saved:</h2>
@@ -11,47 +11,63 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group row" style="margin-top: 15px">
+    <div class="col-2" >
+      <%= f.label "Título" %>
+      <%= f.text_field :name %>
+    </div>
+  
+    <div class="col-3">
+      <%= f.label "Validade" %>
+      <%= f.datetime_select :date %>
+    </div>
+  </div>
+  
+  <div class="form-group col-5" style="margin-top: 15px">
+    <label for="exampleFormControlTextarea1">Descrição</label>
+    <%= tinymce %>
+    <%= text_area_tag :description, "", :class => "tinymce", :rows => 3, :cols => 98 %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+  <div class="col-2" style="margin-top: 15px">
+    <%= f.label "Foto" %>
+    <%= f.file_field :image, style: "font-size: small" %>
   </div>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
+
+  <div class="field" style="margin-top: 15px">
+    <%= f.label "Empresa" %>
+    <%= f.number_field :entity %>
   </div>
 
-  <div class="field">
-    <%= form.label :company %>
-    <%= form.text_field :company %>
+  <div class="field" style="margin-top: 15px">
+    <%= f.label "Actividade Profissional" %>
+    <%= f.select :industry, [['Web Design','Web Design'],['Banking','Banking'],['Cyber Security','Cyber Security']] %>
   </div>
 
-  <div class="field">
-    <%= form.label :county %>
-    <%= form.text_field :county %>
+  <div class="form-group row" style="margin-top: 15px">
+    <div class="col-2">
+      <%= f.label "Tipo de Contrato" %>
+      <%= f.select :contract, [['Full-time','Full-time'],['Temporário','Temporário'],['Parcial','Parcial']] %>
+    </div>
+
+    <div class="col-3 style="margin-top: 15px">
+      <%= f.label "Salário" %>
+      <%= f.select :salary, [['1000-1500','1000-1500'],['2000-2500','2000-2500'],['3000-3500','3000-3500']] %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :industry %>
-    <%= form.text_field :industry %>
+  <div class="field" style="margin-top: 15px">
+    <%= f.label "Activa" %>
+    <%= f.check_box :active %>
   </div>
 
-  <div class="field">
-    <%= form.label :contract %>
-    <%= form.text_field :contract %>
-  </div>
+  <br><br>
 
-  <div class="field">
-    <%= form.label :salary %>
-    <%= form.text_field :salary %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions" style="margin-top: 15px">
+    <%= f.submit "Ok" %>
+    <%= f.button :button do %>
+      <%= link_to "Cancelar", job_offers_path, style:"text-decoration: none; border-radius: 25px; color: black; pointer-events: none" %>
+    <% end %>
   </div>
 <% end %>

@@ -64,6 +64,6 @@ class JobOffersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_offer_params
-      params.require(:job_offer).permit(:name, :description, :date, :company, :county, :industry, :contract, :salary)
+      params.require(:job_offer).permit(:name, :description, :date, :company, :county, :industry, :contract, :salary, :entity_id, :image)
     end
 end

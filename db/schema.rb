@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_160933) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "postal_code"
+    t.string "postal_code"
     t.string "location"
     t.string "id_card"
     t.datetime "dob"

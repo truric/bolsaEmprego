@@ -1,4 +1,4 @@
-<h2>Nova Entidade</h2>
+<h2>Editar Entidade</h2>
 
 <%= simple_form_for :user do |f| %>
     <%= f.hidden_field :role, :value => params[:role] %>
@@ -96,8 +96,8 @@
   <div class="actions">
     <%= f.submit "Ok" %>
     <%= f.button :button do %>
-      <%= link_to "Cancelar", :back, style:"text-decoration: none; border-radius: 25px; color: black; pointer-events: none" %>
-  <% end %>
+      <%= link_to "Cancelar", entities_path, style:"text-decoration: none; border-radius: 25px; color: black; pointer-events: none" %>
+    <% end %>
   </div>
 
   <% end %>
