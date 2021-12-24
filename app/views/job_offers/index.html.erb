@@ -51,8 +51,6 @@
       <th>Name</th>
       <th>Description</th>
       <th>Date</th>
-      <th>Company</th>
-      <th>County</th>
       <th>Industry</th>
       <th>Contract</th>
       <th>Salary</th>
@@ -64,10 +62,8 @@
     <% @job_offers.each do |job_offer| %>
       <tr>
         <td><%= job_offer.name %></td>
-        <td><%= job_offer.description %></td>
+        <td><%= raw job_offer.description %></td>
         <td><%= job_offer.date %></td>
-        <td><%= job_offer.company %></td>
-        <td><%= job_offer.county %></td>
         <td><%= job_offer.industry %></td>
         <td><%= job_offer.contract %></td>
         <td><%= job_offer.salary %></td>

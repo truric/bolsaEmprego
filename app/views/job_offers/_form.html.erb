@@ -26,12 +26,15 @@
   <div class="form-group col-5" style="margin-top: 15px">
     <label for="exampleFormControlTextarea1">Descrição</label>
     <%= tinymce %>
-    <%= text_area_tag :description, "", :class => "tinymce", :rows => 3, :cols => 98 %>
+    <%= f.text_area :description, :class => "tinymce", :rows => 3, :cols => 98 %>
   </div>
 
   <div class="col-2" style="margin-top: 15px">
     <%= f.label "Foto" %>
     <%= f.file_field :image, style: "font-size: small" %>
+    <% if job_offer.image.attached? %>
+        <%= image_tag(job_offer.image, style: "width: 50px") %>
+    <% end %>
   </div>
 
   <div class="field" style="margin-top: 15px">

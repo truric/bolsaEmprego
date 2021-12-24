@@ -25,7 +25,7 @@
     <div class="col-sm-9">
       <div class="card border-0">
         <div class="card-body">
-          <p class="card-text"><%= @job_offer.description %></p>
+          <p class="card-text"><%= raw @job_offer.description %></p>
           <p class="card-text"><%= @job_offer.date %></p>
           <p class="card-text" style="font-weight: bold">Empresa</p>
           <style>
@@ -66,7 +66,7 @@
           <p class="card-text"><%= @job_offer.name %></p>
           <p class="card-text"><%= @job_offer.date %></p>
           <p class="card-text">entity_id</p>
-          <p class="card-text"><%= @job_offer.description %></p>
+          <p class="card-text"><%= raw @job_offer.description %></p>
         </div>
       </div>
     </div>
