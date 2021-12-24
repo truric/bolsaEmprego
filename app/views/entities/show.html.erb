@@ -13,11 +13,11 @@
         <img src="image" alt="sem imagem">
       <% end %>
         <h5 class="card-title"><%= @entity.name %></h5>
-        <p class="card-text"><%= @entity.description %></p>
+        <p class="card-text"><%= raw @entity.description %></p>
         <p class="card-text">Actividade Profissional</p>
         <p class="card-text"><%= @entity.industry %></p>
         <p class="card-text">Morada</p>
-        <p class="card-text"><%== @entity.address %></p>
+        <p class="card-text"><%= raw @entity.address %></p>
         <p class="card-text">Contactos</p>
         <p class="card-text">Telefone: <%= @entity.phone %></p>
         <p class="card-text">Fax: <%= @entity.fax %></p>

@@ -22,8 +22,10 @@ class JobOffersController < ApplicationController
   # POST /job_offers or /job_offers.json
   def create
     @job_offer = JobOffer.new(job_offer_params)
+    @job_offer.entities_id = current_user.entity.id
 
     respond_to do |format|
+    byebug
       if @job_offer.save
         format.html { redirect_to @job_offer, notice: "Job offer was successfully created." }
         format.json { render :show, status: :created, location: @job_offer }
@@ -64,6 +66,7 @@ class JobOffersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_offer_params
-      params.require(:job_offer).permit(:name, :description, :date, :company, :county, :industry, :contract, :salary, :entity_id, :image)
+      params.require(:job_offer).permit(:id, :name, :description, :date, :company, :county, :industry, :contract, :salary, :image, :active, :entities_id)
     end
+
 end

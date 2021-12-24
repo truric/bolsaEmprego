@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= simple_form_for :job_offer do |f| %>
+<%= simple_form_for @job_offer do |f| %>
   <div class="row">
     <div class="col-sm-2">
       <div class="card border-0">
@@ -14,14 +14,10 @@
               <% end %>
             </div>
             <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px">
-              <%= f.button :button do %>
-                <%= link_to 'Candidatar-me', candidates_path, style:"text-decoration: none; border-radius: 25px; color: black; pointer-events: none" %>
-              <% end %>
+                <button><%= link_to "Candidatar-me", edit_job_offer_path(@job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
             </div>
               <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px">
-                <%= f.button :button do %>
-                  <%= link_to 'Editar', edit_job_offer_path, style:"text-decoration: none; border-radius: 25px; color: black; pointer-events: none" %>
-                <% end %>
+                <button><%= link_to "Editar", edit_job_offer_path(@job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
             </div>
         </div>
       </div>
@@ -32,7 +28,12 @@
           <p class="card-text"><%= @job_offer.description %></p>
           <p class="card-text"><%= @job_offer.date %></p>
           <p class="card-text" style="font-weight: bold">Empresa</p>
-          <p class="card-text">entity_id com hyperlink</p>
+          <style>
+            .noHover:hover {
+              background: none;
+            }
+          </style>
+          <p class="card-text"><%= link_to current_user.entity.name,  entity_path(current_user.entity.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
           <p class="card-text" style="font-weight: bold">Actividade Profissional</p>
           <p class="card-text"><%= @job_offer.industry %></p>
           <p class="card-text" style="font-weight: bold">Tipo de Contrato</p>

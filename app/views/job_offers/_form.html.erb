@@ -1,4 +1,4 @@
-<%= simple_form_for :job_offer do |f| %>
+<%= simple_form_for @job_offer do |f| %>
   <% if job_offer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(job_offer.errors.count, "error") %> prohibited this job_offer from being saved:</h2>
@@ -32,12 +32,6 @@
   <div class="col-2" style="margin-top: 15px">
     <%= f.label "Foto" %>
     <%= f.file_field :image, style: "font-size: small" %>
-  </div>
-
-
-  <div class="field" style="margin-top: 15px">
-    <%= f.label "Empresa" %>
-    <%= f.number_field :entity %>
   </div>
 
   <div class="field" style="margin-top: 15px">

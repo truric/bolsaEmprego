@@ -43,8 +43,6 @@
 
 </nav>
 
-<%= render 'components/entities_list' %>
-
 <h1>Entities CRUD visible to user admin</h1>
 
 <table>
@@ -66,13 +64,12 @@
      <% @entities.each do |entity| %>
        <tr>
          <td><%= entity.name %></td>
-         <td><%= entity.description %></td>
+         <td><%= raw entity.description %></td>
          <td><%= entity.industry %></td>
          <td><%= raw entity.address %></td>
          <td><%= entity.phone %></td>
          <td><%= entity.fax %></td>
          <td><%= entity.website %></td>
-         <%= entity.inspect %>
          <td><%= link_to 'Show', entity %></td>
          <td><%= link_to 'Edit', edit_entity_path(entity) %></td>
          <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>

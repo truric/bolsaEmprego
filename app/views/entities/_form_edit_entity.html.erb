@@ -37,9 +37,7 @@
 
 
     <div class="form-group col-5" style="margin-top: 15px">
-      <label for="exampleFormControlTextarea1">Morada</label>
       <%= e.input :address, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
-
     </div>
 
     <div class="form-group row" style="margin-top: 15px">
@@ -74,7 +72,7 @@
     <div class="form-group row" style="margin-top: 15px">
       <div class="col-1" >
         <%= e.label "NIF" %>
-        <%= e.text_field :tax_number %>
+        <%= e.number_field :tax_number %>
       </div>
     </div>
 
@@ -84,9 +82,7 @@
     </div>
 
     <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
-      <label for="exampleFormControlTextarea1">Apresentação</label>
-      
-      <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
+      <%= e.input :description, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
     </div>
 
   <% end %>

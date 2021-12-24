@@ -53,14 +53,13 @@
 
         <div class="form-group col-5" style="margin-top: 15px">
             <label for="exampleFormControlTextarea1">Morada</label>
-            <%= tinymce %>
-            <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
+            <%= c.input :address, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
         </div>
 
         <div class="form-group row" style="margin-top: 15px">
             <div class="col-1" >
                 <%= c.label :postal_code %>
-                <%= c.number_field :postal_code, style:"width: 107%" %>
+                <%= c.text_field :postal_code, style:"width: 107%" %>
             </div>
 
             <div class="col-3" style="padding-left: 240px">
@@ -77,7 +76,7 @@
 
             <div class="col-1" >
                 <%= c.label :fax %>
-                <%= c.number_field :fax, style:"width: 107%" %>
+                <%= c.text_field :fax, style:"width: 107%" %>
             </div>
 
             <div class="col-3" style="padding-left: 80px">
@@ -95,7 +94,7 @@
 
             <div class="col-3" style="padding-left: 240px">
                 <%= c.label :id_card %>
-                <%= c.number_field :id_card %>
+                <%= c.text_field :id_card %>
             </div>
         </div>
 

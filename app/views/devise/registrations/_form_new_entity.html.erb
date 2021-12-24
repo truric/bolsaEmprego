@@ -17,24 +17,20 @@
 
     <div class="col-12">
       <div class="col-2">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", :value => "asd@asd.com" %>
+        <%= f.label "Email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
     </div>
   
     <div class="form-group row" style="margin-top: 15px">
       <div class="col-2" >
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", :value => "password", style:"width: 107%" %>
+        <%= f.label "Password" %>
+        <%= f.password_field :password, autocomplete: "new-password", style:"width: 107%" %>
       </div>
   
       <div class="col-3" style="padding-left: 90px">
-        <%= f.label :password_confirmation %>
-        <em>(repeat password)</em><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", :value => "password", style:"width: 100%" %>
+        <%= f.label "Confirmação da Password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", style:"width: 100%" %>
       </div>
     </div>
   
@@ -42,12 +38,12 @@
 
       <div class="form-group row" style="margin-top: 15px">
         <div class="col-2" >
-          <%= e.label :name %>
-          <%= e.text_field :name, :value => "entity name", style:"width: 107%" %>
+          <%= e.label "Nome" %>
+          <%= e.text_field :name, style:"width: 107%" %>
         </div>
 
         <div class="col-3 " style="padding-left: 90px">
-          <%= e.label :image %>
+          <%= e.label "Foto" %>
           <%= e.file_field :image, class: "form-control" %>
         </div>
       </div>
@@ -55,43 +51,42 @@
 
       <div class="form-group col-5" style="margin-top: 15px">
         <label for="exampleFormControlTextarea1">Morada</label>
-        <%= tinymce %>
-        <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
+        <%= e.input :address, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
       </div>
 
       <div class="form-group row" style="margin-top: 15px">
         <div class="col-1" >
-          <%= e.label :postal_code %>
-          <%= e.number_field :postal_code, :value => 4445-454, style:"width: 107%" %>
+          <%= e.label "Código Postal" %>
+          <%= e.text_field :postal_code, style:"width: 107%" %>
         </div>
 
         <div class="col-3" style="padding-left: 240px">
-          <%= e.label :location %>
-          <%= e.text_field :location, :value => "Maia", style:"width: 100%" %>
+          <%= e.label "Localidade" %>
+          <%= e.text_field :location, style:"width: 100%" %>
         </div>
       </div>
 
       <div class="form-group row" style="margin-top: 15px">
         <div class="col-1" >
-          <%= e.label :phone %>
-          <%= e.text_field :phone, :value => 2311232323, style:"width: 107%" %>
+          <%= e.label "Contacto" %>
+          <%= e.text_field :phone, style:"width: 107%" %>
         </div>
 
         <div class="col-1" >
-          <%= e.label :fax %>
-          <%= e.number_field :fax, :value => 3232323232, style:"width: 107%" %>
+          <%= e.label "Fax" %>
+          <%= e.text_field :fax, style:"width: 107%" %>
         </div>
 
         <div class="col-3" style="padding-left: 80px">
-          <%= e.label :website %>
-          <%= e.text_field :website, :value => "www.site.com", style:"width: 100%" %>
+          <%= e.label "Página" %>
+          <%= e.text_field :website, style:"width: 100%" %>
         </div>
       </div>
 
       <div class="form-group row" style="margin-top: 15px">
         <div class="col-1" >
-          <%= e.label :tax_number %>
-          <%= e.text_field :tax_number, :value => 55505050 %>
+          <%= e.label "NIF" %>
+          <%= e.number_field :tax_number %>
         </div>
       </div>
 
@@ -100,18 +95,16 @@
         <%= e.select :industry, [['Web Design','Web Design'],['Banking','Banking'],['Cyber Security','Cyber Security']] %>
       </div>
 
-      <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
+      <div class="form-group col-5" style="margin-top: 15px">
         <label for="exampleFormControlTextarea1">Apresentação</label>
-        <%= tinymce %>
-        <%= text_area_tag :address, "", :class => "tinymce", :rows => 3, :cols => 98 %>
-     </div>
-
-
+        <%= e.input :description, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
+      </div>
 
     <% end %>
 
   <div class="actions">
     <%= f.submit "Registar" %>
   </div>
+
 
   <% end %>

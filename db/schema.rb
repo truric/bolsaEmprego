@@ -61,12 +61,12 @@ ActiveRecord::Schema.define(version: 2021_12_22_160933) do
     t.string "industry"
     t.string "address"
     t.string "phone"
-    t.integer "fax"
+    t.string "fax"
     t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "postal_code"
+    t.string "postal_code"
     t.string "location"
     t.integer "tax_number"
     t.index ["user_id"], name: "index_entities_on_user_id"

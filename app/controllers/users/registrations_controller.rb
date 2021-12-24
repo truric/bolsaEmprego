@@ -97,7 +97,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def entity_params
-    params.require(:user).require(:entity).permit(:id, :name, :description, :industry, :address, :county, :phone, :fax, :website, :user_id, :role, :image, :attachment)
+    params.require(:user).require(:entity).permit(:id, :name, :description, :industry, :address, :tax_number, :postal_code, :location, :county, :phone, :fax, :website, :user_id, :role, :image, :attachment)
   end
 
   def candidate_params
