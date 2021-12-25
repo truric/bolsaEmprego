@@ -36,39 +36,71 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
 
     alterar página alteração password:
         ✔ utilizar view do devise: users/edit + alterar design @done (12/23/2021, 10:49:14 AM)
-    
-    alterar página show depois de login:
-            Candidato:
-                ☐ lista de candidaturas, card: "imagem, título, data, entidade, descrição"
-                ☐ "Candidato" + botões: "Editar Dados" e "Alterar Password" com path e design
-                ☐ "Empresas interessadas em mim"
-            
-            Entidade:
-                ☐ lista de Ofertas, card: "imagem, título, data, entidade, descrição" + botões: "editar" e "cancelar"
-                ☐ "Entidade" + botões: "Editar Dados" e "Alterar Password" com path e design
-                ☐ botão "Inserir Oferta" + path
-                ☐ Histórico: lista de Ofertas active:false, mesmo card + botão para "Reativar" active:true
-                ☐ "Candidatos interessados"
 
-            Job_offer:
-                ✔ card com image, botões e job params @done (12/23/2021, 12:32:53 PM)
-                ✔ "Outras ofertas na mesma área" @done (12/23/2021, 12:32:54 PM)
+    Entidades:
+        alterar página index:
+            ☐ card: "imagem, entidade name hyperlink azul, número de ofertas active, descrição, botões: "interessado/a" (se logged in && user.role == "candidate") + "Editar" (same entity_id + backoffice role)"
+            ☐ listar todas as entidades criadas
+            ☐ adicionar paginação
+            ☐ botão: "Quero-me registar"
+            ☐ search bar que pesquisa pelo nome e descrição das entidades, + 2 dropdowns filters
+        
+        alterar página de show (detalhe de Entidade):
+            ☐ card: "entity name, foto, botões:"interessado/a" (if role=="candidate") + "Editar" ("same entity_id + backoffice role"), description, Actividade Profissional, Morada, Contactos, email, website"
+            ☐ listar todas as ofertas active, card: "name, "foto, name, date range, description + botões"
 
+        alterar home page para user loggado:
+            ☐ lista de Ofertas, card: "imagem, título, data, entidade, descrição" + botões: "editar" e "cancelar"
+            ☐ "Entidade" + botões: "Editar Dados" e "Alterar Password" com path e design
+            ☐ botão "Inserir Oferta" + path
+            ☐ Histórico: lista de Ofertas active:false, mesmo card + botão para "Reativar" active:true
+            ☐ "Candidatos interessados"
 
-✔ PORTUGUES @done (12/23/2021, 9:57:55 AM)
-✔ id card, postal code => string @done (12/23/2021, 9:57:57 AM)
-✔ ao dar submit no form edit: No route matches [POST] "/candidates/1/edit" (todos) @done (12/23/2021, 7:19:37 PM)
-✔ candidates index com candidate sign_in, "undefined method" para todos os params @done (12/23/2021, 7:19:40 PM)
-✔ tinymce can't insert previous :value on edit form @done (12/23/2021, 7:19:42 PM)
-☐ job_offers create/edit/update/delete
+    Candidato:
+        alterar página index:
+            ☐ card: "imagem, nome candidato hyperlink azul, industry, número de anos de experiência, grade / qualification, botões: "interessado/a" (se logged in && user.role == "entity") + "Editar" (backoffice role + same candidate_id???)"
+            ☐ listar todos oss candidatos criados
+            ☐ adicionar paginação
+            ☐ botão: "Registar Candidato"
+            ☐ search bar que pesquisa pelo nome e descrição dos candidatos, + 2 dropdowns filters
 
-Candidato pode candidatar-se a job_offers:
-    ☐ applied_job_offers job_offer_id candidate_id
+        alterar página de show (detalhe de Candidato):
+            ☐ card: "nome candidato, foto, CV hyperlink, botões:"interessado/a" (if logged in && role=="entity") + "Editar" ("same candidate_id + backoffice role"), description, Dados Profissionais, etc..
+            ☐ botão "Ver candidatos"
+
+        alterar home page para user loggado:
+            ☐ lista de candidaturas, card: "imagem, título, data, entidade, descrição"
+            ☐ "Candidato" + botões: "Editar Dados" e "Alterar Password" com path e design
+            ☐ "Empresas interessadas em mim"
+
+        Job_offer:
+            ✔ card com image, botões e job params @done (12/23/2021, 12:32:53 PM)
+            ✔ "Outras ofertas na mesma área" @done (12/23/2021, 12:32:54 PM)
+            ☐ index design
+            ☐ show design
+
+        News:
+            ☐ index design
+            ☐ show design
+
+Issues:
+    ✔ PORTUGUES @done (12/23/2021, 9:57:55 AM)
+    ✔ id card, postal code => string @done (12/23/2021, 9:57:57 AM)
+    ✔ ao dar submit no form edit: No route matches [POST] "/candidates/1/edit" (todos) @done (12/23/2021, 7:19:37 PM)
+    ✔ candidates index com candidate sign_in, "undefined method" para todos os params @done (12/23/2021, 7:19:40 PM)
+    ✔ tinymce can't insert previous :value on edit form @done (12/23/2021, 7:19:42 PM)
+    ✔ job_offers create/edit/update/delete @done (12/25/2021, 6:50:40 PM)
+
+Candidato pode manifestar interesse numa ou mais entidades e candidatar-se a job_offers:
+    ☐ candidate_applied_job_offers job_offer_id candidate_id
+    ☐ candidate_scouting_entity candidate_id entity_id
 Entidade pode mostrar interesse em Candidato:
-    ☐ entity_scout entity_id, candidate_id
-☐ previous :value on dropdowns
-☐ new job_offer date range param
-☐ mailer smtp;
+    ☐ entity_scouting_candidate entity_id, candidate_id
+
+Not urgent issues :
+    ☐ set previous :value on dropdowns
+    ☐ new job_offer date range simpleform param
+    ☐ mailer smtp;
 
 
 
@@ -86,7 +118,7 @@ imagens:
       <%= image_tag(entity.image, style: "width: 200px") %>
     <% end %>
 
-outros ficheiros:
+outros ficheiros(CV):
 
     <div class="col-3">
         <%= c.label :attachment %>
