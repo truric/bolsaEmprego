@@ -1,86 +1,91 @@
 <p id="notice"><%= notice %></p>
 
-<h6>Entidades</h6>
+<h5>Entidades</h5>
 
 <nav class="navbar navbar-expand-lg navbar-light" style="margin-bottom: 25px">
 
-<svg style="position: absolute; padding-left:5px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-</svg>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="  search" aria-label="Search", style="font-size: small">
-  </form>
+  <svg style="position: absolute; padding-left:5px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+  </svg>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="  search" aria-label="Search", style="font-size: small">
+    </form>
 
-    <div class="dropdown" style="padding-left: 50px">
+      <div class="dropdown" style="padding-left: 50px">
 
-      <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
-        aria-haspopup="true" aria-expanded="false", style="font-size: small">
-        Área de Actividade
-      </button>
+        <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+          aria-haspopup="true" aria-expanded="false", style="font-size: small">
+          Área de Actividade
+        </button>
 
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Actividade 1</a>
-        <a class="dropdown-item" href="#">Actividade 2</a>
-        <a class="dropdown-item" href="#">Actividade 3</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Actividade 1</a>
+          <a class="dropdown-item" href="#">Actividade 2</a>
+          <a class="dropdown-item" href="#">Actividade 3</a>
+        </div>
+
       </div>
 
-    </div>
+      <div class="dropdown" style="padding-left: 50px">
 
-    <div class="dropdown" style="padding-left: 50px">
+        <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+          aria-haspopup="true" aria-expanded="false", style="font-size: small">
+          Concelho
+        </button>
 
-      <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
-        aria-haspopup="true" aria-expanded="false", style="font-size: small">
-        Concelho
-      </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Concelho 1</a>
+          <a class="dropdown-item" href="#">Concelho 2</a>
+          <a class="dropdown-item" href="#">Concelho 3</a>
+        </div>
 
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Concelho 1</a>
-        <a class="dropdown-item" href="#">Concelho 2</a>
-        <a class="dropdown-item" href="#">Concelho 3</a>
       </div>
-
-    </div>
 
 </nav>
 
-<h1>Entities CRUD visible to user admin</h1>
+<% @entities.each do |entity| %>
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="card border-0">
+        <div class="card-body">
+          <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
+          <% if entity.image.attached? %>
+              <%= image_tag(entity.image, style: "width: 50px") %>
+          <% else %>
+            <img src="image" alt="sem imagem">
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2" style="margin-left: -200px">
+      <div class="card border-0">
+        <div class="card-body">
+          <p class="card-text"><%= link_to entity.name, entity_path(entity.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
+          <p class="card-text"><%= raw entity.description %></p>
+        </div>
+      </div>
+    </div>
 
-<table>
-   <thead>
-     <tr>
-       <th>Name</th>
-       <th>Description</th>
-       <th>Industry</th>
-       <th>Address</th>
-       <th>Phone</th>
-       <th>Fax</th>
-       <th>Website</th>
-       <th>Email</th>
-       <th colspan="3"></th>
-     </tr>
-   </thead>
+    <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+      <div "actions">
+        <% if user_signed_in? && current_user.role == "entity" %>
+          <button><%= link_to 'Interessado/a', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+        <% end %>
+        <% if user_signed_in? && current_user.role == "backoffice" || current_user.entity.id == entity.id %>
+          <button><%= link_to 'Edit', edit_entity_path(entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
+        <% end %>
+      </div>
+    </div>
+    
+  </div>
+<% end %>
 
-   <tbody>
-     <% @entities.each do |entity| %>
-       <tr>
-         <td><%= entity.name %></td>
-         <td><%= raw entity.description %></td>
-         <td><%= entity.industry %></td>
-         <td><%= raw entity.address %></td>
-         <td><%= entity.phone %></td>
-         <td><%= entity.fax %></td>
-         <td><%= entity.website %></td>
-         <td><%= link_to 'Show', entity %></td>
-         <td><%= link_to 'Edit', edit_entity_path(entity) %></td>
-         <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-       </tr>
-     <% end %>
-   </tbody>
- </table>
-
- <br>
-
- <%= link_to 'New Entity', new_user_registration_path(role:"entity") %>
+<style>
+  .noHover:hover {
+    background: none;
+  }
+</style>
 
 <nav aria-label="Page navigation example">
   <ul class="pagination">
@@ -101,3 +106,5 @@
     </li>
   </ul>
 </nav>
+
+<%= link_to 'Quero-me registar', new_user_registration_path(role:"entity"), style:"color: blue", class:"noHover" %>

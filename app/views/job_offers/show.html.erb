@@ -13,12 +13,15 @@
                 <img src="image" alt="sem imagem">
               <% end %>
             </div>
+
             <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px">
                 <button><%= link_to "Candidatar-me", edit_job_offer_path(@job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
             </div>
-              <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px">
-                <button><%= link_to "Editar", edit_job_offer_path(@job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
+
+            <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px">
+              <button><%= link_to "Editar", edit_job_offer_path(@job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
             </div>
+
         </div>
       </div>
     </div>
@@ -33,7 +36,9 @@
               background: none;
             }
           </style>
-          <p class="card-text"><%= link_to current_user.entity.name,  entity_path(current_user.entity.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
+          <% if user_signed_in? && current_user.role =="entity" %>
+            <p class="card-text"><%= link_to current_user.entity.name,  entity_path(current_user.entity.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
+          <% end %>
           <p class="card-text" style="font-weight: bold">Actividade Profissional</p>
           <p class="card-text"><%= @job_offer.industry %></p>
           <p class="card-text" style="font-weight: bold">Tipo de Contrato</p>

@@ -39,10 +39,10 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
 
     Entidades:
         alterar página index:
-            ☐ card: "imagem, entidade name hyperlink azul, número de ofertas active, descrição, botões: "interessado/a" (se logged in && user.role == "candidate") + "Editar" (same entity_id + backoffice role)"
-            ☐ listar todas as entidades criadas
+            ✔ card: "imagem, entidade name hyperlink azul, número de ofertas active, descrição, botões: "interessado/a" (se logged in && user.role == "candidate") + "Editar" (same entity_id + backoffice role)" @done (12/26/2021, 11:31:43 AM)
+            ✔ listar todas as entidades criadas @done (12/26/2021, 11:31:45 AM)
             ☐ adicionar paginação
-            ☐ botão: "Quero-me registar"
+            ✔ botão: "Quero-me registar" @done (12/26/2021, 11:31:53 AM)
             ☐ search bar que pesquisa pelo nome e descrição das entidades, + 2 dropdowns filters
         
         alterar página de show (detalhe de Entidade):
@@ -90,12 +90,17 @@ Issues:
     ✔ candidates index com candidate sign_in, "undefined method" para todos os params @done (12/23/2021, 7:19:40 PM)
     ✔ tinymce can't insert previous :value on edit form @done (12/23/2021, 7:19:42 PM)
     ✔ job_offers create/edit/update/delete @done (12/25/2021, 6:50:40 PM)
+    ☐ same image appears for all entities even with different uploaded images
+    ☐ figure out "interessado/a" event click to a query or pivot table or new table
+    ☐ pagination
+    ☐ search bar system
 
 Candidato pode manifestar interesse numa ou mais entidades e candidatar-se a job_offers:
     ☐ candidate_applied_job_offers job_offer_id candidate_id
     ☐ candidate_scouting_entity candidate_id entity_id
 Entidade pode mostrar interesse em Candidato:
-    ☐ entity_scouting_candidate entity_id, candidate_id
+    ☐ entity_scouting_candidate entity_id, candidate_idcd Desktop/bolsaEmprego/
+
 
 Not urgent issues :
     ☐ set previous :value on dropdowns
