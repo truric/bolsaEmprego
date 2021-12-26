@@ -46,14 +46,15 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
             ☐ search bar com pesquisa activa pelo nome e descrição das entidades, + 2 dropdowns filters a funcionar
         
         alterar página de show (detalhe de Entidade):
-            ✔ card: "entity name, foto, botões:"interessado/a" (if role=="candidate") + "Editar" ("same entity_id + backoffice role"), description, Actividade Profissional, Morada, Contactos, email, website" @done (12/26/2021, 1:00:13 PM)
-            ☐ listar todas as ofertas active, card: "name, "foto, name, date range, description + botões"
+            ✔ card: "entity name, foto, botões:"interessado/a" (if role=="candidate") + "Editar" ("same entity_id + backoffice role"), description, Actividade Profissional, Morada, Contactos, email, website" @done (12/26/2021, 2:36:25 PM)
+            ✔ listar todas as ofertas active, card: "name, "foto, name, date range, description + botões" @done (12/26/2021, 2:12:50 PM)
 
         alterar home page para user loggado:
-            ☐ lista de Ofertas, card: "imagem, título, data, entidade, descrição" + botões: "editar" e "cancelar"
-            ☐ "Entidade" + botões: "Editar Dados" e "Alterar Password" com path e design
-            ☐ botão "Inserir Oferta" + path
-            ☐ Histórico: lista de Ofertas active:false, mesmo card + botão para "Reativar" active:true
+            ✔ lista de Ofertas, card: "imagem, título, data, entidade, descrição" + botões: "editar" e "cancelar" @done (12/26/2021, 3:48:02 PM)
+            ✔ "Entidade" + botões: "Editar Dados" e "Alterar Password" com path e design @done (12/26/2021, 3:48:04 PM)
+            ✔ botão "Inserir Oferta" + path @done (12/26/2021, 3:48:05 PM)
+            ✔ Histórico: lista de Ofertas active:false, mesmo card @done (12/26/2021, 3:48:27 PM)
+            ☐ botão para "Reativar" active:true com event click
             ☐ "Candidatos interessados"
 
     Candidato:

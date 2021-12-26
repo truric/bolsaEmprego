@@ -20,23 +20,27 @@
         <% end %>
         </div>
         <div "actions">
-    <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
-      <% if user_signed_in? && current_user.role == "entity" %>
-        <button><%= link_to 'Interessado/a', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
-      <% end %>
-    </div>
+          <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
 
-    <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
-      <% if user_signed_in? && current_user.role == "backoffice" || current_user.entity.id == @entity.id %>
-        <button><%= link_to 'Edit', edit_entity_path(@entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
-        </br>
-    </div>
+            <% if user_signed_in? && current_user.role == "candidate" %>
+              <button><%= link_to 'Interessado/a', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+            <% end %>
 
-    <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
-      <td><%= link_to 'Destroy', @entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </div>
-      <% end %>
-  </div>
+          </div>
+          <% if user_signed_in? %>
+            <% if current_user.role == "backoffice" || current_user.role == "entity" && current_user.entity.id == @entity.id %>
+              <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+                <button><%= link_to 'Edit', edit_entity_path(@entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
+                </br>
+              </div>
+
+              <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+                <td><%= link_to 'Destroy', @entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </div>
+              
+              <% end %>
+            <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -63,42 +67,47 @@
 
 <% @job_offers.each do |job_offer| %>
 
-  <div class="row">
-    <div class="col-sm-2">
-      <div class="card border-0">
-        <div class="card-body">
-          <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
-          <% if entity.image.attached? %>
-              <%= image_tag(entity.image, style: "width: 50px") %>
-          <% else %>
-            <img src="image" alt="sem imagem">
-          <% end %>
+  <% if job_offer.active && @entity.id == job_offer.entities_id %>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="card border-0">
+          <div class="card-body">
+            <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
+            <% if job_offer.image.attached? %>
+                <%= image_tag(job_offer.image, style: "width: 50px") %>
+            <% else %>
+              <img src="image" alt="sem imagem">
+            <% end %>
+            </div>
           </div>
         </div>
-      </div>
-  </div>
+    </div>
 
-  <div class="col-sm-2" style="margin-left: -200px">
-    <div class="card border-0">
-      <div class="card-body">
-        <p class="card-text"><%= link_to entity.name, entity_path(entity.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
-        <p class="card-text"><%= raw entity.description %></p>
+    <div class="col-sm-2" style="margin-left: -200px">
+      <div class="card border-0">
+        <div class="card-body">
+            <p class="card-text"><%= link_to job_offer.name, job_offer_path(job_offer.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
+            <p class="card-text"><%= job_offer.date %></p>
+            <p class="card-text"><%= raw job_offer.description %></p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
-    <div "actions">
-      <% if user_signed_in? && current_user.role == "entity" %>
-        <button><%= link_to 'Interessado/a', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+    <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+      <div "actions">
+      <% if user_signed_in? %>
+        <% if current_user.role == "candidate" %>
+          <button><%= link_to 'Candidatar-me', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+        <% end %>
+          <button><%= link_to 'Editar', edit_job_offer_path(job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
+          <td><%= link_to 'Destroy', job_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
-      <% if user_signed_in? && current_user.role == "backoffice" || current_user.entity.id == entity.id %>
-        <button><%= link_to 'Edit', edit_entity_path(entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
-        <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
+      </div>
     </div>
-  </div>
+
+  <% end %>
   
 <% end %>
 
-<%= link_to 'Ver Entidades', entities_path, style:"color: blue", class:"noHover" %>
+<%= link_to 'Ver Entidades', entities_path, style:"color: blue; margin-top: 15px", class:"noHover" %>

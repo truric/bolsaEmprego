@@ -1,3 +1,116 @@
+<% if user_signed_in? %>
+    <% if current_user.role == "entity" %>
+    <div class="topnav" style="float: right; padding-right: 250px">
+    <h5>Entidade</h5>
+    <div "actions">
+        <button><%= link_to 'Editar Dados', edit_entity_path(current_user.entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
+        <button><%= link_to "Alterar password", edit_user_registration_path, style:"text-decoration: none; color: black", class:"noHover" %></button>
+    </div>
+    </div> 
+        <h5>Ofertas</h5>
+        <% @job_offers.each do |job_offer| %>
 
-<br>
-<h4>homepage</h4>
+            <% if job_offer.active && current_user.entity.id == job_offer.entities_id %>
+          
+              <div class="row">
+                <div class="col-sm-2">
+                  <div class="card border-0">
+                    <div class="card-body">
+                      <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
+                      <% if job_offer.image.attached? %>
+                          <%= image_tag(job_offer.image, style: "width: 50px") %>
+                      <% else %>
+                        <img src="image" alt="sem imagem">
+                      <% end %>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          
+              <div class="col-sm-2" style="margin-left: -100px">
+                <div class="card border-0">
+                  <div class="card-body">
+                      <p class="card-text"><%= link_to job_offer.name, job_offer_path(job_offer.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
+                      <p class="card-text"><%= job_offer.date %></p>
+                      <p class="card-text"><%= current_user.entity.name %></p>
+                      <p class="card-text"><%= raw job_offer.description %></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-2">
+                  <div class="card border-0">
+                        <div class="card-body">
+                            <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+                                <div "actions">
+                                    <% if current_user.role == "candidate" %>
+                                        <button><%= link_to 'Candidatar-me', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+                                    <% end %>
+                                    <button><%= link_to 'Editar', edit_job_offer_path(job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
+                                    <button><%= link_to 'Cancelar', job_offer, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            <% end %>  
+            
+        <% end %>
+        <%= link_to 'Inserir Oferta', new_job_offer_path, style:"color: blue", class:"noHover" %> 
+
+
+        <h5 style="margin-top: 25px">Histórico</h5>
+        <% @job_offers.each do |job_offer| %>
+            <% if job_offer.active == false && current_user.entity.id == job_offer.entities_id %>
+          
+              <div class="row">
+                <div class="col-sm-2">
+                  <div class="card border-0">
+                    <div class="card-body">
+                      <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
+                      <% if job_offer.image.attached? %>
+                          <%= image_tag(job_offer.image, style: "width: 50px") %>
+                      <% else %>
+                        <img src="image" alt="sem imagem">
+                      <% end %>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          
+              <div class="col-sm-2" style="margin-left: -100px">
+                <div class="card border-0">
+                  <div class="card-body">
+                      <p class="card-text"><%= link_to job_offer.name, job_offer_path(job_offer.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
+                      <p class="card-text"><%= job_offer.date %></p>
+                      <p class="card-text"><%= current_user.entity.name %></p>
+                      <p class="card-text"><%= raw job_offer.description %></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-2">
+                  <div class="card border-0">
+                        <div class="card-body">
+                            <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+                                <div "actions">
+                                    <button><%= link_to 'Reativar', edit_job_offer_path(job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            <% end %>   
+
+        <% end %>
+    <% end %>
+
+
+    
+<% end %>
+
+<style>
+  .noHover:hover {
+    background: none;
+  }
+</style>
