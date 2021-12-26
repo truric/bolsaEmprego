@@ -10,6 +10,7 @@ class EntitiesController < ApplicationController
 
   # GET /entities/1 or /entities/1.json
   def show
+    @job_offers = Job_offer.all
   end
 
   # GET /entities/new

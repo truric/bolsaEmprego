@@ -1,39 +1,104 @@
 <p id="notice"><%= notice %></p>
 
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
+<style>
+  .noHover:hover {
+    background: none;
+  }
+</style>
+
+<h5><%= @entity.name %></h5>
+
+<div class="row">
+  <div class="col-sm-2">
+    <div class="card border-0">
       <div class="card-body">
-      <% if @entity.image.attached? %>
-        <%= image_tag(@entity.image, style: "width: 50px") %>
-      <% else %>
-        <img src="image" alt="sem imagem">
+        <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
+        <% if @entity.image.attached? %>
+            <%= image_tag(@entity.image, style: "width: 150px") %>
+        <% else %>
+          <img src="image" alt="sem imagem">
+        <% end %>
+        </div>
+        <div "actions">
+    <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+      <% if user_signed_in? && current_user.role == "entity" %>
+        <button><%= link_to 'Interessado/a', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
       <% end %>
-        <h5 class="card-title"><%= @entity.name %></h5>
+    </div>
+
+    <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+      <% if user_signed_in? && current_user.role == "backoffice" || current_user.entity.id == @entity.id %>
+        <button><%= link_to 'Edit', edit_entity_path(@entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
+        </br>
+    </div>
+
+    <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+      <td><%= link_to 'Destroy', @entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </div>
+      <% end %>
+  </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2" style="margin-left: -100px">
+    <div class="card border-0">
+      <div class="card-body">
         <p class="card-text"><%= raw @entity.description %></p>
-        <p class="card-text">Actividade Profissional</p>
+        <p class="card-title" style="font-weight: bold">Actividade Profissional</p>
         <p class="card-text"><%= @entity.industry %></p>
-        <p class="card-text">Morada</p>
+        <p class="card-title" style="font-weight: bold">Morada</p>
         <p class="card-text"><%= raw @entity.address %></p>
-        <p class="card-text">Contactos</p>
+        <p class="card-text"><%= @entity.postal_code %></p>
+        <p class="card-title" style="font-weight: bold">Contactos</p>
         <p class="card-text">Telefone: <%= @entity.phone %></p>
         <p class="card-text">Fax: <%= @entity.fax %></p>
-        <% if @entity.user.email %>
-          <p class="card-text"><%= @entity.user.email %></p>
-        <% end %>
-        <p class="card-text"><%= @entity.website %></p>
+        <p class="card-text"><%= @entity.user.email %></p>
+        <p class="card-text"><%= link_to @entity.website, url_for(@entity.website), style:"color: blue; visited: yellow", class:"noHover"%></p></p>
       </div>
     </div>
   </div>
 </div>
 
-<%# logged in users can click button1, if the user has already clicked it, text must show the opposite meaning %>
-<%# button2 is visible to the entity itself and to user admin only %>
+<h5>Ofertas Activas</h5>
 
-<%= link_to 'Interessado/a', entities_path %>
-<%= link_to 'Edit', edit_entity_path(@entity) %> |
+<% @job_offers.each do |job_offer| %>
 
-<%= render 'components/job_list' %>
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="card border-0">
+        <div class="card-body">
+          <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
+          <% if entity.image.attached? %>
+              <%= image_tag(entity.image, style: "width: 50px") %>
+          <% else %>
+            <img src="image" alt="sem imagem">
+          <% end %>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="col-sm-2" style="margin-left: -200px">
+    <div class="card border-0">
+      <div class="card-body">
+        <p class="card-text"><%= link_to entity.name, entity_path(entity.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
+        <p class="card-text"><%= raw entity.description %></p>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+    <div "actions">
+      <% if user_signed_in? && current_user.role == "entity" %>
+        <button><%= link_to 'Interessado/a', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+      <% end %>
+      <% if user_signed_in? && current_user.role == "backoffice" || current_user.entity.id == entity.id %>
+        <button><%= link_to 'Edit', edit_entity_path(entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
+        <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </div>
+  </div>
+  
+<% end %>
+
+<%= link_to 'Ver Entidades', entities_path, style:"color: blue", class:"noHover" %>

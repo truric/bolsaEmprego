@@ -41,12 +41,12 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
         alterar página index:
             ✔ card: "imagem, entidade name hyperlink azul, número de ofertas active, descrição, botões: "interessado/a" (se logged in && user.role == "candidate") + "Editar" (same entity_id + backoffice role)" @done (12/26/2021, 11:31:43 AM)
             ✔ listar todas as entidades criadas @done (12/26/2021, 11:31:45 AM)
-            ☐ adicionar paginação
+            ☐ adicionar sistema de paginação a funcionar
             ✔ botão: "Quero-me registar" @done (12/26/2021, 11:31:53 AM)
-            ☐ search bar que pesquisa pelo nome e descrição das entidades, + 2 dropdowns filters
+            ☐ search bar com pesquisa activa pelo nome e descrição das entidades, + 2 dropdowns filters a funcionar
         
         alterar página de show (detalhe de Entidade):
-            ☐ card: "entity name, foto, botões:"interessado/a" (if role=="candidate") + "Editar" ("same entity_id + backoffice role"), description, Actividade Profissional, Morada, Contactos, email, website"
+            ✔ card: "entity name, foto, botões:"interessado/a" (if role=="candidate") + "Editar" ("same entity_id + backoffice role"), description, Actividade Profissional, Morada, Contactos, email, website" @done (12/26/2021, 1:00:13 PM)
             ☐ listar todas as ofertas active, card: "name, "foto, name, date range, description + botões"
 
         alterar home page para user loggado:
