@@ -1,44 +1,83 @@
 <p id="notice"><%= notice %></p>
 
-<h4><%= @candidate.name %></h4>
+<style>
+  .noHover:hover {
+    background: none;
+  }
+</style>
 
-<button type="button" class="btn btn-primary">Interessado/a</button>
-<button type="button" class="btn btn-success">Editar</button>
-</br>
+<h5><%= @candidate.name %></h5>
 
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
+<div class="row">
+  <div class="col-sm-2">
+    <div class="card border-0">
       <div class="card-body">
-        <p class="card-text"><%= @candidate.description %></p>
-        <p class="card-text">Actividade Profissional</p>
-        <p class="card-text"><h4>Dados Proffisionais</h4></p>
+        <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
+        <% if @candidate.image.attached? %>
+            <%= image_tag(@candidate.image, style: "width: 150px") %>
+        <% else %>
+          <img src="image" alt="sem imagem">
+        <% end %>
+        </div>
+        <div "actions">
+        <% if @candidate.attachment.attached? %>
+            <%= link_to "Curriculum Vitae", @candidate.attachment, style: "color: black; margin-left: 25px", class:"noHover" %>
+        <% end %>
+          <div style="display: flex; justify-content: left; align-items: left; margin-top: 10px; margin-left: 30px">
+
+            <% if user_signed_in? && current_user.role == "entity" %>
+              <button><%= link_to 'Interessado/a', new_user_registration_path(role:"candidate"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+            <% end %>
+
+          </div>
+          
+          <% if user_signed_in? %>
+            <% if current_user.role == "backoffice" || current_user.role == "candidate" && current_user.candidate.id == @candidate.id %>
+
+              <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; margin-left: 55px">
+                <button><%= link_to 'Edit', edit_candidate_path(@candidate), style:"text-decoration: none; color: black", class:"noHover" %></button>
+              </div>
+
+              <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; margin-left: 49px">
+                <td><%= link_to 'Destroy', @candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </div>
+
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2" style="margin-left: -100px">
+    <div class="card border-0">
+      <div class="card-body">
+        <p class="card-text"><%= raw @candidate.description %></p>
+        <p class="card-title" style="font-weight: bold">Actividade Profissional</p>
         <p class="card-text"><%= @candidate.industry %></p>
-        <p class="card-text">Situação Profissional</p>
-        <p class="card-text"><%= @candidate.employed %></p>
-        <p class="card-text">Habilitações Literárias</p>
-        <p class="card-text"><%= @candidate.grade %></p>
-        <p class="card-text">Experiência Profissional</p>
+        <p class="card-title" style="font-weight: bold"><h5>Dados Profissionais</h5></p>
+        <p class="card-title" style="font-weight: bold">Situação Profissional</p>
+        <% if @candidate.employed %>
+          <p class="card-text">Empregado</p>
+        <% else %>
+          <p class="card-text">Desempregado</p>
+        <% end %>
+        <p class="card-title" style="font-weight: bold">Nível de Habilitações</p>
+        <p class="card-text"><%= raw @candidate.grade %></p>
+        <p class="card-title" style="font-weight: bold">Habilitações Literárias</p>
+        <p class="card-text"><%= @candidate.qualification %></p>
+        <p class="card-title" style="font-weight: bold">Experiência Profissional</p>
         <p class="card-text"><%= @candidate.experience %></p>
-        <p class="card-text"><h4>Dados Pessoais</h4></p>
-        <p class="card-text">Morada</p>
-        <p class="card-text"><%= @candidate.address %></p>
-        <p class="card-text">Contactos</p>
+        <p class="card-title" style="font-weight: bold"><h5>Dados Pessoais</h5></p>
+        <p class="card-title" style="font-weight: bold">Morada</p>
+        <p class="card-text">Telefone: <%= raw @candidate.address %></p>
+        <p class="card-text">Telefone: <%= raw @candidate.postal_code %></p>
+        <p class="card-title" style="font-weight: bold">Contactos</p>
         <p class="card-text">Telefone: <%= @candidate.phone %></p>
         <p class="card-text">Fax: <%= @candidate.fax %></p>
         <p class="card-text"><%= @candidate.user.email %></p>
-        <% if @candidate.image.attached? %>
-          <%= image_tag(@candidate.image, style: "width: 200px") %>
-        <% end %>
-        <% if @candidate.attachment.attached? %>
-          <%= link_to 'Curriculum Vitae', @candidate.attachment %>
-        <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<%= link_to 'Ver candidatos', candidates_path %>
+<%= link_to 'Ver candidatos', candidates_path, style:"color: blue; margin-top: 15px", class:"noHover" %>

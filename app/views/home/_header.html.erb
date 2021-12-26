@@ -21,11 +21,17 @@
 
         <% if user_signed_in? %>
           <li class="nav-item", style="list-style-type: none">
-            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class:'nav-link', style:"text-decoration: underline; color: blue; font-size: small" %>
+            <% if current_user.role =="entity" %>
+              <%= link_to current_user.entity.name, edit_user_registration_path, class:'nav-link', style:"text-decoration: underline; color: blue; font-size: small" %>
+            <% elsif current_user.role =="candidate"%>
+              <%= link_to current_user.candidate.name, edit_user_registration_path, class:'nav-link', style:"text-decoration: underline; color: blue; font-size: small" %>
+            <% else %>
+              <%= link_to "Admin", edit_user_registration_path, class:'nav-link', style:"text-decoration: underline; color: blue; font-size: small" %>
+            <% end %>
           </li>
 
           <li class="nav-item", style="list-style-type: none">
-            <%= link_to 'Edit Profile', edit_user_registration_path, class:'nav-link', style:"text-decoration: underline; color: blue; font-size: small" %>
+          <%= link_to "Sair", destroy_user_session_path, method: :delete, class:'nav-link', style:"text-decoration: underline; color: blue; font-size: small" %>
           </li>
 
         <% else %>

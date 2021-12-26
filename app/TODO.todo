@@ -59,20 +59,20 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
 
     Candidato:
         alterar página index:
-            ☐ card: "imagem, nome candidato hyperlink azul, industry, número de anos de experiência, grade / qualification, botões: "interessado/a" (se logged in && user.role == "entity") + "Editar" (backoffice role + same candidate_id???)"
-            ☐ listar todos oss candidatos criados
-            ☐ adicionar paginação
-            ☐ botão: "Registar Candidato"
+            ✔ card: "imagem, nome candidato hyperlink azul, industry, número de anos de experiência, grade / qualification, botões: "interessado/a" (se logged in && user.role == "entity") + "Editar" (backoffice role + same candidate_id???)" @done (12/26/2021, 6:33:36 PM)
+            ✔ listar todos oss candidatos criados @done (12/26/2021, 6:33:39 PM)
+            ☐ adicionar sistema de paginação a funcionar
+            ✔ botão: "Registar Candidato" @done (12/26/2021, 6:33:49 PM)
             ☐ search bar que pesquisa pelo nome e descrição dos candidatos, + 2 dropdowns filters
 
         alterar página de show (detalhe de Candidato):
-            ☐ card: "nome candidato, foto, CV hyperlink, botões:"interessado/a" (if logged in && role=="entity") + "Editar" ("same candidate_id + backoffice role"), description, Dados Profissionais, etc..
-            ☐ botão "Ver candidatos"
+            ✔ card: "nome candidato, foto, CV hyperlink, botões:"interessado/a" (if logged in && role=="entity") + "Editar" ("same candidate_id + backoffice role"), description, Dados Profissionais, etc.. @done (12/26/2021, 7:07:11 PM)
+            ✔ botão "Ver candidatos" @done (12/26/2021, 7:07:12 PM)
 
         alterar home page para user loggado:
-            ☐ lista de candidaturas, card: "imagem, título, data, entidade, descrição"
-            ☐ "Candidato" + botões: "Editar Dados" e "Alterar Password" com path e design
-            ☐ "Empresas interessadas em mim"
+            ✔ lista de candidaturas, card: "imagem, título, data, entidade, descrição" @done (12/26/2021, 7:31:06 PM)
+            ✔ "Candidato" + botões: "Editar Dados" e "Alterar Password" com path e design @done (12/26/2021, 7:31:07 PM)
+            ✔ "Empresas interessadas em mim" @done (12/26/2021, 7:31:10 PM)
 
         Job_offer:
             ✔ card com image, botões e job params @done (12/23/2021, 12:32:53 PM)
