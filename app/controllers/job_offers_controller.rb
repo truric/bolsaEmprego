@@ -8,6 +8,7 @@ class JobOffersController < ApplicationController
 
   # GET /job_offers/1 or /job_offers/1.json
   def show
+    @job_offers = JobOffer.all
   end
 
   # GET /job_offers/new

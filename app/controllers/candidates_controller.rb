@@ -14,7 +14,6 @@ class CandidatesController < ApplicationController
   def new
     @user = User.new
     @candidate = Candidate.new
-    # @candidate = current_user.candidates.build
   end
 
   # GET /candidates/1/edit
@@ -25,8 +24,6 @@ class CandidatesController < ApplicationController
   def create
     @candidate = Candidate.new(candidate_params)
     @candidate.save
-    # @candidate = current_user.candidates.build(candidate_params)
-    # @candidate.user = current_user
     
     respond_to do |format|
       if @candidate.save

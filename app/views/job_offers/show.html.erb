@@ -1,79 +1,115 @@
 <p id="notice"><%= notice %></p>
 
-<%= simple_form_for @job_offer do |f| %>
-  <div class="row">
-    <div class="col-sm-2">
-      <div class="card border-0">
-        <div class="card-body">
-          <h5 class="card-title"><h5 style="text-align: center"><%= @job_offer.name %></h5></h5>
-            <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px">
-              <% if @job_offer.image.attached? %>
-                  <%= image_tag(@job_offer.image, style: "width: 50px") %>
-              <% else %>
-                <img src="image" alt="sem imagem">
-              <% end %>
-            </div>
+<style>
+  .noHover:hover {
+    background: none;
+  }
+</style>
 
-            <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px">
-                <button><%= link_to "Candidatar-me", edit_job_offer_path(@job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
-            </div>
+<h5><%= @job_offer.name %></h5>
 
-            <div style="display: flex; justify-content: center; align-items: center; margin-top: 15px">
-              <button><%= link_to "Editar", edit_job_offer_path(@job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
-            </div>
-
+<div class="row">
+  <div class="col-sm-2">
+    <div class="card border-0">
+      <div class="card-body">
+        <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
+        <% if @job_offer.image.attached? %>
+            <%= image_tag(@job_offer.image, style: "width: 150px") %>
+        <% else %>
+          <img src="image" alt="sem imagem">
+        <% end %>
         </div>
-      </div>
-    </div>
-    <div class="col-sm-9">
-      <div class="card border-0">
-        <div class="card-body">
-          <p class="card-text"><%= raw @job_offer.description %></p>
-          <p class="card-text"><%= @job_offer.date %></p>
-          <p class="card-text" style="font-weight: bold">Empresa</p>
-          <style>
-            .noHover:hover {
-              background: none;
-            }
-          </style>
-          <% if user_signed_in? && current_user.role =="entity" %>
-            <p class="card-text"><%= link_to current_user.entity.name,  entity_path(current_user.entity.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
-          <% end %>
-          <p class="card-text" style="font-weight: bold">Actividade Profissional</p>
-          <p class="card-text"><%= @job_offer.industry %></p>
-          <p class="card-text" style="font-weight: bold">Tipo de Contrato</p>
-          <p class="card-text"><%= @job_offer.contract %></p>
-          <p class="card-text" style="font-weight: bold">Salário</p>
-          <p class="card-text"><%= @job_offer.salary %></p>
+        <div "actions">
+          <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+
+            <% if user_signed_in? && current_user.role == "candidate" %>
+              <button><%= link_to 'Interessado/a', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+            <% end %>
+
+          </div>
+          <% if user_signed_in? %>
+            <% if current_user.role == "backoffice" || current_user.role == "entity" && current_user.entity.id == @job_offer.id %>
+              <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+                <button><%= link_to 'Edit', edit_job_offer_path(@job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
+                </br>
+              </div>
+
+              <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+                <td><%= link_to 'Destroy', @job_offer, method: :delete, data: { confirm: 'Tem a certeza?' } %></td>
+              </div>
+              
+              <% end %>
+            <% end %>
         </div>
       </div>
     </div>
   </div>
+  <div class="col-sm-2" style="margin-left: -100px">
+    <div class="card border-0">
+      <div class="card-body">
+        <p class="card-text"><%= raw @job_offer.description %></p>
+        <p class="card-text"><%= @job_offer.date %></p>
+        <p class="card-title" style="font-weight: bold">Empresa</p>
+        <p class="card-text"><%= @job_offer.entities_id %></p>
+        <p class="card-title" style="font-weight: bold">Actividade Profissional</p>
+        <p class="card-text"><%= @job_offer.industry %></p>
+        <p class="card-title" style="font-weight: bold">Tipo de Contrato</p>
+        <p class="card-text"><%= @job_offer.contract %></p>
+        <p class="card-title" style="font-weight: bold">Salário</p>
+        <p class="card-text"><%= @job_offer.salary %></p>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <h5 style="text-align: left; margin-top: 15px">Outras ofertas na mesma área</h5>
-  <div class="row">
-    <div class="col-sm-2">
-      <div class="card border-0">
-        <div class="card-body">
-          <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
-            <% if @job_offer.image.attached? %>
-                <%= image_tag(@job_offer.image, style: "width: 50px") %>
+<h5>Outras empresas na mesma área</h5>
+
+<% @job_offers.each do |job_offer| %>
+
+  <% if job_offer.active && job_offer.location == @job_offer.location %>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="card border-0">
+          <div class="card-body">
+            <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
+            <% if job_offer.image.attached? %>
+                <%= image_tag(job_offer.image, style: "width: 50px") %>
             <% else %>
               <img src="image" alt="sem imagem">
             <% end %>
+            </div>
           </div>
         </div>
-      </div>
     </div>
-    <div class="col-sm-2" style="margin-left: -140px">
+
+    <div class="col-sm-2" style="margin-left: -200px">
       <div class="card border-0">
         <div class="card-body">
-          <p class="card-text"><%= @job_offer.name %></p>
-          <p class="card-text"><%= @job_offer.date %></p>
-          <p class="card-text">entity_id</p>
-          <p class="card-text"><%= raw @job_offer.description %></p>
+            <p class="card-text"><%= link_to job_offer.name, job_offer_path(job_offer.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
+            <p class="card-text"><%= job_offer.date %></p>
+            <p class="card-text"><%= job_offer.entities_id %></p>
+            <p class="card-text"><%= raw job_offer.description %></p>
         </div>
       </div>
     </div>
-  </div>
+
+    <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+      <div "actions">
+      <% if user_signed_in? %>
+        <% if current_user.role == "candidate" %>
+          <button><%= link_to 'Candidatar-me', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+        <% end %>
+        <% if current_user.role == "backoffice" || current_user.role == "entity" && current_user.entity.id == job_offer.id %>
+          <button><%= link_to 'Editar', edit_job_offer_path(job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
+          <td><%= link_to 'Destroy', job_offer, method: :delete, data: { confirm: 'Tem a certeza?' } %></td>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+
+  <% end %>
+  
 <% end %>
+
+<%= link_to 'Ver Entidades', entities_path, style:"color: blue; margin-top: 15px", class:"noHover" %>

@@ -1,83 +1,94 @@
 <p id="notice"><%= notice %></p>
 
-<h6>Ofertas</h6>
+<h5>Ofertas</h5>
 
 <nav class="navbar navbar-expand-lg navbar-light" style="margin-bottom: 25px">
 
   <svg style="position: absolute; padding-left:5px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
   </svg>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="  search" aria-label="Search", style="font-size: small">
-  </form>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="  search" aria-label="Search", style="font-size: small">
+    </form>
 
-  <div class="dropdown" style="padding-left: 50px">
+    <div class="dropdown" style="padding-left: 50px">
 
-    <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
-      aria-haspopup="true" aria-expanded="false", style="font-size: small">
-      Área de Actividade
-    </button>
+      <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+        aria-haspopup="true" aria-expanded="false", style="font-size: small">
+        Área de Actividade
+      </button>
 
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">Área 1</a>
-      <a class="dropdown-item" href="#">Área 2</a>
-      <a class="dropdown-item" href="#">Área 3</a>
-    </div>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Actividade 1</a>
+        <a class="dropdown-item" href="#">Actividade 2</a>
+      </div>
 
     </div>
 
     <div class="dropdown" style="padding-left: 50px">
 
-    <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
-      aria-haspopup="true" aria-expanded="false", style="font-size: small">
-      Concelho
-    </button>
+      <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+        aria-haspopup="true" aria-expanded="false", style="font-size: small">
+        Concelho
+      </button>
 
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">Concelho 1</a>
-      <a class="dropdown-item" href="#">Concelho 2</a>
-      <a class="dropdown-item" href="#">Concelho 3</a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Concelho 1</a>
+        <a class="dropdown-item" href="#">Concelho 2</a>
+      </div>
+
     </div>
-
-  </div>
 
 </nav>
 
-<h1>Job Offers visible to user admin</h1>
+<% @job_offers.each do |job_offer| %>
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="card border-0">
+        <div class="card-body">
+          <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
+          <% if job_offer.image.attached? %>
+              <%= image_tag(job_offer.image, style: "width: 50px") %>
+          <% else %>
+            <img src="image" alt="sem imagem">
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2" style="margin-left: -200px">
+      <div class="card border-0">
+        <div class="card-body">
+          <p class="card-text"><%= link_to job_offer.name, job_offer_path(job_offer.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
+          <p class="card-text"><%= job_offer.date %></p>
+          <p class="card-text"><%= job_offer.entities_id %></p>
+          <p class="card-text"><%= raw job_offer.description %></p>
+        </div>
+      </div>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Date</th>
-      <th>Industry</th>
-      <th>Contract</th>
-      <th>Salary</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+      <div "actions">
+      <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.role == "candidate" %>
+          <button><%= link_to 'Candidatar-me', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+        <% end %>
+        <% if current_user.role == "backoffice" || current_user.role == "entity" && current_user.entity.id == job_offer.id %>
+          <button><%= link_to 'Editar', edit_job_offer_path(job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
+          <td><%= link_to 'Destroy', job_offer, method: :delete, data: { confirm: 'Tem a certeza?' } %></td>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+    
+  </div>
+<% end %>
 
-  <tbody>
-    <% @job_offers.each do |job_offer| %>
-      <tr>
-        <td><%= job_offer.name %></td>
-        <td><%= raw job_offer.description %></td>
-        <td><%= job_offer.date %></td>
-        <td><%= job_offer.industry %></td>
-        <td><%= job_offer.contract %></td>
-        <td><%= job_offer.salary %></td>
-        <td><%= link_to 'Show', job_offer %></td>
-        <td><%= link_to 'Edit', edit_job_offer_path(job_offer) %></td>
-        <td><%= link_to 'Destroy', job_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Job Offer', new_job_offer_path %>
+<style>
+  .noHover:hover {
+    background: none;
+  }
+</style>
 
 <nav aria-label="Page navigation example">
   <ul class="pagination">
@@ -98,3 +109,7 @@
     </li>
   </ul>
 </nav>
+
+<% if current_user.role == "backoffice" || current_user.role == "entity" %>
+  <%= link_to 'Registar nova oferta', new_job_offer_path, style:"color: blue", class:"noHover" %>
+<% end %>

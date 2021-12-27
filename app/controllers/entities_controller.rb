@@ -15,13 +15,8 @@ class EntitiesController < ApplicationController
 
   # GET /entities/new
   def new
-    # @new_user = User.last.id+1
-    # @entity = @new_user.entities.build
     @user = User.new
     @entity = Entity.new
-    # @entity.users.new
-    # @entity = @user.entities.build
-    # @entity = Entity.new(entity_params.merge(users: current_user))
   end
 
   # GET /entities/1/edit
@@ -30,29 +25,8 @@ class EntitiesController < ApplicationController
 
   # POST /entities or /entities.json
   def create
-    # @entity = Entity.new(params[:entity])
-    # @entity.user = @new_user
-
-    # @entity = Entity.new(entity_params)
-    
-
-    
     @entity = Entity.new(entity_params)
-    # @user.save
-    # debugger
-    # @entity.user_id = @user.id
     @entity.save
-
-    
-      # # This will save the user in db with fields for devise
-      # sign_in @user
-      # # :bypass is set to ignore devise related callbacks and only save the
-      # # user into session.
-      # sign_in @user, :bypass => true 
-
-    # @entity = user.entities.build(entity_params)
-    
-    # @entity.user = @user.id
 
     respond_to do |format|
       if @entity.save
