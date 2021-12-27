@@ -1,24 +1,42 @@
 <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-white">
 	  <div class="container-fluid">	 
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto order-0 ">
-          <li class="nav-item" style="padding-left: 20px">
-            <%= link_to 'Home', root_path, class:"navbar-brand", style:"text-decoration: underline; color: blue; font-size: small" %>
-          </li>
-          <li class="nav-item">
-              <%= link_to 'Entidades', entities_path, class:"navbar-brand", style:"text-decoration: underline; color: blue; font-size: small" %>
-          </li>
-          <li class="nav-item">
-              <%= link_to 'Candidatos', candidates_path, class:"navbar-brand", style:"text-decoration: underline; color: blue; font-size: small" %>
-          </li>
-          <li class="nav-item">
-              <%= link_to 'Ofertas', job_offers_path, class:"navbar-brand", style:"text-decoration: underline; color: blue; font-size: small" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Notícias', news_index_path, class:"navbar-brand", style:"text-decoration: underline; color: blue; font-size: small" %>
-          </li>
-        </ul>
+      <% if user_signed_in? && current_user.role == "backoffice" %>
 
+          <ul class="navbar-nav me-auto order-0 ">
+            <li class="nav-item" style="padding-left: 20px">
+              <%= link_to 'Home', root_path, class:"navbar-brand", style:"text-decoration: underline; color: blue; font-size: small" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Utilizadores', users_path, class:"navbar-brand", style:"text-decoration: underline; color: blue; font-size: small" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Notícias', news_index_path, class:"navbar-brand", style:"text-decoration: underline; color: blue; font-size: small" %>
+            </li>
+          </ul>
+
+        <% else %>
+
+          <ul class="navbar-nav me-auto order-0 ">
+            <li class="nav-item" style="padding-left: 20px">
+              <%= link_to 'Home', root_path, class:"navbar-brand", style:"text-decoration: underline; color: blue; font-size: small" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Entidades', entities_path, class:"navbar-brand", style:"text-decoration: underline; color: blue; font-size: small" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Candidatos', candidates_path, class:"navbar-brand", style:"text-decoration: underline; color: blue; font-size: small" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Ofertas', job_offers_path, class:"navbar-brand", style:"text-decoration: underline; color: blue; font-size: small" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Notícias', news_index_path, class:"navbar-brand", style:"text-decoration: underline; color: blue; font-size: small" %>
+            </li>
+          </ul>
+          
+          <% end %>
+        
         <% if user_signed_in? %>
           <li class="nav-item", style="list-style-type: none">
             <% if current_user.role =="entity" %>
@@ -26,7 +44,7 @@
             <% elsif current_user.role =="candidate"%>
               <%= link_to current_user.candidate.name, edit_user_registration_path, class:'nav-link', style:"text-decoration: underline; color: blue; font-size: small" %>
             <% else %>
-              <%= link_to "Admin", edit_user_registration_path, class:'nav-link', style:"text-decoration: underline; color: blue; font-size: small" %>
+              <%= link_to "Backoffice", edit_user_registration_path, class:'nav-link', style:"text-decoration: underline; color: blue; font-size: small" %>
             <% end %>
           </li>
 

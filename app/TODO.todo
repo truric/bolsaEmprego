@@ -84,7 +84,7 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
             ✔ index design @done (12/27/2021, 10:50:08 AM)
             ✔ show design @done (12/27/2021, 10:50:09 AM)
 
-    Admin:
+    Backoffice/Admin:
         ☐ create a seed by hand on console
         homepage:
             ☐ navbar Home | Utilizadores | Notícias, aletrar o _header para este user
@@ -125,11 +125,13 @@ Issues:
     ✔ tinymce can't insert previous :value on edit form @done (12/23/2021, 7:19:42 PM)
     ✔ job_offers create/edit/update/delete @done (12/25/2021, 6:50:40 PM)
     ✔ fix: candidates can edit and destroy job_offers after login on entities index @done (12/27/2021, 9:56:39 AM)
+    ☐ alterar admin para backoffice nos if statements em todas as views
+    ☐ show e edit para user backoffice
     ☐ index job_offers get entity name by job_offers.entities_id
     ☐ show job_offers get entity name by job_offers.entities_id
     ☐ change date to date range param for job_offer and news forms
     ☐ auto-complete old password on alterar-password path
-    ☐ same image appears for all entities even with different uploaded images
+    ☐ same image appears for all entities/candidates even with different uploaded images
     ☐ figure out "interessado/a" event click to a query or pivot table or new table
     ☐ pagination
     ☐ search bar system

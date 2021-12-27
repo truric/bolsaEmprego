@@ -75,7 +75,7 @@
         <% end %>
         <% if current_user.role == "backoffice" || current_user.role == "entity" && current_user.entity.id == entity.id %>
           <button><%= link_to 'Edit', edit_entity_path(entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
-          <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Tem a certeza?' } %></td>
         <% end %>
       <% end %>
       </div>
