@@ -1,18 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<div class="card mb-3" style="max-width: 540px;">
+<style>
+  .noHover:hover {
+    background: none;
+  }
+</style>
+
+<div class="card mb-3 border-0" style="max-width: 540px;">
   <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
-    </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h4 class="card-text"><%= @news.title %></h4>
+        <h5 class="card-title"><%= @news.title %></h5>
         <p class="card-text"><%= @news.date %></p>
-        <p class="card-text"><%= @news.description %></p>
+        <p class="card-text"><%= raw @news.description %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div style="display: flex; justify-content: right; align-items: right; margin-top: 15px; position: absolute">
+        <% if @news.image.attached? %>
+            <%= image_tag(@news.image, style: "width: auto") %>
+        <% else %>
+          <img src="image" alt="sem imagem">
+        <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<%= link_to 'Ver todos', news_path %>
+<div "actions">
+  <% if user_signed_in? %>
+    <% if current_user.role == "backoffice" || current_user.role == "entity" %>
+      <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
+        <button><%= link_to 'Editar', edit_news_path(@news), style:"text-decoration: none; color: black", class:"noHover" %></button>
+        </br>
+
+        <td><%= link_to 'Destroy', @news, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"margin-left: 5px" %></td>
+      </div>
+      
+    <% end %>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'Ver todas', news_path, style:"color: blue; margin-top: 25px", class:"noHover" %>

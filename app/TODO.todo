@@ -78,7 +78,7 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
             ✔ card com image, botões e job params @done (12/23/2021, 12:32:53 PM)
             ✔ "Outras ofertas na mesma área" @done (12/23/2021, 12:32:54 PM)
             ✔ index design @done (12/27/2021, 9:25:40 AM)
-            ☐ show design
+            ✔ show design @done (12/27/2021, 9:55:30 AM)
 
         News:
             ☐ index design
@@ -91,7 +91,7 @@ Issues:
     ✔ candidates index com candidate sign_in, "undefined method" para todos os params @done (12/23/2021, 7:19:40 PM)
     ✔ tinymce can't insert previous :value on edit form @done (12/23/2021, 7:19:42 PM)
     ✔ job_offers create/edit/update/delete @done (12/25/2021, 6:50:40 PM)
-    ☐ fix: candidates can edit and destroy job_offers after login on entities index
+    ✔ fix: candidates can edit and destroy job_offers after login on entities index @done (12/27/2021, 9:56:39 AM)
     ☐ index job_offers get entity name by job_offers.entities_id
     ☐ show job_offers get entity name by job_offers.entities_id
     ☐ auto-complete old password on alterar-password path

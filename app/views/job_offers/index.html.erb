@@ -109,7 +109,8 @@
     </li>
   </ul>
 </nav>
-
-<% if current_user.role == "backoffice" || current_user.role == "entity" %>
-  <%= link_to 'Registar nova oferta', new_job_offer_path, style:"color: blue", class:"noHover" %>
+<% if user_signed_in? %>
+  <% if current_user.role == "backoffice" || current_user.role == "entity" %>
+    <%= link_to 'Registar nova oferta', new_job_offer_path, style:"color: blue", class:"noHover" %>
+  <% end %>
 <% end %>

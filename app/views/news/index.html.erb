@@ -1,53 +1,54 @@
 <p id="notice"><%= notice %></p>
 
-<h6>Notícias</h6>
+<h5>Notícias</h5>
 
-<h1>News visible to user admin</h1>
+<% @news.each do |n| %>
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="card border-0">
+        <div class="card-body">
+          <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
+          <% if n.image.attached? %>
+              <%= image_tag(n.image, style: "width: 50px") %>
+          <% else %>
+            <img src="image" alt="sem imagem">
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2" style="margin-left: -200px">
+      <div class="card border-0">
+        <div class="card-body">
+          <p class="card-text"><%= link_to n.title, news_path(n.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
+          <p class="card-text"><%= n.date %></p>
+          <p class="card-text"><%= raw n.description %></p>
+        </div>
+      </div>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Date</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+      <div "actions">
+      <% if user_signed_in? %>
+        <% if current_user.role == "backoffice" || current_user.role == "entity" && current_user.entity.id == n.id %>
+          <button><%= link_to 'Editar', edit_news_path(n), style:"text-decoration: none; color: black", class:"noHover" %></button>
+          <td><%= link_to 'Destroy', n, method: :delete, data: { confirm: 'Tem a certeza?' } %></td>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+    
+  </div>
+<% end %>
 
-  <tbody>
-    <% @news.each do |news| %>
-      <tr>
-        <td><%= news.title %></td>
-        <td><%= news.date %></td>
-        <td><%= news.description %></td>
-        <td><%= link_to 'Show', news %></td>
-        <td><%= link_to 'Edit', edit_news_path(news) %></td>
-        <td><%= link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<style>
+  .noHover:hover {
+    background: none;
+  }
+</style>
 
-<br>
-
-<%= link_to 'New News', new_news_path %>
-
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li> |
-    <li class="page-item"><a class="page-link" href="#">2</a></li> |
-    <li class="page-item"><a class="page-link" href="#">3</a></li> |
-    <li class="page-item"><a class="page-link" href="#">4</a></li> |
-    <li class="page-item"><a class="page-link" href="#">5</a></li> |
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+<% if user_signed_in? %>
+  <% if current_user.role == "backoffice" || current_user.role == "entity" %>
+    <%= link_to 'Registar nova notícia', new_news_path, style:"color: blue", class:"noHover" %>
+  <% end %>
+<% end %>

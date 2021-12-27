@@ -1,7 +1,7 @@
-<%= form_with(model: news, local: true) do |form| %>
-  <% if news.errors.any? %>
+<%= simple_form_for @news do |news| %>
+  <% if @news.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(news.errors.count, "error") %> prohibited this news from being saved:</h2>
+      <h2><%= pluralize(job_offer.errors.count, "error") %> prohibited this job_offer from being saved:</h2>
 
       <ul>
       <% news.errors.full_messages.each do |message| %>
@@ -11,22 +11,55 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="form-group row" style="margin-top: 15px">
+    <div class="col-2" >
+      <%= news.label "Título" %>
+      <%= news.text_field :title %>
+    </div>
+  
+    <div class="col-3">
+      <%= news.label "Data" %>
+      <%= news.datetime_select :date %>
+    </div>
+  </div>
+  
+  <div class="form-group col-5" style="margin-top: 15px">
+    <label for="exampleFormControlTextarea1">Sumário</label>
+      <%= tinymce %>
+      <%= news.text_area :summary, :class => "tinymce", :rows => 3, :cols => 98 %>
   </div>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
+  <div class="form-group col-5" style="margin-top: 15px">
+    <label for="exampleFormControlTextarea1">Texto</label>
+      <%= tinymce %>
+      <%= news.text_area :description, :class => "tinymce", :rows => 3, :cols => 98 %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+  <div class="col-2" style="margin-top: 15px">
+    <%= news.label "Imagem" %>
+    <%= news.file_field :image, style: "font-size: small" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group row" style="margin-top: 15px">
+    <div class="col-2" >
+      <%= news.label "Destaque" %>
+      <%= news.check_box :highlight %>
+    </div>
+
+    <div class="col-3" style="padding-left: 90px">
+      <%= news.label "Activa" %>
+      <%= news.check_box :active %>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="actions" style="margin-top: 15px">
+    <%= news.submit "Ok" %>
+    <%= news.button :button do %>
+      <%= link_to "Cancelar", job_offers_path, style:"text-decoration: none; border-radius: 25px; color: black; pointer-events: none" %>
+    <% end %>
   </div>
 <% end %>
+
+
