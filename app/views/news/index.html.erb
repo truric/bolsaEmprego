@@ -1,3 +1,54 @@
+<% if current_user.role == "backoffice" %>
+
+<h5>Notícias</h5>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="margin-bottom: 25px">
+
+  <svg style="position: absolute; padding-left:5px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+  </svg>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="  search" aria-label="Search", style="font-size: small">
+  </form>
+
+</nav>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Notícia</th>
+      <th scope="col">Data</th>
+      <th scope="col">Destaque</th>
+      <th scope="col">Activa</th>
+      <th scope="col">Acções</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @news.each do |news| %>
+    <tr>
+      <td><%= news.title %></td>
+      <td><%= news.date %></td>
+      <td><%= news.highlight %></td>
+      <td><%= news.active %></td>
+      <td><button><%= link_to 'Detalhe', news_path(news.id), style:"text-decoration: none; color: black", class:"noHover" %></button>
+      <button><%= link_to 'Editar', edit_news_path(news), style:"text-decoration: none; color: black", class:"noHover" %></button>
+      <button><%= link_to 'Apagar', news, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<button><%= link_to 'Inserir', new_news_path, style:"color: blue", class:"noHover", style:"text-decoration: none; color: black" %></button>
+
+<style>
+  .noHover:hover {
+    background: none;
+  }
+</style>
+
+
+<% else %>
+
 <p id="notice"><%= notice %></p>
 
 <h5>Notícias</h5>
@@ -51,4 +102,6 @@
   <% if current_user.role == "backoffice" || current_user.role == "entity" %>
     <%= link_to 'Registar nova notícia', new_news_path, style:"color: blue", class:"noHover" %>
   <% end %>
+<% end %>
+
 <% end %>
