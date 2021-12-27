@@ -1,0 +1,40 @@
+<% if current_user.role == "backoffice" %>
+
+  <h5>Detalhe do utilizador</h5>
+
+  <div class="form-group row" style="margin-top: 15px">
+    <div class="col-2" >
+      <h7 style="font-weight: bold"> Nome <h7/>
+      <p style="font-weight:normal">Admin</p>
+    </div>
+
+    <div class="col-3" style="padding-left: 90px">
+      <h7 style="font-weight: bold"> Tipo <h7/>
+      <p style="font-weight:normal"><%= current_user.role %></p>
+    </div>
+  </div>
+
+  <div class="form-group row" style="margin-top: 15px">
+    <div class="col-2" >
+      <h7 style="font-weight: bold"> Email <h7/>
+      <p style="font-weight:normal"><%= current_user.email %></p>
+    </div>
+
+    <div class="col-3" style="padding-left: 90px">
+      <h7 style="font-weight: bold"> Activo <h7/>
+        <p style="font-weight:normal">Sim</p>
+    </div>
+  </div>
+
+  <button><%= link_to 'Alterar Password', edit_user_registration_path, style:"text-decoration: none; color: black", class:"noHover" %></button>
+  <button><%= link_to 'Apagar', current_user, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
+  <button><%= link_to 'Inserir', new_user_registration_path, style:"text-decoration: none; color: black", class:"noHover" %></button>
+  <button><%= link_to 'Listagem', users_path, style:"text-decoration: none; color: black", class:"noHover" %></button>
+
+<% end %>
+
+<style>
+  .noHover:hover {
+    background: none;
+  }
+</style>

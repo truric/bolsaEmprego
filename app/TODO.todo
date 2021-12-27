@@ -127,6 +127,7 @@ Issues:
     ✔ fix: candidates can edit and destroy job_offers after login on entities index @done (12/27/2021, 9:56:39 AM)
     ☐ alterar admin para backoffice nos if statements em todas as views
     ☐ show e edit para user backoffice
+    ☐ backoffice logged in cant reacte new user "already signed in"
     ☐ index job_offers get entity name by job_offers.entities_id
     ☐ show job_offers get entity name by job_offers.entities_id
     ☐ change date to date range param for job_offer and news forms

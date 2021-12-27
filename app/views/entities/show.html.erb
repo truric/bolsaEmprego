@@ -6,6 +6,46 @@
   }
 </style>
 
+<% if current_user.role == "backoffice" %>
+
+  <h5>Detalhe do utilizador</h5>
+
+  <div class="form-group row" style="margin-top: 15px">
+    <div class="col-2" >
+      <h7 style="font-weight: bold"> Nome <h7/>
+      <p style="font-weight:normal"><%= @entity.name %></p>
+    </div>
+
+    <div class="col-3" style="padding-left: 90px">
+      <h7 style="font-weight: bold"> Tipo <h7/>
+      <p style="font-weight:normal"><%= @entity.user.role %></p>
+    </div>
+  </div>
+
+  <div class="form-group row" style="margin-top: 15px">
+    <div class="col-2" >
+      <h7 style="font-weight: bold"> Email <h7/>
+      <p style="font-weight:normal"><%= @entity.user.email %></p>
+    </div>
+
+    <div class="col-3" style="padding-left: 90px">
+      <h7 style="font-weight: bold"> Activo <h7/>
+      <% if @entity.active %>
+        <p style="font-weight:normal">Sim</p>
+      <% else %>
+        <p style="font-weight:normal">Não</p>
+      <% end %>
+    </div>
+  </div>
+
+  <button><%= link_to 'Editar', edit_entity_path(@entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
+  <button><%= link_to 'Alterar Password', edit_user_registration_path, style:"text-decoration: none; color: black", class:"noHover" %></button>
+  <button><%= link_to 'Apagar', @entity, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
+  <button><%= link_to 'Inserir', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+  <button><%= link_to 'Listagem', entities_path, style:"text-decoration: none; color: black", class:"noHover" %></button>
+
+<% else %>
+
 <h5><%= @entity.name %></h5>
 
 <div class="row">
@@ -20,7 +60,7 @@
         <% end %>
         </div>
         <div "actions">
-          <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+          <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
 
             <% if user_signed_in? && current_user.role == "candidate" %>
               <button><%= link_to 'Interessado/a', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
@@ -29,12 +69,12 @@
           </div>
           <% if user_signed_in? %>
             <% if current_user.role == "backoffice" || current_user.role == "entity" && current_user.entity.id == @entity.id %>
-              <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+              <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
                 <button><%= link_to 'Edit', edit_entity_path(@entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
                 </br>
               </div>
 
-              <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+              <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
                 <td><%= link_to 'Destroy', @entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </div>
               
@@ -113,3 +153,5 @@
 <% end %>
 
 <%= link_to 'Ver Entidades', entities_path, style:"color: blue; margin-top: 15px", class:"noHover" %>
+
+<% end %>

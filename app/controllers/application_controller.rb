@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     end
 
     def user_params
-        params.permit(:email, :password, entities_attributes: [:id, :name, :description, :industry, :address, :county, :phone, :fax, :website])
+        params.permit(:email, :password, entities_attributes: [:id, :name, :description, :industry, :address, :phone, :fax, :website])
     end
 
 end
