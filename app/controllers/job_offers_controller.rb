@@ -3,7 +3,7 @@ class JobOffersController < ApplicationController
 
   # GET /job_offers or /job_offers.json
   def index
-    @job_offers = JobOffer.all
+    @job_offers = JobOffer.paginate(page: params[:page], per_page: 3)
   end
 
   # GET /job_offers/1 or /job_offers/1.json
@@ -26,7 +26,6 @@ class JobOffersController < ApplicationController
     @job_offer.entities_id = current_user.entity.id
 
     respond_to do |format|
-    byebug
       if @job_offer.save
         format.html { redirect_to @job_offer, notice: "Job offer was successfully created." }
         format.json { render :show, status: :created, location: @job_offer }

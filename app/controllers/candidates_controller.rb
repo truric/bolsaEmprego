@@ -3,7 +3,7 @@ class CandidatesController < ApplicationController
 
   # GET /candidates or /candidates.json
   def index
-    @candidates = Candidate.all
+    @candidates = Candidate.paginate(page: params[:page], per_page: 3)
   end
 
   # GET /candidates/1 or /candidates/1.json

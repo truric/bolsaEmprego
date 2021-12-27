@@ -41,7 +41,7 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
         alterar página index:
             ✔ card: "imagem, entidade name hyperlink azul, número de ofertas active, descrição, botões: "interessado/a" (se logged in && user.role == "candidate") + "Editar" (same entity_id + backoffice role)" @done (12/26/2021, 11:31:43 AM)
             ✔ listar todas as entidades criadas @done (12/26/2021, 11:31:45 AM)
-            ☐ adicionar sistema de paginação a funcionar
+            ✔ adicionar sistema de paginação a funcionar @done (12/27/2021, 6:07:57 PM)
             ✔ botão: "Quero-me registar" @done (12/26/2021, 11:31:53 AM)
             ☐ search bar com pesquisa activa pelo nome e descrição das entidades, + 2 dropdowns filters a funcionar
         
@@ -61,7 +61,7 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
         alterar página index:
             ✔ card: "imagem, nome candidato hyperlink azul, industry, número de anos de experiência, grade / qualification, botões: "interessado/a" (se logged in && user.role == "entity") + "Editar" (backoffice role + same candidate_id???)" @done (12/26/2021, 6:33:36 PM)
             ✔ listar todos oss candidatos criados @done (12/26/2021, 6:33:39 PM)
-            ☐ adicionar sistema de paginação a funcionar
+            ✔ adicionar sistema de paginação a funcionar @done (12/27/2021, 6:07:54 PM)
             ✔ botão: "Registar Candidato" @done (12/26/2021, 6:33:49 PM)
             ☐ search bar que pesquisa pelo nome e descrição dos candidatos, + 2 dropdowns filters
 
@@ -85,37 +85,37 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
             ✔ show design @done (12/27/2021, 10:50:09 AM)
 
     Backoffice/Admin:
-        ☐ create a seed by hand on console
+        ✔ create a seed by hand on console @done (12/27/2021, 4:31:52 PM)
         homepage:
-            ☐ navbar Home | Utilizadores | Notícias, aletrar o _header para este user
-            ☐ homepage vazia
+            ✔ navbar Home | Utilizadores | Notícias, aletrar o _header para este user @done (12/27/2021, 4:31:53 PM)
+            ✔ homepage vazia @done (12/27/2021, 4:31:54 PM)
 
         página Utilizadores:
-            ☐ título, search bar, dropdown list filter, tabela de CRUD de todos os users com Nome, Tipo, Activo S/N, CRUD actions
-            ☐ botão "Inserir" novo user
+            ✔ título, search bar, dropdown list filter, tabela de CRUD de todos os users com Nome, Tipo, Activo S/N, CRUD actions @done (12/27/2021, 4:31:55 PM)
+            ✔ botão "Inserir" novo user @done (12/27/2021, 4:31:56 PM)
 
         página show para Utilizador:
-            ☐ titulo, params user, botões CRUD + alterar password
+            ✔ titulo, params user, botões CRUD + alterar password @done (12/27/2021, 4:31:57 PM)
 
         página Inserir/Editar Utilizador:
-            ☐ form com params e botões
+            ✔ form com params e botões @done (12/27/2021, 4:31:58 PM)
 
         página Alterar Password Utilizador:
-            ☐ form alterar password
+            ✔ form alterar password @done (12/27/2021, 4:31:59 PM)
 
         página Notícias:
-            ☐ título, search bar, tabela de CRUD de notícias com título, Data, Destaque S/N, CRUD actions
-            ☐ botão "Inserir" nova notícia
+            ✔ título, search bar, tabela de CRUD de notícias com título, Data, Destaque S/N, CRUD actions @done (12/27/2021, 4:32:00 PM)
+            ✔ botão "Inserir" nova notícia @done (12/27/2021, 4:32:01 PM)
 
         página show para Notícia:
-            ☐ titulo, params user, botões CRUD
+            ✔ titulo, params user, botões CRUD @done (12/27/2021, 4:32:01 PM)
 
         página Inserir/Editar Notícia:
-            ☐ form com params e botões
+            ✔ form com params e botões @done (12/27/2021, 4:32:02 PM)
 
     Redo design homepage para User não loggado:
-        ☐ as últimas 3 ofertas, entidades, candidatos e as notícias em destaque com hyperlinks nos títulos/nomes
-        ☐ botões de "ver todas as ofertas/empresas/notícias/candidatos"
+        ✔ as últimas 3 ofertas, entidades, candidatos e as notícias em destaque com hyperlinks nos títulos/nomes @done (12/27/2021, 4:32:06 PM)
+        ✔ botões de "ver todas as ofertas/empresas/notícias/candidatos" @done (12/27/2021, 4:32:08 PM)
 
 Issues:
     ✔ PORTUGUES @done (12/23/2021, 9:57:55 AM)
@@ -125,28 +125,26 @@ Issues:
     ✔ tinymce can't insert previous :value on edit form @done (12/23/2021, 7:19:42 PM)
     ✔ job_offers create/edit/update/delete @done (12/25/2021, 6:50:40 PM)
     ✔ fix: candidates can edit and destroy job_offers after login on entities index @done (12/27/2021, 9:56:39 AM)
-    ☐ alterar admin para backoffice nos if statements em todas as views
-    ☐ show e edit para user backoffice
-    ☐ backoffice logged in cant reacte new user "already signed in"
-    ☐ index job_offers get entity name by job_offers.entities_id
-    ☐ show job_offers get entity name by job_offers.entities_id
-    ☐ change date to date range param for job_offer and news forms
-    ☐ auto-complete old password on alterar-password path
+    ✔ alterar admin para backoffice nos if statements em todas as views @done (12/27/2021, 4:28:21 PM)
+    ✔ show e edit para user backoffice @done (12/27/2021, 4:28:27 PM)
+    ☐ backoffice logged in cant create new user "already signed in"
+    ✔ index job_offers get entity name by job_offers.entities_id @done (12/27/2021, 4:42:12 PM)
+    ✔ show job_offers get entity name by job_offers.entities_id @done (12/27/2021, 4:42:13 PM)
     ☐ same image appears for all entities/candidates even with different uploaded images
     ☐ figure out "interessado/a" event click to a query or pivot table or new table
-    ☐ pagination
+    ✔ pagination @done (12/27/2021, 6:07:50 PM)
     ☐ search bar system
 
 Candidato pode manifestar interesse numa ou mais entidades e candidatar-se a job_offers:
     ☐ candidate_applied_job_offers job_offer_id candidate_id
     ☐ candidate_scouting_entity candidate_id entity_id
 Entidade pode mostrar interesse em Candidato:
-    ☐ entity_scouting_candidate entity_id, candidate_idcd Desktop/bolsaEmprego/
+    ☐ entity_scouting_candidate entity_id, candidate_id
 
 
 Not urgent issues :
-    ☐ set previous :value on dropdowns
-    ☐ new job_offer date range simpleform param
+    ✔ set previous :value on dropdowns @done (12/27/2021, 5:32:04 PM)
+    ✔ new job_offer date range simpleform param @done (12/27/2021, 5:32:07 PM)
     ☐ mailer smtp;
 
 

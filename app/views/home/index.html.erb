@@ -137,9 +137,9 @@
           <div class="card border-0">
             <div class="card-body">
               <p class="card-text"><%= link_to candidate.name, candidate_path(candidate.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
-              <p class="card-text"><%= candidate.description %></p>
-              <p class="card-text"><%= candidate.qualification %></p>
-              <p class="card-text"><%= candidate.address %></p>
+              <p class="card-text"><%= raw candidate.description %></p>
+              <p class="card-text"><%= raw candidate.qualification %></p>
+              <p class="card-text"><%= raw candidate.address %></p>
             </div>
           </div>
         </div>
@@ -197,20 +197,19 @@
           <div class="card-body">
             <p class="card-text"><%= link_to job_offer.name, job_offer_path(job_offer.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
             <p class="card-text"><%= job_offer.date %></p>
-            <p class="card-text"><%= job_offer.entities_id %></p>
+            
+            <p class="card-text"><%= Entity.find(job_offer.entities_id).name %></p>
             <p class="card-text"><%= raw job_offer.description %></p>
           </div>
         </div>
-      </div>
-
-      <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
-        <div "actions">
-          <%= link_to 'Ver todas as ofertas-me', job_offers_path, style:"color: blue", class:"noHover" %>
-        </div>
-      </div>
-    
+      </div>    
     </div>
   <% end %>
+  <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+    <div "actions">
+      <%= link_to 'Ver todas as ofertas', job_offers_path, style:"color: blue", class:"noHover" %>
+    </div>
+  </div>
 
 
   <h5>Notícias</h5>
@@ -237,16 +236,14 @@
             <p class="card-text"><%= raw n.description %></p>
           </div>
         </div>
-      </div>
-
-      <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
-        <div "actions">
-          <%= link_to 'Ver todas as notícias', news_index_path, style:"color: blue", class:"noHover" %>
-        </div>
-      </div>
-    
+      </div>    
     </div>
   <% end %>
+  <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+    <div "actions">
+      <%= link_to 'Ver todas as notícias', news_index_path, style:"color: blue", class:"noHover" %>
+    </div>
+  </div>
 
   <h5>Últimas Empresas</h5>
   <% @entities.each do |entity| %>
@@ -268,19 +265,17 @@
         <div class="card border-0">
           <div class="card-body">
             <p class="card-text"><%= link_to entity.name, entity_path(entity.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
-            <p class="card-text"><%= entity.description %></p>
+            <p class="card-text"><%= raw entity.description %></p>
           </div>
         </div>
-      </div>
-
-      <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
-        <div "actions">
-          <%= link_to 'Ver todas as empresas', entities_path, style:"color: blue", class:"noHover" %>
-        </div>
-      </div>
-    
+      </div>    
     </div>
   <% end %>
+  <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+    <div "actions">
+      <%= link_to 'Ver todas as empresas', entities_path, style:"color: blue", class:"noHover" %>
+    </div>
+  </div>
 
   <h5>Últimos Candidatos</h5>
   <% @candidates.each do |candidate| %>
@@ -303,20 +298,18 @@
           <div class="card-body">
             <p class="card-text"><%= link_to candidate.name, candidate_path(candidate.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
             <p class="card-text"><%= candidate.industry %></p>
-            <p class="card-text"><%= candidate.experience %></p>
+            <p class="card-text"><%= raw candidate.experience %></p>
             <p class="card-text"><%= candidate.grade %></p>
           </div>
         </div>
       </div>
-
-      <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
-        <div "actions">
-          <%= link_to 'Ver todos os candidatos', candidates_path, style:"color: blue", class:"noHover" %>
-        </div>
-      </div>
-    
     </div>
   <% end %>
+  <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+    <div "actions">
+      <%= link_to 'Ver todos os candidatos', candidates_path, style:"color: blue", class:"noHover" %>
+    </div>
+  </div>
 <% end %>
 
 <style>

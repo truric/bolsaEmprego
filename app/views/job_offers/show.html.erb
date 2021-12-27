@@ -28,7 +28,7 @@
 
           </div>
           <% if user_signed_in? %>
-            <% if current_user.role == "backoffice" || current_user.role == "entity" && current_user.entity.id == @job_offer.id %>
+            <% if current_user.role == "backoffice" || current_user.role == "entity" && current_user.entity.id == @job_offer.entities_id %>
               <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
                 <button><%= link_to 'Editar', edit_job_offer_path(@job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
                 </br>
@@ -112,4 +112,4 @@
   
 <% end %>
 
-<%= link_to 'Ver Entidades', entities_path, style:"color: blue; margin-top: 15px", class:"noHover" %>
+<%= link_to 'Ver Ofertas', job_offers_path, style:"color: blue; margin-top: 15px", class:"noHover" %>

@@ -18,8 +18,7 @@
     </div>
   
     <div class="col-3">
-      <%= f.label "Validade" %>
-      <%= f.datetime_select :date %>
+      <%= f.input :date, :label => "Validade", as: :date, start_year: Date.today.year, end_year: Date.today.year + 1, start_month: Date.today.month, end_month: Date.today.month + 12, discard_day: false, order: [:month, :year] %>
     </div>
   </div>
   
@@ -35,6 +34,11 @@
     <% if job_offer.image.attached? %>
         <%= image_tag(job_offer.image, style: "width: 50px") %>
     <% end %>
+  </div>
+  
+  <div class="col-2" style="margin-top: 15px">
+    <%= f.label "Empresa" %>
+    <%= link_to Entity.find(current_user.entity.id).name, entity_path(Entity.find(current_user.entity.id)), style:"color: blue", class:"noHover" %>
   </div>
 
   <div class="field" style="margin-top: 15px">
@@ -68,3 +72,9 @@
     <% end %>
   </div>
 <% end %>
+
+<style>
+  .noHover:hover {
+    background: none;
+  }
+</style>

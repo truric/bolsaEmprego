@@ -84,32 +84,14 @@
   </div>
 <% end %>
 
+<% if user_signed_in? == false %>
+  <%= link_to 'Quero-me registar', new_user_registration_path(role:"entity"), style:"color: blue", class:"noHover" %>
+<% end %>
+
+<%= will_paginate @entities, style:"margin-top: 35px; color: blue", class:"noHover btn" %>
+
 <style>
   .noHover:hover {
     background: none;
   }
 </style>
-
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li> |
-    <li class="page-item"><a class="page-link" href="#">2</a></li> |
-    <li class="page-item"><a class="page-link" href="#">3</a></li> |
-    <li class="page-item"><a class="page-link" href="#">4</a></li> |
-    <li class="page-item"><a class="page-link" href="#">5</a></li> |
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<% if user_signed_in? == false %>
-  <%= link_to 'Quero-me registar', new_user_registration_path(role:"entity"), style:"color: blue", class:"noHover" %>
-<% end %>

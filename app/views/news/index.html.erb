@@ -98,6 +98,8 @@
   }
 </style>
 
+<br>
+
 <% if user_signed_in? %>
   <% if current_user.role == "backoffice" || current_user.role == "entity" %>
     <%= link_to 'Registar nova notícia', new_news_path, style:"color: blue", class:"noHover" %>
@@ -105,3 +107,5 @@
 <% end %>
 
 <% end %>
+
+<%= will_paginate @news, style:"margin-top: 35px; color: blue", class:"noHover btn" %>

@@ -5,7 +5,7 @@ class EntitiesController < ApplicationController
 
   # GET /entities or /entities.json
   def index
-    @entities = Entity.all
+    @entities = Entity.all.paginate(page: params[:page], per_page: 3)
   end
 
   # GET /entities/1 or /entities/1.json
