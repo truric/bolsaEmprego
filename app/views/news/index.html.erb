@@ -1,4 +1,4 @@
-<% if current_user.role == "backoffice" %>
+<% if user_signed_in? && current_user.role == "backoffice" %>
 
 <h5>Notícias</h5>
 
@@ -83,7 +83,7 @@
       <% if user_signed_in? %>
         <% if current_user.role == "backoffice" || current_user.role == "entity" && current_user.entity.id == n.id %>
           <button><%= link_to 'Editar', edit_news_path(n), style:"text-decoration: none; color: black", class:"noHover" %></button>
-          <td><%= link_to 'Destroy', n, method: :delete, data: { confirm: 'Tem a certeza?' } %></td>
+          <td><%= link_to 'Cancelar', n, method: :delete, data: { confirm: 'Tem a certeza?' } %></td>
         <% end %>
       <% end %>
       </div>

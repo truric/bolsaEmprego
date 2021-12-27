@@ -89,8 +89,8 @@
           <button><%= link_to 'Interessado/a', new_user_registration_path(role:"candidate"), style:"text-decoration: none; color: black", class:"noHover" %></button>
         <% end %>
         <% if current_user.role == "backoffice" || current_user.role == "candidate" && current_user.candidate.id == candidate.id %>
-          <button><%= link_to 'Edit', edit_candidate_path(candidate), style:"text-decoration: none; color: black", class:"noHover" %></button>
-          <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <button><%= link_to 'Editar', edit_candidate_path(candidate), style:"text-decoration: none; color: black", class:"noHover" %></button>
+          <td><%= link_to 'Cancelar', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       <% end %>
       </div>
@@ -125,4 +125,6 @@
   </ul>
 </nav>
 
-<%= link_to 'Registar Candidato', new_user_registration_path(role:"candidate"), style:"color: blue", class:"noHover" %>
+<% if user_signed_in? == false %>
+  <%= link_to 'Registar Candidato', new_user_registration_path(role:"candidate"), style:"color: blue", class:"noHover" %>
+<% end %>

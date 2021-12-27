@@ -1,10 +1,65 @@
-<p id="notice"><%= notice %></p>
-
 <style>
   .noHover:hover {
     background: none;
   }
 </style>
+
+<% if user_signed_in? && current_user.role == "backoffice" %>
+
+<h5>Detalhe da Notícia</h5>
+
+  <div class="form-group row" style="margin-top: 15px">
+    <div class="col-2" >
+      <h7 style="font-weight: bold"> Título <h7/>
+      <p style="font-weight:normal"><%= @news.title %></p>
+    </div>
+
+    <div class="col-3" style="padding-left: 90px">
+      <h7 style="font-weight: bold"> Data <h7/>
+      <p style="font-weight:normal"><%= @news.date %></p>
+    </div>
+  </div>
+
+  <h7 style="font-weight: bold"> Sumário <h7/>
+  <p style="font-weight:normal"><%= raw @news.summary %></p>
+
+  <h7 style="font-weight: bold"> Texto <h7/>
+  <p style="font-weight:normal"><%= raw @news.description %></p>
+
+  <h7 style="font-weight: bold"> Imagem <h7/>
+  <br>
+  <% if @news.image.attached? %>
+    <%= image_tag(@news.image, style: "width: 150px; margin-top: 15px") %>
+  <% end %>
+
+  <div class="form-group row" style="margin-top: 15px">
+    <div class="col-2" >
+      <h7 style="font-weight: bold"> Destaque <h7/>
+      <% if @news.highlight %>
+        <p style="font-weight:normal">Sim</p>
+      <% else %>
+        <p style="font-weight:normal">Não</p>
+      <% end %>
+    </div>
+
+    <div class="col-3" style="padding-left: 90px">
+      <h7 style="font-weight: bold"> Activa <h7/>
+      <% if @news.active %>
+        <p style="font-weight:normal">Sim</p>
+      <% else %>
+        <p style="font-weight:normal">Não</p>
+      <% end %>
+    </div>
+  </div>
+
+  <button><%= link_to 'Editar', edit_news_path(@news), style:"text-decoration: none; color: black", class:"noHover" %></button>
+  <button><%= link_to 'Apagar', @news, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
+  <button><%= link_to 'Inserir', new_news_path, style:"text-decoration: none; color: black", class:"noHover" %></button>
+  <button><%= link_to 'Listagem', news_index_path, style:"text-decoration: none; color: black", class:"noHover" %></button>
+
+<% else %>
+
+<p id="notice"><%= notice %></p>
 
 <div class="card mb-3 border-0" style="max-width: 540px;">
   <div class="row g-0">
@@ -34,7 +89,7 @@
         <button><%= link_to 'Editar', edit_news_path(@news), style:"text-decoration: none; color: black", class:"noHover" %></button>
         </br>
 
-        <td><%= link_to 'Destroy', @news, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"margin-left: 5px" %></td>
+        <td><%= link_to 'Cancelar', @news, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"margin-left: 5px" %></td>
       </div>
       
     <% end %>
@@ -43,4 +98,6 @@
 
 <br>
 
-<%= link_to 'Ver todas', news_path, style:"color: blue; margin-top: 25px", class:"noHover" %>
+<%= link_to 'Ver todas', news_index_path, style:"color: blue; margin-top: 25px", class:"noHover" %>
+
+<% end %>

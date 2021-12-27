@@ -75,7 +75,7 @@
         <% end %>
         <% if current_user.role == "backoffice" || current_user.role == "entity" && current_user.entity.id == job_offer.id %>
           <button><%= link_to 'Editar', edit_job_offer_path(job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
-          <td><%= link_to 'Destroy', job_offer, method: :delete, data: { confirm: 'Tem a certeza?' } %></td>
+          <td><%= link_to 'Cancelar', job_offer, method: :delete, data: { confirm: 'Tem a certeza?' } %></td>
         <% end %>
       <% end %>
       </div>

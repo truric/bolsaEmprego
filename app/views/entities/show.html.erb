@@ -6,7 +6,7 @@
   }
 </style>
 
-<% if current_user.role == "backoffice" %>
+<% if user_signed_in? && current_user.role == "backoffice" %>
 
   <h5>Detalhe do utilizador</h5>
 
@@ -70,12 +70,12 @@
           <% if user_signed_in? %>
             <% if current_user.role == "backoffice" || current_user.role == "entity" && current_user.entity.id == @entity.id %>
               <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
-                <button><%= link_to 'Edit', edit_entity_path(@entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
+                <button><%= link_to 'Editar', edit_entity_path(@entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
                 </br>
               </div>
 
               <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
-                <td><%= link_to 'Destroy', @entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'Cancelar', @entity, method: :delete, data: { confirm: 'Tem a certeza?' } %></td>
               </div>
               
               <% end %>
