@@ -134,6 +134,7 @@ Issues:
     ☐ figure out "interessado/a" event click to a query or pivot table or new table
     ✔ pagination @done (12/27/2021, 6:07:50 PM)
     ☐ search bar system
+    ☐ user active true/false 
 
 Candidato pode manifestar interesse numa ou mais entidades e candidatar-se a job_offers:
     ☐ candidate_applied_job_offers job_offer_id candidate_id

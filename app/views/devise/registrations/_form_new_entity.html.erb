@@ -98,6 +98,15 @@
         <%= e.input :description, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 }, :label => "Apresentação" %>
       </div>
 
+      <% if user_signed_in? && current_user.role == "backoffice" %>
+        <div class="form-group row" style="margin-top: 15px">
+          <div class="col-3">
+            <%= e.label "Activa" %>
+            <%= e.check_box :active, {checked: true} %>
+          </div>
+        </div>
+      <% end %>
+
     <% end %>
 
   <div class="actions">

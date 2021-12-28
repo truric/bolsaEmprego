@@ -23,7 +23,7 @@
           <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
 
             <% if user_signed_in? && current_user.role == "candidate" %>
-              <button><%= link_to 'Interessado/a', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+              <button><%= link_to 'Candidatar-me', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
             <% end %>
 
           </div>
@@ -66,7 +66,7 @@
 
 <% @job_offers.each do |job_offer| %>
 
-  <% if job_offer.active && job_offer.location == @job_offer.location %>
+  <% if job_offer.active && job_offer.location == @job_offer.location && job_offer.id != @job_offer.id %>
 
     <div class="row">
       <div class="col-sm-2">
@@ -112,4 +112,6 @@
   
 <% end %>
 
-<%= link_to 'Ver Ofertas', job_offers_path, style:"color: blue; margin-top: 15px", class:"noHover" %>
+<br>
+
+<%= link_to 'Ver Ofertas', job_offers_path, style:"color: blue", class:"noHover" %>

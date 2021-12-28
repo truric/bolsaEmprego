@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_160933) do
     t.string "experience"
     t.string "address"
     t.string "phone"
-    t.integer "fax"
+    t.string "fax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_160933) do
     t.string "id_card"
     t.datetime "dob"
     t.string "website"
+    t.boolean "active"
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_160933) do
     t.string "postal_code"
     t.string "location"
     t.integer "tax_number"
+    t.boolean "active"
     t.index ["user_id"], name: "index_entities_on_user_id"
   end
 
@@ -76,15 +78,14 @@ ActiveRecord::Schema.define(version: 2021_12_22_160933) do
     t.string "name"
     t.string "description"
     t.datetime "date"
-    t.string "company"
-    t.string "county"
     t.string "industry"
     t.string "contract"
-    t.float "salary"
+    t.string "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "entities_id"
     t.boolean "active"
+    t.string "location"
     t.index ["entities_id"], name: "index_job_offers_on_entities_id"
   end
 
