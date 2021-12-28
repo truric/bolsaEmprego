@@ -1,3 +1,13 @@
-<h1>Inserir/Editar</h1>
+<% if user_signed_in? %>
 
-<%= render 'form', news: @news %>
+    <% if current_user.role == "entity" || current_user.role == "backoffice" %>
+
+    <h1>Inserir/Editar</h1>
+
+    <%= render 'form', news: @news %>
+
+    <% else %>
+        <% controller.redirect_to root_url %>
+    <% end %>
+    
+<% end %>

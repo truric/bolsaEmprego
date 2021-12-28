@@ -1,88 +1,92 @@
-<h5>Utilizadores</h5>
+<% if user_signed_in? && current_user.role == "backoffice" %>
 
-<nav class="navbar navbar-expand-lg navbar-light" style="margin-bottom: 25px">
+  <h5>Utilizadores</h5>
 
-  <svg style="position: absolute; padding-left:5px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-  </svg>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="  search" aria-label="Search", style="font-size: small">
-    </form>
+  <nav class="navbar navbar-expand-lg navbar-light" style="margin-bottom: 25px">
 
-    <div class="dropdown" style="padding-left: 50px">
+    <svg style="position: absolute; padding-left:5px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+    </svg>
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="  search" aria-label="Search", style="font-size: small">
+      </form>
 
-    <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
-        aria-haspopup="true" aria-expanded="false", style="font-size: small">
-        Tipo...
-    </button>
+      <div class="dropdown" style="padding-left: 50px">
 
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Actividade 1</a>
-        <a class="dropdown-item" href="#">Actividade 2</a>
-    </div>
+      <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
+          aria-haspopup="true" aria-expanded="false", style="font-size: small">
+          Tipo...
+      </button>
 
-    </div>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Actividade 1</a>
+          <a class="dropdown-item" href="#">Actividade 2</a>
+      </div>
 
-</nav>
+      </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Nome</th>
-      <th scope="col">Tipo</th>
-      <th scope="col">Activo</th>
-      <th scope="col">Acções</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @users.each do |user| %>
-    <tr>
-        <% if user.role == "entity" %>
-            <td><%= user.entity.name %></td>
-            <td><%= user.role %></td>
-            <% if user.entity.active %>
-                <td>Sim</td>
-            <% else %>
-                <td>Não</td>
-            <% end %>
-            <td>
-              <button><%= link_to 'Detalhe', entity_path(user.entity.id), style:"text-decoration: none; color: black", class:"noHover" %></button>
-              <button><%= link_to 'Editar', edit_entity_path(user.entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
-              <button><%= link_to 'Apagar', user.entity, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
-            </td>
-            <% elsif user.role == "candidate" %>
-            <td><%= user.candidate.name %></td>
-            <td><%= user.role %></td>
-            <% if user.candidate.active %>
-                <td>Sim</td>
-            <% else %>
-                <td>Não</td>
-            <% end %>
-            <td>
-              <button><%= link_to 'Detalhe', candidate_path(user.candidate.id), style:"text-decoration: none; color: black", class:"noHover" %></button>
-              <button><%= link_to 'Editar', edit_candidate_path(user.candidate), style:"text-decoration: none; color: black", class:"noHover" %></button>
-              <button><%= link_to 'Apagar', user.candidate, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
-            </td>
-        <% else  %>
-            <td>Admin</td>
-            <td><%= user.role %></td>
-            <td>Sim</td>
-            <td>
-              <button><%= link_to 'Detalhe', user_path(user), style:"text-decoration: none; color: black", class:"noHover" %></button>
-              <button><%= link_to 'Editar', edit_user_path(user), style:"text-decoration: none; color: black", class:"noHover" %></button>
-              <button><%= link_to 'Apagar', user, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
-            </td>
-        <% end %>
+  </nav>
 
-    </tr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Activo</th>
+        <th scope="col">Acções</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+          <% if user.role == "entity" %>
+              <td><%= user.entity.name %></td>
+              <td><%= user.role %></td>
+              <% if user.entity.active %>
+                  <td>Sim</td>
+              <% else %>
+                  <td>Não</td>
+              <% end %>
+              <td>
+                <button><%= link_to 'Detalhe', entity_path(user.entity.id), style:"text-decoration: none; color: black", class:"noHover" %></button>
+                <button><%= link_to 'Editar', edit_entity_path(user.entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
+                <button><%= link_to 'Apagar', user.entity, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
+              </td>
+              <% elsif user.role == "candidate" %>
+              <td><%= user.candidate.name %></td>
+              <td><%= user.role %></td>
+              <% if user.candidate.active %>
+                  <td>Sim</td>
+              <% else %>
+                  <td>Não</td>
+              <% end %>
+              <td>
+                <button><%= link_to 'Detalhe', candidate_path(user.candidate.id), style:"text-decoration: none; color: black", class:"noHover" %></button>
+                <button><%= link_to 'Editar', edit_candidate_path(user.candidate), style:"text-decoration: none; color: black", class:"noHover" %></button>
+                <button><%= link_to 'Apagar', user.candidate, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
+              </td>
+          <% else  %>
+              <td>Admin</td>
+              <td><%= user.role %></td>
+              <td>Sim</td>
+              <td>
+                <button><%= link_to 'Detalhe', user_path(user), style:"text-decoration: none; color: black", class:"noHover" %></button>
+                <button><%= link_to 'Apagar', user, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
+              </td>
+          <% end %>
+
+      </tr>
+  <% end %>
+  </tbody>
+  </table>
+
+  <button><%= link_to 'Inserir', user_registry_new_path, style:"color: blue", class:"noHover", style:"text-decoration: none; color: black" %></button>
+
+  <style>
+    .noHover:hover {
+      background: none;
+    }
+  </style>
+<% else %>
+<% controller.redirect_to root_url %>
 <% end %>
-</tbody>
-</table>
-
-<button><%= link_to 'Inserir', user_registry_new_path, style:"color: blue", class:"noHover", style:"text-decoration: none; color: black" %></button>
-
-<style>
-  .noHover:hover {
-    background: none;
-  }
-</style>

@@ -1,7 +1,8 @@
 class CandidatesController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_candidate, only: [:show, :edit, :update, :destroy ]
   before_action :authenticate_user!, except: [:index, :show, :edit]
-  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /candidates or /candidates.json
   def index
@@ -67,18 +68,10 @@ class CandidatesController < ApplicationController
     end
   end
 
-  def correct_user
-  #   @entity = current_user.entity.find_by(id: params[:id])
-    if current_user.role != "candidate" || current_user.role != "backoffice" || current_user.candidate.id != this.candidate.id
-      redirect_to candidates_path, notice: "Not authorized to Edit this Candidate" if @candidate.nil?
-    end
-  #   redirect_to entities_path, notice: "Not authorized to Edit this Entity" if @entity.nil?
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_candidate
-      @candidate = Candidate.find(params[:id])
+        @candidate = Candidate.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

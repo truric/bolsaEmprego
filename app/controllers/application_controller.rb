@@ -12,4 +12,9 @@ class ApplicationController < ActionController::Base
         params.permit(:email, :password, entities_attributes: [:id, :name, :description, :industry, :address, :phone, :fax, :website])
     end
 
+    rescue_from CanCan::AccessDenied do |exception|
+        flash[:error] = "Access denied."
+        redirect_to root_url
+    end
+
 end
