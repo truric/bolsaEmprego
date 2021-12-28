@@ -15,7 +15,11 @@ class Ability
       elsif user.role == "candidate"
         can :manage, Candidate, user: { id: user.id }
         can :read, Entity
+      else
+        can :read, Entity
+        can :read, Candidate
       end
+
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

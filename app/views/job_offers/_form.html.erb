@@ -1,80 +1,98 @@
-<%= simple_form_for @job_offer do |f| %>
-  <% if job_offer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(job_offer.errors.count, "error") %> prohibited this job_offer from being saved:</h2>
+<% if user_signed_in? %>
 
-      <ul>
-      <% job_offer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <% if current_user.role == "entity" || current_user.role == "backoffice" %>
+
+  <%= simple_form_for @job_offer do |f| %>
+    <% if job_offer.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(job_offer.errors.count, "error") %> prohibited this job_offer from being saved:</h2>
+
+        <ul>
+        <% job_offer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group row" style="margin-top: 15px">
+      <div class="col-2" >
+        <%= f.label "Título" %>
+        <%= f.text_field :name %>
+      </div>
+    
+      <div class="col-3">
+        <%= f.input :date, :label => "Validade", as: :date, start_year: Date.today.year, end_year: Date.today.year + 1, start_month: Date.today.month, end_month: Date.today.month + 12, discard_day: false, order: [:month, :year] %>
+      </div>
+    </div>
+    
+    <div class="form-group col-5" style="margin-top: 15px">
+      <label for="exampleFormControlTextarea1">Descrição</label>
+      <%= tinymce %>
+      <%= f.text_area :description, :class => "tinymce", :rows => 3, :cols => 98 %>
+    </div>
+
+    <div class="col-2" style="margin-top: 15px">
+      <%= f.label "Foto" %>
+      <%= f.file_field :image, style: "font-size: small" %>
+      <% if job_offer.image.attached? %>
+          <%= image_tag(job_offer.image, style: "width: 50px") %>
       <% end %>
-      </ul>
+    </div>
+    
+    <div class="col-2" style="margin-top: 15px">
+      <%= f.label "Empresa" %>
+      <% if user_signed_in? %>
+        <% if current_user.role == "backoffice" || current_user.role == "entity"%>
+          <%= link_to Entity.find(current_user.entity.id).name, entity_path(Entity.find(current_user.entity.id)), style:"color: blue", class:"noHover" %>
+        <% else %>
+          <%= link_to Entity.find("#{@job_offer.entities_id}").name, entity_path(Entity.find("#{@job_offer.entities_id}")), style:"color: blue", class:"noHover" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="field" style="margin-top: 15px">
+      <%= f.label "Actividade Profissional" %>
+      <%= f.select :industry, [['Web Design','Web Design'],['Banking','Banking'],['Cyber Security','Cyber Security']] %>
+    </div>
+
+    <div class="form-group row" style="margin-top: 15px">
+      <div class="col-2">
+        <%= f.label "Tipo de Contrato" %>
+        <%= f.select :contract, [['Full-time','Full-time'],['Temporário','Temporário'],['Parcial','Parcial']] %>
+      </div>
+
+      <div class="col-3 style="margin-top: 15px">
+        <%= f.label "Salário" %>
+        <%= f.select :salary, [['1000-1500','1000-1500'],['2000-2500','2000-2500'],['3000-3500','3000-3500']] %>
+      </div>
+    </div>
+
+    <div class="field" style="margin-top: 15px">
+      <%= f.label "Activa" %>
+      <%= f.check_box :active %>
+    </div>
+
+    <br><br>
+
+    <div class="actions" style="margin-top: 15px">
+      <%= f.submit "Ok" %>
+      <%= f.button :button do %>
+        <%= link_to "Cancelar", job_offers_path, style:"text-decoration: none; border-radius: 25px; color: black; pointer-events: none" %>
+      <% end %>
     </div>
   <% end %>
 
-  <div class="form-group row" style="margin-top: 15px">
-    <div class="col-2" >
-      <%= f.label "Título" %>
-      <%= f.text_field :name %>
-    </div>
-  
-    <div class="col-3">
-      <%= f.input :date, :label => "Validade", as: :date, start_year: Date.today.year, end_year: Date.today.year + 1, start_month: Date.today.month, end_month: Date.today.month + 12, discard_day: false, order: [:month, :year] %>
-    </div>
-  </div>
-  
-  <div class="form-group col-5" style="margin-top: 15px">
-    <label for="exampleFormControlTextarea1">Descrição</label>
-    <%= tinymce %>
-    <%= f.text_area :description, :class => "tinymce", :rows => 3, :cols => 98 %>
-  </div>
+  <style>
+    .noHover:hover {
+      background: none;
+    }
+  </style>
 
-  <div class="col-2" style="margin-top: 15px">
-    <%= f.label "Foto" %>
-    <%= f.file_field :image, style: "font-size: small" %>
-    <% if job_offer.image.attached? %>
-        <%= image_tag(job_offer.image, style: "width: 50px") %>
-    <% end %>
-  </div>
-  
-  <div class="col-2" style="margin-top: 15px">
-    <%= f.label "Empresa" %>
-    <%= link_to Entity.find(current_user.entity.id).name, entity_path(Entity.find(current_user.entity.id)), style:"color: blue", class:"noHover" %>
-  </div>
+  <% else %>
 
-  <div class="field" style="margin-top: 15px">
-    <%= f.label "Actividade Profissional" %>
-    <%= f.select :industry, [['Web Design','Web Design'],['Banking','Banking'],['Cyber Security','Cyber Security']] %>
-  </div>
-
-  <div class="form-group row" style="margin-top: 15px">
-    <div class="col-2">
-      <%= f.label "Tipo de Contrato" %>
-      <%= f.select :contract, [['Full-time','Full-time'],['Temporário','Temporário'],['Parcial','Parcial']] %>
-    </div>
-
-    <div class="col-3 style="margin-top: 15px">
-      <%= f.label "Salário" %>
-      <%= f.select :salary, [['1000-1500','1000-1500'],['2000-2500','2000-2500'],['3000-3500','3000-3500']] %>
-    </div>
-  </div>
-
-  <div class="field" style="margin-top: 15px">
-    <%= f.label "Activa" %>
-    <%= f.check_box :active %>
-  </div>
-
-  <br><br>
-
-  <div class="actions" style="margin-top: 15px">
-    <%= f.submit "Ok" %>
-    <%= f.button :button do %>
-      <%= link_to "Cancelar", job_offers_path, style:"text-decoration: none; border-radius: 25px; color: black; pointer-events: none" %>
-    <% end %>
-  </div>
+    <% controller.redirect_to root_url %>
+    
+  <% end %>
+    
 <% end %>
-
-<style>
-  .noHover:hover {
-    background: none;
-  }
-</style>

@@ -23,6 +23,7 @@ class CandidatesController < ApplicationController
   def new
     @user = User.new
     @candidate = Candidate.new
+    redirect_to candidates_path
   end
 
   # GET /candidates/1/edit

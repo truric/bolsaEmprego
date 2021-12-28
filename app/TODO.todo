@@ -134,7 +134,8 @@ Issues:
     ☐ figure out "interessado/a" event click to a query or pivot table or new table
     ✔ pagination @done (12/27/2021, 6:07:50 PM)
     ✔ search bar system @done (12/28/2021, 11:25:09 AM)
-    ☐ user active true/false 
+    ✔ user active true/false @done (12/28/2021, 3:11:13 PM)
+    ✔ routing permissions, shouldn't edit different candidate/entity id's except for user.role == "backoffice" @done (12/28/2021, 3:12:11 PM)
 
 Candidato pode manifestar interesse numa ou mais entidades e candidatar-se a job_offers:
     ☐ candidate_applied_job_offers job_offer_id candidate_id

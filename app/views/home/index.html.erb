@@ -20,7 +20,7 @@
               <div class="card-body">
                 <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
                 <% if job_offer.image.attached? %>
-                    <%= image_tag(job_offer.image, style: "width: 50px") %>
+                    <%= image_tag(job_offer.image, style: "width: 100px; margin-left: -30px") %>
                 <% else %>
                   <img src="image" alt="sem imagem">
                 <% end %>
@@ -43,7 +43,7 @@
         <div class="col-sm-2">
             <div class="card border-0">
                   <div class="card-body">
-                      <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
+                      <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
                           <div "actions">
                               <% if current_user.role == "candidate" %>
                                   <button><%= link_to 'Candidatar-me', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
@@ -182,7 +182,7 @@
       <h5>Últimas Ofertas</h5>
       <% @job_offers.each do |job_offer| %>
         <% if job_offer.image.attached? %>
-          <%= image_tag(job_offer.image, style: "width: 100px") %>
+          <%= image_tag(job_offer.image, style: "width: 100px; margin-left: 20px") %>
         <% else %>
           <img src="image" alt="sem imagem">
         <% end %>

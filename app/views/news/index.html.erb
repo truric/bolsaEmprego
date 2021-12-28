@@ -73,7 +73,7 @@
         <div class="card-body">
           <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
           <% if n.image.attached? %>
-              <%= image_tag(n.image, style: "width: 50px") %>
+              <%= image_tag(n.image, style: "width: 100px; margin-left: -30px") %>
           <% else %>
             <img src="image" alt="sem imagem">
           <% end %>
@@ -81,7 +81,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-2" style="margin-left: -200px">
+    <div class="col-sm-2" style="margin-left: -150px">
       <div class="card border-0">
         <div class="card-body">
           <p class="card-text"><%= link_to n.title, news_path(n.id), style:"color: blue; visited: yellow", class:"noHover"%></p>

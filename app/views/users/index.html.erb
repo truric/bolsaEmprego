@@ -39,45 +39,45 @@
     <tbody>
     <% @users.each do |user| %>
       <tr>
-          <% if user.role == "entity" %>
-              <td><%= user.entity.name %></td>
-              <td><%= user.role %></td>
-              <% if user.entity.active %>
-                  <td>Sim</td>
-              <% else %>
-                  <td>Não</td>
-              <% end %>
-              <td>
-                <button><%= link_to 'Detalhe', entity_path(user.entity.id), style:"text-decoration: none; color: black", class:"noHover" %></button>
-                <button><%= link_to 'Editar', edit_entity_path(user.entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
-                <button><%= link_to 'Apagar', user.entity, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
-              </td>
-              <% elsif user.role == "candidate" %>
-              <td><%= user.candidate.name %></td>
-              <td><%= user.role %></td>
-              <% if user.candidate.active %>
-                  <td>Sim</td>
-              <% else %>
-                  <td>Não</td>
-              <% end %>
-              <td>
-                <button><%= link_to 'Detalhe', candidate_path(user.candidate.id), style:"text-decoration: none; color: black", class:"noHover" %></button>
-                <button><%= link_to 'Editar', edit_candidate_path(user.candidate), style:"text-decoration: none; color: black", class:"noHover" %></button>
-                <button><%= link_to 'Apagar', user.candidate, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
-              </td>
-          <% else  %>
-              <td>Admin</td>
-              <td><%= user.role %></td>
+        <% if user.role == "entity" %>
+          <td><%= user.entity.name %></td>
+          <td><%= user.role %></td>
+          <% if user.entity.active %>
               <td>Sim</td>
-              <td>
-                <button><%= link_to 'Detalhe', user_path(user), style:"text-decoration: none; color: black", class:"noHover" %></button>
-                <button><%= link_to 'Apagar', user, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
-              </td>
+          <% else %>
+              <td>Não</td>
           <% end %>
+          <td>
+            <button><%= link_to 'Detalhe', entity_path(user.entity.id), style:"text-decoration: none; color: black", class:"noHover" %></button>
+            <button><%= link_to 'Editar', edit_entity_path(user.entity), style:"text-decoration: none; color: black", class:"noHover" %></button>
+            <button><%= link_to 'Apagar', user.entity, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
+          </td>
+        <% elsif user.role == "candidate" %>
+          <td><%= user.candidate.name %></td>
+          <td><%= user.role %></td>
+          <% if user.candidate.active %>
+              <td>Sim</td>
+          <% else %>
+              <td>Não</td>
+          <% end %>
+          <td>
+            <button><%= link_to 'Detalhe', candidate_path(user.candidate.id), style:"text-decoration: none; color: black", class:"noHover" %></button>
+            <button><%= link_to 'Editar', edit_candidate_path(user.candidate), style:"text-decoration: none; color: black", class:"noHover" %></button>
+            <button><%= link_to 'Apagar', user.candidate, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
+          </td>
+        <% else  %>
+          <td>Admin</td>
+          <td><%= user.role %></td>
+          <td>Sim</td>
+          <td>
+            <button><%= link_to 'Detalhe', user_path(user), style:"text-decoration: none; color: black", class:"noHover" %></button>
+            <button><%= link_to 'Apagar', user, method: :delete, data: { confirm: 'Tem a certeza?' }, style:"text-decoration: none; color: black", class:"noHover" %></button>
+          </td>
+        <% end %>
 
       </tr>
-  <% end %>
-  </tbody>
+    <% end %>
+    </tbody>
   </table>
 
   <button><%= link_to 'Inserir', user_registry_new_path, style:"color: blue", class:"noHover", style:"text-decoration: none; color: black" %></button>

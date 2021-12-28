@@ -50,7 +50,7 @@
         <div class="card-body">
           <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
           <% if entity.image.attached? %>
-              <%= image_tag(entity.image, style: "width: 50px") %>
+              <%= image_tag(entity.image, style: "width: 100px") %>
           <% else %>
             <img src="image" alt="sem imagem">
           <% end %>
@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-2" style="margin-left: -200px">
+    <div class="col-sm-2" style="margin-left: -150px">
       <div class="card border-0">
         <div class="card-body">
           <p class="card-text"><%= link_to entity.name, entity_path(entity.id), style:"color: blue; visited: yellow", class:"noHover"%></p>

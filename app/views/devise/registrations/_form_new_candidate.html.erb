@@ -32,7 +32,7 @@
         </div>
 
         <div class="col-3" style="padding-left: 90px">
-            <%= f.label :password_confirmation %>
+            <%= f.label "Confirmação da Password" %>
             <em>(repeat password)</em><br />
             <%= f.password_field :password_confirmation, autocomplete: "new-password", :value => "password", style:"width: 100%" %>
         </div>
@@ -42,41 +42,40 @@
         
         <div class="form-group row" style="margin-top: 15px">
             <div class="col-2" >
-                <%= c.label :name %>
+                <%= c.label "Nome" %>
                 <%= c.text_field :name, style:"width: 107%" %>
             </div>
 
             <div class="col-3 " style="padding-left: 90px">
-                <%= c.label :image %>
+                <%= c.label "Foto" %>
                 <%= c.file_field :image %>
             </div>
         </div>
 
         <div class="form-group col-5" style="margin-top: 15px">
-            <label for="exampleFormControlTextarea1">Morada</label>
-            <%= c.input :address, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
+            <%= c.input :address, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 }, :label => "Morada" %>
         </div>
 
         <div class="form-group row" style="margin-top: 15px">
             <div class="col-1" >
-                <%= c.label :postal_code %>
+                <%= c.label "Código Postal" %>
                 <%= c.text_field :postal_code, style:"width: 107%" %>
             </div>
 
             <div class="col-3" style="padding-left: 240px">
-                <%= c.label :location %>
+                <%= c.label "Localidade" %>
                 <%= c.text_field :location, style:"width: 100%" %>
             </div>
         </div>
 
         <div class="form-group row" style="margin-top: 15px">
             <div class="col-1" >
-                <%= c.label :phone %>
+                <%= c.label "Contacto" %>
                 <%= c.text_field :phone, style:"width: 107%" %>
             </div>
 
             <div class="col-1" >
-                <%= c.label :fax %>
+                <%= c.label "Fax" %>
                 <%= c.text_field :fax, style:"width: 107%" %>
             </div>
 
@@ -88,20 +87,20 @@
 
         <div class="form-group row" style="margin-top: 15px">
             <div class="col-1" >
-                <%= c.label :dob %>
+                <%= c.label "Data de Nascimento" %>
                 <%= c.date_field :dob, style:"width: 107%" %>
 
             </div>
 
             <div class="col-3" style="padding-left: 240px">
-                <%= c.label :id_card %>
+                <%= c.label "Bilhete de Identidade" %>
                 <%= c.text_field :id_card %>
             </div>
         </div>
 
         <div class="form-group row" style="margin-top: 25px; margin-bottom: 25px">
             <div class="col-3">
-                <%= c.label :attachment %>
+                <%= c.label "Curriculum Vitae" %>
                 <%= c.file_field :attachment %>
             </div>
 
@@ -112,8 +111,7 @@
         </div>
 
         <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
-            <label for="exampleFormControlTextarea1">Apresentação</label>
-            <%= c.input :description, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
+            <%= c.input :description, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 }, :label => "Apresentação" %>
         </div>
 
         <div class="dropdown" style="margin-top: 25px; margin-bottom: 25px">
@@ -122,8 +120,7 @@
         </div>
 
         <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
-            <label for="exampleFormControlTextarea1">Habilitações Literárias</label>
-            <%= c.input :qualification, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
+            <%= c.input :qualification, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 }, :label => "Habilitações Literárias" %>
         </div>
 
         <div class="dropdown" style="margin-top: 25px; margin-bottom: 25px">
@@ -132,8 +129,7 @@
         </div>
 
         <div class="form-group col-5" style="margin-top: 25px; margin-bottom: 25px">
-            <label for="exampleFormControlTextarea1">Experiência Profissional</label>
-            <%= c.input :experience, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 } %>
+            <%= c.input :experience, as: :text, :input_html => { class: 'tinymce', rows: 3, columns: 98 }, :label => "Experiência Profissional" %>
         </div>
 
         <% if user_signed_in? && current_user.role == "backoffice" %>
