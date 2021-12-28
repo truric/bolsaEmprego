@@ -4,6 +4,12 @@ class NewsController < ApplicationController
   # GET /news or /news.json
   def index
     @news = News.paginate(page: params[:page], per_page: 3)
+
+    # Search bar
+    if params[:search]
+      @search_term = params[:search]
+      @news = @news.search_by(@search_term)
+    end
   end
 
   # GET /news/1 or /news/1.json

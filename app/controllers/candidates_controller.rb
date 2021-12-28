@@ -4,6 +4,12 @@ class CandidatesController < ApplicationController
   # GET /candidates or /candidates.json
   def index
     @candidates = Candidate.paginate(page: params[:page], per_page: 3)
+
+    # Search bar
+    if params[:search]
+      @search_term = params[:search]
+      @candidates = @candidates.search_by(@search_term)
+    end
   end
 
   # GET /candidates/1 or /candidates/1.json

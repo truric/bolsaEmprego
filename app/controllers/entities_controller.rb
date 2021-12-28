@@ -6,6 +6,13 @@ class EntitiesController < ApplicationController
   # GET /entities or /entities.json
   def index
     @entities = Entity.all.paginate(page: params[:page], per_page: 3)
+
+    # Search bar
+    if params[:search]
+      @search_term = params[:search]
+      @entities = @entities.search_by(@search_term)
+    end
+
   end
 
   # GET /entities/1 or /entities/1.json
@@ -37,6 +44,8 @@ class EntitiesController < ApplicationController
         format.json { render json: @entity.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # PATCH/PUT /entities/1 or /entities/1.json

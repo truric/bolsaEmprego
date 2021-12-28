@@ -4,6 +4,13 @@ class JobOffersController < ApplicationController
   # GET /job_offers or /job_offers.json
   def index
     @job_offers = JobOffer.paginate(page: params[:page], per_page: 3)
+
+    # Search bar
+    if params[:search]
+      @search_term = params[:search]
+      @job_offers = @job_offers.search_by(@search_term)
+    end
+
   end
 
   # GET /job_offers/1 or /job_offers/1.json
