@@ -43,7 +43,7 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
             ✔ listar todas as entidades criadas @done (12/26/2021, 11:31:45 AM)
             ✔ adicionar sistema de paginação a funcionar @done (12/27/2021, 6:07:57 PM)
             ✔ botão: "Quero-me registar" @done (12/26/2021, 11:31:53 AM)
-            ☐ search bar com pesquisa activa pelo nome e descrição das entidades, + 2 dropdowns filters a funcionar
+            ✔ search bar com pesquisa activa pelo nome e descrição das entidades, + 2 dropdowns filters a funcionar @done (12/28/2021, 11:25:02 AM)
         
         alterar página de show (detalhe de Entidade):
             ✔ card: "entity name, foto, botões:"interessado/a" (if role=="candidate") + "Editar" ("same entity_id + backoffice role"), description, Actividade Profissional, Morada, Contactos, email, website" @done (12/26/2021, 2:36:25 PM)
@@ -63,7 +63,7 @@ TPC: definir o que falta fazer ponto por ponto e prioridades
             ✔ listar todos oss candidatos criados @done (12/26/2021, 6:33:39 PM)
             ✔ adicionar sistema de paginação a funcionar @done (12/27/2021, 6:07:54 PM)
             ✔ botão: "Registar Candidato" @done (12/26/2021, 6:33:49 PM)
-            ☐ search bar que pesquisa pelo nome e descrição dos candidatos, + 2 dropdowns filters
+            ✔ search bar que pesquisa pelo nome e descrição dos candidatos, + 2 dropdowns filters @done (12/28/2021, 11:25:05 AM)
 
         alterar página de show (detalhe de Candidato):
             ✔ card: "nome candidato, foto, CV hyperlink, botões:"interessado/a" (if logged in && role=="entity") + "Editar" ("same candidate_id + backoffice role"), description, Dados Profissionais, etc.. @done (12/26/2021, 7:07:11 PM)
@@ -133,7 +133,7 @@ Issues:
     ☐ same image appears for all entities/candidates even with different uploaded images
     ☐ figure out "interessado/a" event click to a query or pivot table or new table
     ✔ pagination @done (12/27/2021, 6:07:50 PM)
-    ☐ search bar system
+    ✔ search bar system @done (12/28/2021, 11:25:09 AM)
     ☐ user active true/false 
 
 Candidato pode manifestar interesse numa ou mais entidades e candidatar-se a job_offers:

@@ -1,5 +1,7 @@
 class CandidatesController < ApplicationController
-  before_action :set_candidate, only: [:show, :edit, :update, :destroy]
+  before_action :set_candidate, only: [:show, :edit, :update, :destroy ]
+  before_action :authenticate_user!, except: [:index, :show, :edit]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /candidates or /candidates.json
   def index
@@ -63,6 +65,14 @@ class CandidatesController < ApplicationController
       format.html { redirect_to candidates_url, notice: "Candidate was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def correct_user
+  #   @entity = current_user.entity.find_by(id: params[:id])
+    if current_user.role != "candidate" || current_user.role != "backoffice" || current_user.candidate.id != this.candidate.id
+      redirect_to candidates_path, notice: "Not authorized to Edit this Candidate" if @candidate.nil?
+    end
+  #   redirect_to entities_path, notice: "Not authorized to Edit this Entity" if @entity.nil?
   end
 
   private

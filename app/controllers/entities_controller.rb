@@ -1,6 +1,6 @@
 class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy ]
-  # before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   # before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /entities or /entities.json
@@ -24,6 +24,7 @@ class EntitiesController < ApplicationController
   def new
     @user = User.new
     @entity = Entity.new
+    redirect_to entities_path
   end
 
   # GET /entities/1/edit
@@ -71,7 +72,13 @@ class EntitiesController < ApplicationController
     end
   end
 
-
+  def correct_user
+  #   @entity = current_user.entity.find_by(id: params[:id])
+    if current_user.role != "entity" || current_user.role != "backoffice" || current_user.entity.id != this.entity.id
+      redirect_to entities_path, notice: "Not authorized to Edit this Entity" if @entity.nil?
+    end
+  #   redirect_to entities_path, notice: "Not authorized to Edit this Entity" if @entity.nil?
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
