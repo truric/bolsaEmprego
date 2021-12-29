@@ -11,20 +11,10 @@
         <input class="form-control mr-sm-2" type="search" placeholder="  search" aria-label="Search", style="font-size: small">
       </form>
 
-      <div class="dropdown" style="padding-left: 50px">
-
-      <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
-          aria-haspopup="true" aria-expanded="false", style="font-size: small">
-          Tipo...
-      </button>
-
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Actividade 1</a>
-          <a class="dropdown-item" href="#">Actividade 2</a>
-      </div>
-
-      </div>
-
+      <%= form_tag users_path, method: 'get' do %>
+        <%= select_tag :industry, options_for_select(['Backoffice','Entitidade','Candidato']), class:'custom-select btn-light dropdown-toggle', style:"margin-left: 30px", prompt: "Tipo..." %>
+      <% end %>
+  
   </nav>
 
   <table class="table table-striped">
@@ -42,7 +32,7 @@
         <% if user.role == "entity" %>
           <td><%= user.entity.name %></td>
           <td><%= user.role %></td>
-          <% if user.entity.active %>
+          <% if user.active %>
               <td>Sim</td>
           <% else %>
               <td>Não</td>
@@ -55,7 +45,7 @@
         <% elsif user.role == "candidate" %>
           <td><%= user.candidate.name %></td>
           <td><%= user.role %></td>
-          <% if user.candidate.active %>
+          <% if user.active %>
               <td>Sim</td>
           <% else %>
               <td>Não</td>

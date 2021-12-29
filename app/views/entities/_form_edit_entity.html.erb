@@ -88,8 +88,8 @@
     <% if user_signed_in? && current_user.role == "backoffice" %>
       <div class="form-group row" style="margin-top: 15px">
         <div class="col-3">
-            <%= e.label "Activa" %>
-            <%= e.check_box :active, {checked: true} %>
+            <%= f.label "Activa" %>
+            <%= f.check_box :active, {checked: true} %>
         </div>
       </div>
     <% end %>

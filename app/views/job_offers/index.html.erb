@@ -7,37 +7,18 @@
   <svg style="position: absolute; padding-left:5px" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
   </svg>
-    <%= form_for "", url: job_offers_path, role: "search", method: :get do %>
-      <%= text_field_tag :search, @search_term, palceholder: "search" %>
-    <% end %>
 
-    <div class="dropdown" style="padding-left: 50px">
+  <%= form_for "", url: job_offers_path, role: "search", method: :get do %>
+    <%= text_field_tag :search, @search_term, palceholder: "search" %>
+  <% end %>
 
-      <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
-        aria-haspopup="true" aria-expanded="false", style="font-size: small">
-        Área de Actividade
-      </button>
+  <%= form_tag job_offers_path, method: 'get' do %>
+    <%= select_tag :industry, options_for_select(['Informática','Marketing','RH']), class:'custom-select btn-light dropdown-toggle', style:"margin-left: 30px", prompt: "Área de Actividade" %>
+  <% end %>
 
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Actividade 1</a>
-        <a class="dropdown-item" href="#">Actividade 2</a>
-      </div>
-
-    </div>
-
-    <div class="dropdown" style="padding-left: 50px">
-
-      <button class="btn btn-secondary btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" 
-        aria-haspopup="true" aria-expanded="false", style="font-size: small">
-        Concelho
-      </button>
-
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Concelho 1</a>
-        <a class="dropdown-item" href="#">Concelho 2</a>
-      </div>
-
-    </div>
+  <%= form_tag job_offers_path, method: 'get' do %>
+    <%= select_tag :location, options_for_select(['Vila Nova de Gaia','Maia','Vinhais']), class:'custom-select btn-light dropdown-toggle', style:"margin-left: 30px", prompt: "Concelho" %>
+  <% end %>
 
 </nav>
 
