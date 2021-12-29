@@ -50,7 +50,15 @@
         <p class="card-text"><%= raw @job_offer.description %></p>
         <p class="card-text"><%= @job_offer.date %></p>
         <p class="card-title" style="font-weight: bold">Empresa</p>
-        <p class="card-text"><%= @job_offer.entities_id %></p>
+        <% if user_signed_in? %>
+        <% if current_user.role == "backoffice" || current_user.role == "entity" %>
+            <p class="card-text"><%= link_to Entity.find(current_user.entity.id).name, entity_path(Entity.find(current_user.entity.id)), style:"color: blue", class:"noHover" %></p>
+          <% else %>
+            <p class="card-text"><%= link_to Entity.find("#{@job_offer.entities_id}").name, entity_path(Entity.find("#{@job_offer.entities_id}")), style:"color: blue", class:"noHover" %></p>
+        <% end %>
+      <% else %>
+        <p class="card-text"><%= link_to Entity.find("#{@job_offer.entities_id}").name, entity_path(Entity.find("#{@job_offer.entities_id}")), style:"color: blue", class:"noHover" %></p>
+      <% end %>
         <p class="card-title" style="font-weight: bold">Actividade Profissional</p>
         <p class="card-text"><%= @job_offer.industry %></p>
         <p class="card-title" style="font-weight: bold">Tipo de Contrato</p>
@@ -88,7 +96,15 @@
         <div class="card-body">
             <p class="card-text"><%= link_to job_offer.name, job_offer_path(job_offer.id), style:"color: blue; visited: yellow", class:"noHover"%></p>
             <p class="card-text"><%= job_offer.date %></p>
-            <p class="card-text"><%= job_offer.entities_id %></p>
+            <% if user_signed_in? %>
+              <% if current_user.role == "backoffice" || current_user.role == "entity" %>
+                  <p class="card-text"><%= link_to Entity.find(current_user.entity.id).name, entity_path(Entity.find(current_user.entity.id)), style:"color: blue", class:"noHover" %></p>
+                <% else %>
+                  <p class="card-text"><%= link_to Entity.find("#{@job_offer.entities_id}").name, entity_path(Entity.find("#{@job_offer.entities_id}")), style:"color: blue", class:"noHover" %></p>
+              <% end %>
+            <% else %>
+              <p class="card-text"><%= link_to Entity.find("#{@job_offer.entities_id}").name, entity_path(Entity.find("#{@job_offer.entities_id}")), style:"color: blue", class:"noHover" %></p>
+            <% end %>
             <p class="card-text"><%= raw job_offer.description %></p>
         </div>
       </div>

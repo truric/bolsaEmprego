@@ -11,13 +11,20 @@ class Ability
         can :manage, :all
       elsif user.role == "entity"
         can :manage, Entity, user: { id: user.id }
+        # can :manage, JobOffer, entity: { id: self.entities_id }
+        can :manage, JobOffer
         can :read, Candidate
+        can :manage, News
       elsif user.role == "candidate"
         can :manage, Candidate, user: { id: user.id }
         can :read, Entity
+        can :read, JobOffer
+        can :read, News
       else
         can :read, Entity
         can :read, Candidate
+        can :read, JobOffer
+        can :read, News
       end
 
     #

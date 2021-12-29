@@ -96,7 +96,7 @@
               <div class="card-body">
                 <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
                   <div "actions">
-                    <button><%= link_to 'Reativar', edit_job_offer_path(job_offer), style:"text-decoration: none; color: black", class:"noHover" %></button>
+                    <button class="btnClick" value="false">Reactivar</button>
                   </div>
                 </div>
               </div>
@@ -204,7 +204,7 @@
       <h5>Notícias</h5>
       <% @news.each do |n| %>
         <% if n.image.attached? %>
-          <%= image_tag(n.image, style: "width: 100px") %>
+          <%= image_tag(n.image, style: "width: 100px; margin-left: 20px") %>
         <% else %>
           <img src="image" alt="sem imagem">
         <% end %>
@@ -274,3 +274,17 @@
     background: none;
   }
 </style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+<script>
+  $('.btnClick').click(function(){
+    var $this = $(this);
+    $this.toggleClass('btnClick');
+    if($this.hasClass('btnClick')){
+      $this.text('Reactivar')
+    } else {
+      $this.text('Activar')
+    }
+  });
+</script>

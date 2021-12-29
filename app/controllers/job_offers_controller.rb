@@ -1,4 +1,6 @@
 class JobOffersController < ApplicationController
+  load_and_authorize_resource
+  
   before_action :set_job_offer, only: %i[ show edit update destroy ]
 
   # GET /job_offers or /job_offers.json
@@ -68,7 +70,11 @@ class JobOffersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job_offer
-      @job_offer = JobOffer.find(params[:id])
+      # if current_user.entity.id != @job_offer.entities_id
+      #   redirect_to job_offers_path, notice: "Not authorized to Edit this Job Offer" if @job_offer.nil?
+      # else
+        @job_offer = JobOffer.find(params[:id])
+      # end
     end
 
     # Only allow a list of trusted parameters through.

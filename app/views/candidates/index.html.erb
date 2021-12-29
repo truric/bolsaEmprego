@@ -56,7 +56,7 @@
       <div "actions">
       <% if user_signed_in? %>
         <% if user_signed_in? && current_user.role == "entity" %>
-          <button><%= link_to 'Interessado/a', new_user_registration_path(role:"candidate"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+          <button class="btnClick">Interessado/a</button>
         <% end %>
         <% if current_user.role == "backoffice" || current_user.role == "candidate" && current_user.candidate.id == candidate.id %>
           <button><%= link_to 'Editar', edit_candidate_path(candidate), style:"text-decoration: none; color: black", class:"noHover" %></button>
@@ -80,3 +80,17 @@
 <% end %>
 
 <%= will_paginate @candidates, style:"margin-top: 35px; color: blue", class:"noHover btn" %>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+<script>
+  $('.btnClick').click(function(){
+    var $this = $(this);
+    $this.toggleClass('btnClick');
+    if($this.hasClass('btnClick')){
+      $this.text('Interessado/a');			
+    } else {
+      $this.text('Não interessado');
+    }
+  });
+</script>

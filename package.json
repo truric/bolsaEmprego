@@ -2,6 +2,7 @@
   "name": "bolsaEmprego",
   "private": true,
   "dependencies": {
-    "@prettier/plugin-ruby": "^2.0.0"
+    "@prettier/plugin-ruby": "^2.0.0",
+    "jquery": "^3.6.0"
   }
 }

@@ -33,6 +33,7 @@ class CandidatesController < ApplicationController
   # POST /candidates or /candidates.json
   def create
     @candidate = Candidate.new(candidate_params)
+    @candidate.image.attach(params[:candidate][:image])
     @candidate.save
     
     respond_to do |format|

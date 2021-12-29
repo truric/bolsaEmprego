@@ -35,6 +35,8 @@ class EntitiesController < ApplicationController
   # POST /entities or /entities.json
   def create
     @entity = Entity.new(entity_params)
+    @entity.image.attach(params[:entity][:image])
+
     @entity.save
 
     respond_to do |format|
