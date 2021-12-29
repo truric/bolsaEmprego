@@ -130,7 +130,7 @@ Issues:
     ☐ backoffice logged in cant create new user "already signed in"
     ✔ index job_offers get entity name by job_offers.entities_id @done (12/27/2021, 4:42:12 PM)
     ✔ show job_offers get entity name by job_offers.entities_id @done (12/27/2021, 4:42:13 PM)
-    ☐ same image appears for all entities/candidates even with different uploaded images
+    ✔ same image appears for all entities/candidates even with different uploaded images @done (12/29/2021, 5:11:34 PM)
     ☐ figure out "interessado/a" event click to a query or pivot table or new table
     ✔ pagination @done (12/27/2021, 6:07:50 PM)
     ✔ search bar system @done (12/28/2021, 11:25:09 AM)
