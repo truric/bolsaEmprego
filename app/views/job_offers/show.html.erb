@@ -74,7 +74,7 @@
 
 <% @job_offers.each do |job_offer| %>
 
-  <% if job_offer.active && job_offer.location == @job_offer.location && job_offer.id != @job_offer.id %>
+  <% if job_offer.active && job_offer.industry == @job_offer.industry && job_offer.id != @job_offer.id %>
 
     <div class="row">
       <div class="col-sm-2">

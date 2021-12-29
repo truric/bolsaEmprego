@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_29_163311) do
+ActiveRecord::Schema.define(version: 2021_12_29_180209) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2021_12_29_163311) do
     t.string "address"
     t.string "phone"
     t.integer "fax"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -63,7 +62,6 @@ ActiveRecord::Schema.define(version: 2021_12_29_163311) do
     t.string "address"
     t.string "phone"
     t.integer "fax"
-    t.string "email"
     t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,7 +76,6 @@ ActiveRecord::Schema.define(version: 2021_12_29_163311) do
     t.string "name"
     t.string "description"
     t.datetime "date"
-    t.string "company"
     t.string "industry"
     t.string "contract"
     t.float "salary"
@@ -86,7 +83,6 @@ ActiveRecord::Schema.define(version: 2021_12_29_163311) do
     t.datetime "updated_at", null: false
     t.integer "entities_id"
     t.boolean "active"
-    t.string "location"
     t.index ["entities_id"], name: "index_job_offers_on_entities_id"
   end
 

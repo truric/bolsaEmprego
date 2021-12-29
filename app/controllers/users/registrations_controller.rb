@@ -97,11 +97,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def entity_params
-    params.require(:user).require(:entity).permit(:id, :name, :description, :industry, :address, :tax_number, :postal_code, :location, :county, :phone, :fax, :website, :user_id, :role, :image, :attachment)
+    params.require(:user).require(:entity).permit(:id, :name, :description, :industry, :address, :tax_number, :postal_code, :location, :phone, :fax, :website, :user_id, :role, :image, :attachment)
   end
 
   def candidate_params
-    params.require(:user).require(:candidate).permit(:id, :name, :description, :industry, :employed, :grade, :qualification, :experience, :address, :county, :phone, :fax, :website, :user_id, :postal_code, :location, :id_card, :dob, :image, :attachment)
+    params.require(:user).require(:candidate).permit(:id, :name, :description, :industry, :employed, :grade, :qualification, :experience, :address, :phone, :fax, :website, :user_id, :postal_code, :location, :id_card, :dob, :image, :attachment)
   end
   
 end
