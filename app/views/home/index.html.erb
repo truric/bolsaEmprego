@@ -246,7 +246,7 @@
     </div>
 
     <div class="col-5">
-      <h5 style="margin-top: 25px">Últimos Candidatos</h5>
+      <h5>Últimos Candidatos</h5>
       <% @candidates.each do |candidate| %>
         <% if candidate.image.attached? %>
           <%= image_tag(candidate.image, style: "width: 100px") %>

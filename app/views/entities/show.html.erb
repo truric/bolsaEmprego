@@ -63,7 +63,7 @@
           <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px">
 
             <% if user_signed_in? && current_user.role == "candidate" %>
-              <button><%= link_to 'Interessado/a', new_user_registration_path(role:"entity"), style:"text-decoration: none; color: black", class:"noHover" %></button>
+              <button class="btnClick">Interessado/a</button>
             <% end %>
 
           </div>
@@ -155,3 +155,17 @@
 <%= link_to 'Ver Entidades', entities_path, style:"color: blue; margin-top: 15px", class:"noHover" %>
 
 <% end %>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+<script>
+  $('.btnClick').click(function(){
+    var $this = $(this);
+    $this.toggleClass('btnClick');
+    if($this.hasClass('btnClick')){
+      $this.text('Interessado/a');			
+    } else {
+      $this.text('Não interessado');
+    }
+  });
+</script>
