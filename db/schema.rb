@@ -33,6 +33,20 @@ ActiveRecord::Schema.define(version: 2021_12_30_104510) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "candidate_entities", force: :cascade do |t|
+    t.integer "candidate_id"
+    t.integer "entity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "candidate_job_offers", force: :cascade do |t|
+    t.integer "candidate_id"
+    t.integer "job_offer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "candidates", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -55,20 +69,6 @@ ActiveRecord::Schema.define(version: 2021_12_30_104510) do
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
-  create_table "candidates_entities", force: :cascade do |t|
-    t.integer "candidate_id"
-    t.integer "entity_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "candidates_job_offers", force: :cascade do |t|
-    t.integer "candidate_id"
-    t.integer "job_offer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "entities", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2021_12_30_104510) do
     t.index ["user_id"], name: "index_entities_on_user_id"
   end
 
-  create_table "entities_candidates", force: :cascade do |t|
+  create_table "entity_candidates", force: :cascade do |t|
     t.integer "entity_id"
     t.integer "candidate_id"
     t.datetime "created_at", null: false

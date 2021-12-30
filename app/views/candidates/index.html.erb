@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% if notice.present? %>
+  <div class="alert alert-primary" role="alert">
+    <%= notice %>
+  </div>
+<% end %>
 
 <h5>Candidatos</h5>
 
@@ -56,7 +60,16 @@
       <div "actions">
       <% if user_signed_in? %>
         <% if user_signed_in? && current_user.role == "entity" %>
-          <button class="btnClick">Interessado/a</button>
+          
+          <%= form_with url: toggle_entity_interest_candidate_path(candidate) do |form| %>
+            <%= form.hidden_field :toggle_type, value: candidate.interested_entities.include?(current_user.entity) ? 'remover' : 'add' %>
+            <%= form.hidden_field :entity_id, value: current_user.entity.id %>
+            <% if candidate.interested_entities.include?(current_user.entity) %>
+              <button type="submit">Remover Interesse</button>
+            <% else %>
+              <button type="submit">Mostrar-se interessado</button>
+            <% end %>
+          <% end %>
         <% end %>
         <% if current_user.role == "backoffice" || current_user.role == "candidate" && current_user.candidate.id == candidate.id %>
           <button><%= link_to 'Editar', edit_candidate_path(candidate), style:"text-decoration: none; color: black", class:"noHover" %></button>

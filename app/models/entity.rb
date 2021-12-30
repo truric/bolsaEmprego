@@ -3,8 +3,8 @@ class Entity < ApplicationRecord
     has_one_attached :image
     has_one_attached :attachment
     has_many :job_offers
-    has_many :interested_candidates, through: 'candidates_entites'
-    has_many :interest_in_candidates, through: 'entities_candidates'
+    has_many :interested_candidates, through: :candidate_entites
+    has_many :interest_in_candidates, through: :entity_candidates
 
     accepts_nested_attributes_for :user
 

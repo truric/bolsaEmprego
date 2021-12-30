@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <style>
   .noHover:hover {
     background: none;
@@ -66,7 +64,15 @@
           <div style="display: flex; justify-content: left; align-items: left; margin-top: 10px; margin-left: 30px">
 
             <% if user_signed_in? && current_user.role == "entity" %>
-              <button class="btnClick">Interessado/a</button>
+              <%= form_with url: toggle_entity_interest_candidate_path(@candidate) do |form| %>
+                <%= form.hidden_field :toggle_type, value: @candidate.interested_entities.include?(current_user.entity) ? 'remover' : 'add' %>
+                <%= form.hidden_field :entity_id, value: current_user.entity.id %>
+                <% if @candidate.interested_entities.include?(current_user.entity) %>
+                  <button type="submit">Remover Interesse</button>
+                <% else %>
+                  <button type="submit">Mostrar-se interessado</button>
+                <% end %>
+              <% end %>
             <% end %>
 
           </div>

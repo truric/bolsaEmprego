@@ -14,7 +14,13 @@ Rails.application.routes.draw do
   end
 
   resources :entities, :except => :new
-  resources :candidates, :except => :new 
+
+  resources :candidates, :except => :new do
+    member do
+      post 'toggle_entity_interest'
+    end
+  end
+
   get "entities/new" => redirect("/users")
   root 'home#index'
 

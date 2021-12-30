@@ -1,7 +1,7 @@
 class CandidatesController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
-  before_action :set_candidate, only: [:show, :edit, :update, :destroy ]
+  before_action :set_candidate, only: [:show, :edit, :update, :destroy, :toggle_entity_interest ]
   before_action :authenticate_user!, except: [:index, :show, :edit]
 
   # GET /candidates or /candidates.json
@@ -68,6 +68,18 @@ class CandidatesController < ApplicationController
       format.html { redirect_to candidates_url, notice: "Candidate was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def toggle_entity_interest
+    if params[:toggle_type] == "add"
+      notice = "Demonstrou interesse no candidato com Sucesso!"
+      @candidate.interested_entities << Entity.find(params[:entity_id])
+    else
+      notice = "Removeu o seu  interesse no candidato com Sucesso!"
+      @candidate.interested_entities.delete(Entity.find(params[:entity_id]))
+    end
+
+    redirect_to candidate_path(@candidate), notice: notice
   end
 
   private
