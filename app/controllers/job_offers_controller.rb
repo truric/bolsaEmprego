@@ -1,7 +1,7 @@
 class JobOffersController < ApplicationController
   load_and_authorize_resource
   
-  before_action :set_job_offer, only: %i[ show edit update destroy ]
+  before_action :set_job_offer, only: %i[ show edit update destroy toggle_active_state ]
 
   # GET /job_offers or /job_offers.json
   def index
@@ -65,6 +65,12 @@ class JobOffersController < ApplicationController
       format.html { redirect_to job_offers_url, notice: "Job offer was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def toggle_active_state
+    @job_offer.active = !@job_offer.active
+    @job_offer.save
+    redirect_to root_path
   end
 
   private

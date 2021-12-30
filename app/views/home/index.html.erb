@@ -96,7 +96,9 @@
               <div class="card-body">
                 <div style="display: flex; justify-content: left; align-items: left; margin-top: 15px; space-between: 40px">
                   <div "actions">
-                    <button class="btnClick" value="false">Reactivar</button>
+                  <%= form_with url: toggle_active_state_job_offer_path(job_offer) do |form| %>
+                    <button type="submit" value="false">Reactivar</button>
+                  <% end %>
                   </div>
                 </div>
               </div>
@@ -276,15 +278,3 @@
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
-<script>
-  $('.btnClick').click(function(){
-    var $this = $(this);
-    $this.toggleClass('btnClick');
-    if($this.hasClass('btnClick')){
-      $this.text('Reactivar')
-    } else {
-      $this.text('Activar')
-    }
-  });
-</script>

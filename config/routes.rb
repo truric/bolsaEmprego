@@ -5,7 +5,14 @@ Rails.application.routes.draw do
   }
 
   get 'user_registry/new'
-  resources :news, :job_offers, :users
+  resources :news, :users
+
+  resources :job_offers do
+    member do
+      post 'toggle_active_state'    
+    end
+  end
+
   resources :entities, :except => :new
   resources :candidates, :except => :new 
   get "entities/new" => redirect("/users")

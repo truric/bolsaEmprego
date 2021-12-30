@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_29_180209) do
+ActiveRecord::Schema.define(version: 2021_12_30_104510) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,20 @@ ActiveRecord::Schema.define(version: 2021_12_29_180209) do
     t.index ["user_id"], name: "index_candidates_on_user_id"
   end
 
+  create_table "candidates_entities", force: :cascade do |t|
+    t.integer "candidate_id"
+    t.integer "entity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "candidates_job_offers", force: :cascade do |t|
+    t.integer "candidate_id"
+    t.integer "job_offer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "entities", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -70,6 +84,13 @@ ActiveRecord::Schema.define(version: 2021_12_29_180209) do
     t.string "location"
     t.integer "tax_number"
     t.index ["user_id"], name: "index_entities_on_user_id"
+  end
+
+  create_table "entities_candidates", force: :cascade do |t|
+    t.integer "entity_id"
+    t.integer "candidate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "job_offers", force: :cascade do |t|
